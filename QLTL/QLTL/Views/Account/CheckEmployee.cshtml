@@ -1,0 +1,25 @@
+﻿@{
+    ViewBag.Title = "Kiểm tra tài khoản";
+}
+
+<div class="container mt-4">
+    <h2 class="mb-4">Kiểm tra tài khoản</h2>
+
+    @if (ViewBag.Error != null)
+    {
+        <div class="alert alert-danger">@ViewBag.Error</div>
+    }
+
+    @using (Html.BeginForm("CheckEmployee", "Account", FormMethod.Post))
+    {
+        <div class="mb-3">
+            <label for="employeeCode" class="form-label">Mã nhân viên</label>
+            <input type="text" name="employeeCode" class="form-control" placeholder="Nhập mã nhân viên" required />
+        </div>
+
+        <button type="submit" class="btn btn-primary">
+            <i class="bi bi-search"></i> Kiểm tra
+        </button>
+        <a href="@Url.Action("Login", "Account")" class="btn btn-link">Quay lại đăng nhập</a>
+    }
+</div>

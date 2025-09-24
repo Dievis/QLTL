@@ -1,0 +1,36 @@
+﻿@model QLTL.ViewModels.PermissionVM.PermissionViewModel
+
+@{
+    ViewBag.Title = "Chi tiết quyền";
+}
+
+<div class="container mt-4">
+    <h2>Chi tiết quyền</h2>
+
+    <div class="mb-3">
+        <strong>Tên quyền:</strong> @Model.PermissionName
+    </div>
+
+    <div class="mb-3">
+        <strong>Mô tả:</strong> @Model.Description
+    </div>
+
+    <div class="mb-3">
+        <strong>Quyền mặc định:</strong> @(Model.IsDefault ? "Có" : "Không")
+    </div>
+
+    <div class="mb-3">
+        <strong>Trạng thái:</strong> @(Model.IsDeleted ? "Đã xóa" : "Hoạt động")
+    </div>
+
+    <div class="mb-3">
+        <strong>Ngày tạo:</strong> @Model.CreatedAt.ToString("dd/MM/yyyy")
+    </div>
+
+    <div class="mb-3">
+        <strong>Ngày cập nhật:</strong> @(Model.UpdatedAt.HasValue ? Model.UpdatedAt.Value.ToString("dd/MM/yyyy") : "-")
+    </div>
+
+    <a href="@Url.Action("Edit", new { id = Model.PermissionId })" class="btn btn-warning"><i class="bi bi-pencil-square"></i> Chỉnh sửa</a>
+    <a href="@Url.Action("Index")" class="btn btn-secondary">Quay lại</a>
+</div>

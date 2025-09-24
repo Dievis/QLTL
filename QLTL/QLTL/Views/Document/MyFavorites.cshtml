@@ -1,0 +1,67 @@
+﻿@model QLTL.ViewModels.DocumentVM.DocumentIndexVM
+@{
+    ViewBag.Title = "Tài liệu yêu thích";
+}
+
+<div class="container mt-4">
+    <h2>Danh sách yêu thích</h2>
+
+    <table class="table table-striped table-hover">
+        <thead class="table-dark">
+            <tr>
+                <th>Tiêu đề</th>
+                <th>Ngày tạo</th>
+                <th>Trạng thái</th>
+                <th class="text-center">Thao tác</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Items)
+            {
+                <tr data-docid="@item.DocumentId">
+                    <td>@item.Title</td>
+                    <td>@item.CreatedAt.ToString("dd/MM/yyyy")</td>
+                    <td>
+                        @if (item.IsDeleted)
+                        {
+                            <span class="badge bg-danger">Đã xóa</span>
+                        }
+                        else
+                        {
+                            <span class="badge bg-success">Hoạt động</span>
+                        }
+                    </td>
+                    <td class="text-center">
+                        <a href="@Url.Action("Details", new { id = item.DocumentId })" class="btn btn-sm btn-info" title="Xem chi tiết">
+                            <i class="bi bi-eye"></i>
+                        </a>
+
+                        <button class="btn btn-sm btn-danger remove-favorite-btn" data-docid="@item.DocumentId">
+                            <i class="bi bi-heart-fill"></i> Bỏ yêu thích
+                        </button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+@section Scripts{
+    <script>
+$(document).ready(function(){
+    $('.remove-favorite-btn').click(function(){
+        var btn = $(this);
+        var docId = btn.data('docid');
+        var userId = @Session["UserId"] ?? 0;
+
+        $.post('@Url.Action("RemoveFavorite", "Document")', { documentId: docId, userId: userId }, function(res){
+            if(res.success){
+                btn.closest('tr').remove();
+            } else {
+                alert(res.message);
+            }
+        });
+    });
+});
+    </script>
+}

@@ -1,0 +1,328 @@
+﻿/* Reset */
+body {
+    display: flex;
+    min-height: 100vh;
+    margin: 0;
+    font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: #f5f7fa;
+}
+
+/* Sidebar mặc định mở */
+.sidebar {
+    width: 220px;
+    background: linear-gradient(180deg, #0096C7 0%, #0077A7 100%);
+    flex-shrink: 0;
+    padding: 20px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: -2px 0 12px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+    z-index: 150;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    overflow: hidden;
+}
+
+    /* Sidebar đóng: dịch ra ngoài màn hình */
+    .sidebar.closed {
+        transform: translateX(100%);
+    }
+
+
+    /* Logo */
+    .sidebar .logo {
+        display: block;
+        margin: 0 auto 16px;
+        width: 60px;
+        height: 60px;
+        border-radius: 20%;
+        object-fit: cover;
+        border: 2px solid #ffffff;
+        position: sticky;
+        top: 12px;
+        z-index: 101;
+    }
+
+
+.sidebar-pages-container {
+    flex: 1;
+    position: relative;
+    margin-top: 10px;
+}
+
+/* Mỗi page ẩn nếu không active */
+.sidebar-page {
+    display: none;
+    flex-direction: column;
+}
+
+    .sidebar-page.active {
+        display: flex;
+    }
+
+/* Pagination */
+.sidebar-pagination {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 12px;
+    background: rgba(0,0,0,0.1);
+}
+
+    .sidebar-pagination button {
+        background: #0077A7;
+        border: none;
+        color: #fff;
+        padding: 4px 8px;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+        .sidebar-pagination button:hover {
+            background: #005f87;
+        }
+
+
+/* Khi sidebar đóng thì dịch sang phải */
+.sidebar.closed {
+    transform: translateX(100%);
+}
+
+/* Toggle Button dạng thanh dài bên trái sidebar */
+.toggle-btn {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    margin-left: 12px; /* cách tên người dùng 1 chút */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+    .toggle-btn:hover {
+        background: #0077A7;
+    }
+
+    .toggle-btn i {
+        font-size: 22px;
+        color: #fff;
+        transition: transform 0.3s;
+    }
+
+/* Khi sidebar đóng thì nút nằm sát màn hình */
+    .toggle-btn i {
+        font-size: 22px;
+        color: #fff;
+        transition: transform 0.3s ease;
+    }
+
+/* Khi sidebar mở thì icon xoay 180° */
+.sidebar.open ~ .content .navbar-top .toggle-btn i {
+    transform: rotate(180deg);
+}
+
+    .sidebar.closed + .toggle-btn i {
+        transform: rotate(180deg);
+    }
+
+
+.sidebar.open ~ .toggle-btn i {
+    transform: rotate(180deg);
+}
+
+/* Menu */
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar .nav-link {
+    color: #eafcff;
+    padding: 10px 18px;
+    display: flex;
+    align-items: center;
+    font-size: 0.9rem;
+    border-radius: 6px;
+    margin: 4px 8px;
+    transition: all 0.25s ease;
+}
+
+    .sidebar .nav-link i {
+        margin-right: 10px;
+        font-size: 1rem;
+    }
+
+    .sidebar .nav-link:hover,
+    .sidebar .nav-link.active {
+        background: rgba(255, 255, 255, 0.15);
+        color: #ffffff;
+        transform: translateX(4px);
+        text-decoration: none;
+    }
+
+/* Submenu */
+.sidebar .submenu .fw-bold {
+    color: #ffffff;
+    font-size: 0.9rem;
+    margin: 10px 16px 4px;
+    opacity: 0.9;
+}
+
+.sidebar .submenu .nav-link {
+    padding-left: 36px;
+    font-size: 0.85rem;
+}
+
+/* Content: bây giờ phải trừ margin bên phải */
+.content {
+    flex: 1;
+    background: #ffffff;
+    transition: margin-right 0.3s ease;
+    margin-right: 220px; /* khi sidebar mở */
+    display: flex;
+    flex-direction: column;
+}
+
+/* Khi sidebar đóng */
+.sidebar.closed ~ .content {
+    margin-right: 0;
+}
+
+/* Phần nội dung chính dưới navbar */
+.content .main-content {
+    padding: 15px 30px;
+    flex: 1;
+}
+
+/* Navbar Top */
+.content .navbar-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 80px;
+    padding: 0 30px;
+    background: linear-gradient(180deg, #0096C7 0%, #0077A7 100%);
+    color: #fff;
+    font-size: 1.1rem;
+    flex-shrink: 0;
+}
+
+.navbar-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Khoảng cách nhỏ giữa avatar và nút toggle */
+}
+
+    .content .navbar-top .navbar-title {
+        font-weight: bold; /* chữ đậm */
+        font-size: 1.5rem; /* to hơn mặc định */
+        text-transform: uppercase; /* (tùy chọn) tất cả in hoa */
+        letter-spacing: 1px; /* (tùy chọn) giãn cách chữ */
+    }
+
+
+/* User Info - avatar + name nằm ngang */
+.navbar-top .user-info {
+    display: flex;
+    align-items: center;
+    gap: 8px; /* khoảng cách avatar - tên */
+}
+
+    /* Container dropdown flex */
+    .navbar-top .user-info .user-dropdown {
+        display: flex;
+        align-items: center;
+        position: relative; /* để dropdown menu position absolute */
+        cursor: pointer;
+    }
+
+        /* Avatar */
+        .navbar-top .user-info .user-dropdown .avatar {
+            width: 54px;
+            height: 54px;
+            border-radius: 50%;
+            border: 2px solid #fff;
+            object-fit: cover;
+            margin-right: 6px; /* avatar cách chữ 6px */
+        }
+
+    .navbar-top .user-info .avatar:hover {
+        transform: scale(1.05);
+    }
+
+    /* Tên + caret */
+    .navbar-top .user-info .user-dropdown .user-name {
+        font-weight: 600;
+        color: #fff;
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        white-space: nowrap; /* tránh xuống dòng */
+    }
+
+    /* Dropdown menu */
+    .navbar-top .user-info .user-dropdown .dropdown-menu {
+        position: absolute;
+        top: 120%;
+        right: 0;
+        background: #fff;
+        color: #333;
+        box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+        display: none;
+        flex-direction: column;
+        min-width: 160px;
+        z-index: 200;
+    }
+
+
+    .navbar-top .user-info .user-dropdown .dropdown-item {
+        padding: 10px 16px;
+        font-size: 0.9rem;
+        color: #333;
+        text-decoration: none;
+        transition: background 0.2s;
+    }
+
+        .navbar-top .user-info .user-dropdown .dropdown-item:hover {
+            background: #f0f0f0;
+        }
+
+    .navbar-top .user-info .user-dropdown .dropdown-divider {
+        height: 1px;
+        background: #e0e0e0;
+        margin: 4px 0;
+    }
+
+    /* Hiển thị dropdown khi active */
+    .navbar-top .user-info .user-dropdown.active .dropdown-menu {
+        display: flex;
+    }
+
+/* Responsive nhỏ */
+@media (max-width: 768px) {
+    .navbar-top {
+        padding: 0 8px;
+    }
+
+        .navbar-top .user-info .avatar {
+            width: 32px;
+            height: 32px;
+        }
+
+        .navbar-top .user-info .user-name {
+            font-size: 0.9rem;
+        }
+}
+
+/* Footer */
+footer {
+    margin-top: 20px;
+    text-align: center;
+    color: #0077A7;
+    font-size: 0.8rem;
+    opacity: 0.8;
+}

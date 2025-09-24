@@ -1,0 +1,25 @@
+﻿@model QLTL.ViewModels.DocumentTypeVM.DocumentTypeViewModel
+
+@{
+    ViewBag.Title = "Chỉnh sửa loại tài liệu";
+}
+
+<div class="container mt-4">
+    <h2>Chỉnh sửa loại tài liệu</h2>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        @Html.HiddenFor(m => m.DocumentTypeId)
+        <div class="mb-3">
+            @Html.LabelFor(m => m.DocumentTypeName)
+            @Html.TextBoxFor(m => m.DocumentTypeName, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.DocumentTypeName)
+        </div>
+        <div class="mb-3">
+            @Html.LabelFor(m => m.Description)
+            @Html.TextBoxFor(m => m.Description, new { @class = "form-control" })
+        </div>
+        <button type="submit" class="btn btn-success">Lưu</button>
+        <a href="@Url.Action("Index")" class="btn btn-secondary">Hủy</a>
+    }
+</div>

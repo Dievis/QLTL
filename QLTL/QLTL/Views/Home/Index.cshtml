@@ -1,0 +1,95 @@
+﻿@model QLTL.ViewModels.DocumentVM.DocumentIndexVM
+@{
+    ViewBag.Title = "Home Page";
+    var currentUserId = Session["UserId"] != null ? (int)Session["UserId"] : 0;
+
+
+}
+
+<div class="container mt-4">
+    <h2 class="mb-4">Danh sách tài liệu</h2>
+
+    <table class="table table-striped table-hover">
+        <thead class="table-dark">
+            <tr>
+                <th>Tiêu đề</th>
+                <th>Ngày tạo</th>
+                <th>Trạng thái</th>
+                <th>Yêu thích</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Items)
+            {
+                <tr data-docid="@item.DocumentId">
+                    <td>@item.Title</td>
+                    <td>@item.CreatedAt.ToString("dd/MM/yyyy")</td>
+                    <td>
+                        @if (item.IsDeleted)
+                        {
+                            <span class="badge bg-danger">Đã xóa</span>
+                        }
+                        else
+                        {
+                            <span class="badge bg-success">Hoạt động</span>
+                        }
+                    </td>
+                    <td>
+                        <button class="btn btn-sm btn-outline-danger favorite-btn" data-userid="@currentUserId">
+                            <i class="bi bi-heart"></i> Yêu thích
+                        </button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+@section Scripts{
+    <script>
+$(document).ready(function(){
+
+    $('.favorite-btn').each(function(){
+        var btn = $(this);
+        var docId = btn.closest('tr').data('docid');
+        var userId = btn.data('userid');
+
+        // kiểm tra trạng thái ban đầu
+        $.get('@Url.Action("IsFavorite", "Document")', { documentId: docId, userId: userId }, function(res){
+            if(res.isFavorite){
+                btn.addClass('btn-danger').removeClass('btn-outline-danger');
+                btn.html('<i class="bi bi-heart-fill"></i> Đã yêu thích');
+            }
+        });
+    });
+
+    $('.favorite-btn').click(function(){
+        var btn = $(this);
+        var docId = btn.closest('tr').data('docid');
+        var userId = btn.data('userid');
+        var isFav = btn.hasClass('btn-danger');
+
+        if(isFav){
+            $.post('@Url.Action("RemoveFavorite", "Document")', { documentId: docId, userId: userId }, function(res){
+                if(res.success){
+                    btn.removeClass('btn-danger').addClass('btn-outline-danger');
+                    btn.html('<i class="bi bi-heart"></i> Yêu thích');
+                } else {
+                    alert(res.message);
+                }
+            });
+        } else {
+            $.post('@Url.Action("AddFavorite", "Document")', { documentId: docId, userId: userId }, function(res){
+                if(res.success){
+                    btn.addClass('btn-danger').removeClass('btn-outline-danger');
+                    btn.html('<i class="bi bi-heart-fill"></i> Đã yêu thích');
+                } else {
+                    alert(res.message);
+                }
+            });
+        }
+    });
+
+});
+    </script>
+}

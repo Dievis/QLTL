@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="95ff1dd54d7649e8a8dccac2eeea60ad" Name="Diagram1">
+        <EntityTypeShape EntityType="QLTL_NEWModel.Category" Width="1.5" PointX="6" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLTL_NEWModel.CategoryType" Width="1.5" PointX="3.75" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLTL_NEWModel.Department" Width="1.5" PointX="0.75" PointY="11.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLTL_NEWModel.DocumentApproval" Width="1.5" PointX="5.25" PointY="14.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLTL_NEWModel.DocumentChangeLog" Width="1.5" PointX="8.25" PointY="14.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLTL_NEWModel.DocumentDepartment" Width="1.5" PointX="3" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLTL_NEWModel.Document" Width="1.5" PointX="8.25" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLTL_NEWModel.DocumentType" Width="1.5" PointX="6" PointY="18.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLTL_NEWModel.FavoriteDocument" Width="1.5" PointX="10.5" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLTL_NEWModel.Permission" Width="1.5" PointX="3" PointY="20.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLTL_NEWModel.RolePermission" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLTL_NEWModel.Role" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLTL_NEWModel.UserRole" Width="1.5" PointX="5.25" PointY="11" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLTL_NEWModel.User" Width="1.5" PointX="3" PointY="13.25" IsExpanded="true" />
+        <AssociationConnector Association="QLTL_NEWModel.FK_Categories_CategoryTypes" ManuallyRouted="false" />
+        <AssociationConnector Association="QLTL_NEWModel.FK_Documents_Categories" ManuallyRouted="false" />
+        <AssociationConnector Association="QLTL_NEWModel.FK_DocDept_Department" ManuallyRouted="false" />
+        <AssociationConnector Association="QLTL_NEWModel.FK_Users_Department" ManuallyRouted="false" />
+        <AssociationConnector Association="QLTL_NEWModel.FK_DocumentApproval_Approver" ManuallyRouted="false" />
+        <AssociationConnector Association="QLTL_NEWModel.FK_DocumentApproval_Document" ManuallyRouted="false" />
+        <AssociationConnector Association="QLTL_NEWModel.FK_DocumentApproval_Uploader" ManuallyRouted="false" />
+        <AssociationConnector Association="QLTL_NEWModel.FK_DocumentChangeLog_Document" ManuallyRouted="false" />
+        <AssociationConnector Association="QLTL_NEWModel.FK_DocumentChangeLog_User" ManuallyRouted="false" />
+        <AssociationConnector Association="QLTL_NEWModel.FK_DocDept_Document" ManuallyRouted="false" />
+        <AssociationConnector Association="QLTL_NEWModel.FK_Documents_Type" ManuallyRouted="false" />
+        <AssociationConnector Association="QLTL_NEWModel.FK_Documents_Uploader" ManuallyRouted="false" />
+        <AssociationConnector Association="QLTL_NEWModel.FK_FavDoc_Document" ManuallyRouted="false" />
+        <AssociationConnector Association="QLTL_NEWModel.FK_FavDoc_User" ManuallyRouted="false" />
+        <AssociationConnector Association="QLTL_NEWModel.FK_RolePermissions_Permission" ManuallyRouted="false" />
+        <AssociationConnector Association="QLTL_NEWModel.FK_RolePermissions_Role" ManuallyRouted="false" />
+        <AssociationConnector Association="QLTL_NEWModel.FK_UserRoles_Role" ManuallyRouted="false" />
+        <AssociationConnector Association="QLTL_NEWModel.FK_UserRoles_User" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

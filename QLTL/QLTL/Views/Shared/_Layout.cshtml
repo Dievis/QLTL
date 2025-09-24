@@ -1,0 +1,224 @@
+﻿@using System.Web.Security
+@using QLTL.Models
+@{
+    var _db = new QLTL_NEWEntities();
+    var categoryTypes = _db.CategoryTypes.Include("Categories").ToList();
+
+    // Thêm biến kiểm tra SuperAdmin
+    bool isSuperAdmin = Session["IsSuperAdmin"] != null && (bool)Session["IsSuperAdmin"];
+
+
+}
+
+@functions {
+    public class MenuItem
+    {
+        public string Text { get; set; }
+        public string Action { get; set; }
+        public string Controller { get; set; }
+    }
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Quản lý tài liệu</title>
+
+    <!-- CSS Bundles -->
+    @Styles.Render("~/Content/css")
+
+    <!-- Modernizr -->
+    @Scripts.Render("~/bundles/modernizr")
+
+    <!-- Bootstrap Icons & Select2 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+
+    <!-- Custom CSS -->
+    <link href="~/Content/layout.css" rel="stylesheet" />
+
+    @RenderSection("styles", required: false)
+</head>
+<body>
+
+    <!-- Sidebar -->
+    <div class="sidebar closed">
+        <img src="~/Content/images/Logo.png" alt="Logo" class="logo" />
+
+        <div class="sidebar-pages-container">
+            @{
+                var menuItems = new List<MenuItem>();
+                menuItems.Add(new MenuItem { Text = "🏠 Home", Action = "Index", Controller = "Home" });
+
+                if (User.IsInRole("Admin") || isSuperAdmin)
+                {
+                    menuItems.Add(new MenuItem { Text = "📑 Quản lý loại danh mục", Action = "Index", Controller = "CategoryType" });
+                    menuItems.Add(new MenuItem { Text = "⚙️ Quản lý danh mục", Action = "Index", Controller = "Category" });
+                    menuItems.Add(new MenuItem { Text = "🏢 Quản lý phòng ban", Action = "Index", Controller = "Department" });
+                    menuItems.Add(new MenuItem { Text = "👤 Quản lý vai trò", Action = "Index", Controller = "Role" });
+                    menuItems.Add(new MenuItem { Text = "🔑 Quản lý phân quyền", Action = "Index", Controller = "Permission" });
+                    menuItems.Add(new MenuItem { Text = "📚 Quản lý loại tài liệu", Action = "Index", Controller = "DocType" });
+                    menuItems.Add(new MenuItem { Text = "📚 Quản lý tài liệu", Action = "Index", Controller = "Document" });
+                    if (isSuperAdmin)
+                    {
+                        menuItems.Add(new MenuItem { Text = "👥 Quản lý người dùng", Action = "Index", Controller = "User" });
+                    }
+                }
+
+                int itemsPerPage = 7;
+                int totalPages = (int)Math.Ceiling(menuItems.Count / (double)itemsPerPage);
+
+                for (int p = 0; p < totalPages; p++)
+                {
+                    <div class="sidebar-page @(p == 0 ? "active" : "")">
+                        <ul class="nav flex-column">
+                            @foreach (var item in menuItems.Skip(p * itemsPerPage).Take(itemsPerPage))
+                            {
+                                <li>@Html.ActionLink(item.Text, item.Action, item.Controller, null, new { @class = "nav-link" })</li>
+                            }
+                        </ul>
+                    </div>
+                }
+            }
+        </div>
+
+        <div class="sidebar-pagination">
+            <button class="prev-page" onclick="changePage(-1)">‹</button>
+            <span class="page-indicator">1 / @totalPages</span>
+            <button class="next-page" onclick="changePage(1)">›</button>
+        </div>
+    </div>
+
+    <!-- Content -->
+    <div class="content">
+        <!-- Navbar Top -->
+            <div class="navbar-top">
+                <div class="navbar-title">HỆ THỐNG QUẢN LÝ TÀI LIỆU BỆNH VIỆN UNG BƯỚU</div>
+
+                <div class="navbar-actions">
+                    <div class="user-info">
+                        @{
+                            var isLoggedIn = Session["FullName"] != null;
+                            var avatarUrl = Session["UserAvatar"] != null
+                                            ? Session["UserAvatar"].ToString()
+                                            : Url.Content("~/Content/images/DefaultAvatar.jpg");
+                            var fullName = Session["FullName"]?.ToString() ?? "";
+                        }
+
+                        @if (isLoggedIn)
+                        {
+                            <div class="user-dropdown">
+                                <img src="@avatarUrl" alt="Avatar" class="avatar" />
+                                <span class="user-name">@fullName <i class="bi bi-caret-down-fill"></i></span>
+
+                                <div class="dropdown-menu">
+                                    <a href="@Url.Action("UserProfile", "Account")" class="dropdown-item">
+                                        <i class="bi bi-person-circle"></i> Hồ sơ
+                                    </a>
+                                    <div class="dropdown-divider"></div>
+                                    <a href="@Url.Action("Logout", "Account")" class="dropdown-item text-danger">
+                                        <i class="bi bi-box-arrow-right"></i> Đăng xuất
+                                    </a>
+                                </div>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="guest-links">
+                                <a href="@Url.Action("Login", "Account")" class="text-white me-2">
+                                    <i class="bi bi-box-arrow-in-right"></i> Đăng nhập
+                                </a>
+                            </div>
+                        }
+                    </div>
+                    <button class="toggle-btn" onclick="toggleSidebar()">
+                        <i class="bi bi-chevron-double-right"></i>
+                    </button>
+                </div>                
+            </div>
+
+            <div class="main-content">
+                @RenderBody()
+            </div>
+
+            <hr />
+            <footer>
+                <p>&copy; @DateTime.Now.Year - Quản lý tài liệu</p>
+            </footer>
+        </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    @RenderSection("scripts", required: false)
+
+    <script>
+        function applySidebarState(state) {
+            const sidebar = document.querySelector(".sidebar");
+
+            if (state === "open") {
+                sidebar.classList.remove("closed");
+                sidebar.classList.add("open");
+                localStorage.setItem("sidebarState", "open");
+            } else {
+                sidebar.classList.add("closed");
+                sidebar.classList.remove("open");
+                localStorage.setItem("sidebarState", "closed");
+            }
+        }
+
+        function toggleSidebar() {
+            const sidebar = document.querySelector(".sidebar");
+            const state = sidebar.classList.contains("closed") ? "open" : "closed";
+            applySidebarState(state);
+        }
+
+        document.addEventListener("DOMContentLoaded", function () {
+            const savedState = localStorage.getItem("sidebarState") || "closed";
+            applySidebarState(savedState);
+        });
+
+    </script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const userDropdown = document.querySelector(".user-dropdown");
+            if (userDropdown) {
+                userDropdown.addEventListener("click", function (e) {
+                    e.stopPropagation();
+                    this.classList.toggle("active");
+                });
+
+                document.addEventListener("click", function () {
+                    userDropdown.classList.remove("active");
+                });
+            }
+        });
+    </script>
+
+    <script>
+        let currentPage = 0;
+        const pages = document.querySelectorAll(".sidebar-page");
+        const indicator = document.querySelector(".page-indicator");
+
+        function showPage(index) {
+            pages.forEach((page, i) => {
+                page.classList.toggle("active", i === index);
+            });
+            indicator.textContent = (index + 1) + " / " + pages.length;
+        }
+
+        function changePage(step) {
+            currentPage += step;
+            if (currentPage < 0) currentPage = 0;
+            if (currentPage >= pages.length) currentPage = pages.length - 1;
+            showPage(currentPage);
+        }
+
+        showPage(currentPage);
+    </script>
+
+</body>
+</html>

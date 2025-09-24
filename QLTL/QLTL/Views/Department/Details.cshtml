@@ -1,0 +1,26 @@
+﻿@model QLTL.ViewModels.DepartmentVM.DepartmentViewModel
+@{
+    ViewBag.Title = "Chi tiết phòng ban";
+}
+
+<div class="container mt-4">
+    <h2>Chi tiết phòng ban</h2>
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">@Model.DepartmentName</h5>
+            <p class="card-text"><strong>Mô tả:</strong> @Model.Description</p>
+            <p class="card-text">
+                <strong>Trạng thái:</strong>
+                @(Model.IsDeleted ? "Đã xóa" : "Hoạt động")
+            </p>
+            <p class="card-text"><strong>Ngày tạo:</strong> @Model.CreatedAt</p>
+            <p class="card-text"><strong>Cập nhật lần cuối:</strong> @Model.UpdatedAt</p>
+        </div>
+    </div>
+    <div class="mt-3">
+        <a href="@Url.Action("Edit", new { id = Model.DepartmentId })" class="btn btn-warning">
+            <i class="bi bi-pencil-square"></i> Sửa
+        </a>
+        <a href="@Url.Action("Index")" class="btn btn-secondary">Quay lại</a>
+    </div>
+</div>

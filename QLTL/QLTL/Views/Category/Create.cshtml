@@ -1,0 +1,37 @@
+﻿@model QLTL.ViewModels.CategoryVM.CategoryViewModel
+@{
+    ViewBag.Title = "Thêm mới danh mục";
+}
+
+<div class="container mt-4">
+    <h2>Thêm mới danh mục</h2>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="mb-3">
+            @Html.LabelFor(m => m.CategoryName)
+            @Html.TextBoxFor(m => m.CategoryName, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.CategoryName, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="mb-3">
+            @Html.LabelFor(m => m.CategoryTypeId, "Loại danh mục")
+            @Html.DropDownListFor(m => m.CategoryTypeId, Model.CategoryTypeList, "-- Chọn loại --", new { @class = "form-select" })
+            @Html.ValidationMessageFor(m => m.CategoryTypeId, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="mb-3">
+            @Html.LabelFor(m => m.Description)
+            @Html.TextAreaFor(m => m.Description, new { @class = "form-control", rows = 3 })
+        </div>
+
+        <button type="submit" class="btn btn-success">
+            <i class="bi bi-check-circle"></i> Lưu
+        </button>
+        <a href="@Url.Action("Index")" class="btn btn-secondary">
+            <i class="bi bi-arrow-left"></i> Hủy
+        </a>
+    }
+</div>

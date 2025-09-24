@@ -1,0 +1,93 @@
+﻿@model QLTL.ViewModels.DocumentTypeVM.DocumentTypeIndexVM
+
+@{
+    ViewBag.Title = "Danh sách loại tài liệu";
+}
+
+<div class="container mt-4">
+    <h2 class="mb-4">Danh sách loại tài liệu</h2>
+
+    <!-- Search + Filter -->
+    <form method="get" class="row mb-3">
+        <div class="col-md-4">
+            <input type="text" name="search" value="@Model.SearchTerm" class="form-control" placeholder="Tìm kiếm..." />
+        </div>
+        <div class="col-md-3">
+            <select name="isDeleted" class="form-select">
+                <option value="">-- Tất cả trạng thái --</option>
+                <option value="false" @(Model.IsDeleted == false ? "selected" : "")>Hoạt động</option>
+                <option value="true" @(Model.IsDeleted == true ? "selected" : "")>Đã xóa</option>
+            </select>
+        </div>
+        <div class="col-md-3">
+            <button type="submit" class="btn btn-primary">
+                <i class="bi bi-search"></i> Tìm kiếm
+            </button>
+            <a href="@Url.Action("Create")" class="btn btn-success">
+                <i class="bi bi-plus-circle"></i> Thêm mới
+            </a>
+        </div>
+    </form>
+
+    <!-- Table -->
+    <table class="table table-striped table-hover">
+        <thead class="table-dark">
+            <tr>
+                <th>Tên loại tài liệu</th>
+                <th>Mô tả</th>
+                <th>Trạng thái</th>
+                <th>Ngày tạo</th>
+                <th class="text-center">Thao tác</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Items)
+            {
+                <tr>
+                    <td>@item.DocumentTypeName</td>
+                    <td>@item.Description</td>
+                    <td>
+                        @if (item.IsDeleted)
+                        {
+                            <span class="badge bg-danger">Đã xóa</span>
+                        }
+                        else
+                        {
+                            <span class="badge bg-success">Hoạt động</span>
+                        }
+                    </td>
+                    <td>@item.CreatedAt.ToString("dd/MM/yyyy")</td>
+                    <td class="text-center">
+                        <a href="@Url.Action("Details", new { id = item.DocumentTypeId })" class="btn btn-sm btn-info">
+                            <i class="bi bi-eye"></i>
+                        </a>
+                        <a href="@Url.Action("Edit", new { id = item.DocumentTypeId })" class="btn btn-sm btn-warning">
+                            <i class="bi bi-pencil-square"></i>
+                        </a>
+                        @using (Html.BeginForm("Delete", "DocumentType", new { id = item.DocumentTypeId }, FormMethod.Post, new { @class = "d-inline" }))
+                        {
+                            <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Bạn có chắc muốn xóa?');">
+                                <i class="bi bi-trash"></i>
+                            </button>
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <!-- Pagination -->
+    <nav>
+        <ul class="pagination">
+            @{
+                int totalPages = (int)Math.Ceiling((double)Model.TotalRecords / Model.PageSize);
+                for (int i = 1; i <= totalPages; i++)
+                {
+                    <li class="page-item @(i == Model.PageIndex ? "active" : "")">
+                        <a class="page-link" href="@Url.Action("Index", new { search = Model.SearchTerm, isDeleted = Model.IsDeleted, page = i })">@i</a>
+                    </li>
+                }
+            }
+        </ul>
+    </nav>
+</div>

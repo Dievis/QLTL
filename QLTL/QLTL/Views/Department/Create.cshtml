@@ -1,0 +1,23 @@
+﻿@model QLTL.ViewModels.DepartmentVM.DepartmentViewModel
+@{
+    ViewBag.Title = "Thêm phòng ban";
+}
+
+<div class="container mt-4">
+    <h2>Thêm phòng ban</h2>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        <div class="mb-3">
+            @Html.LabelFor(m => m.DepartmentName, new { @class = "form-label" })
+            @Html.TextBoxFor(m => m.DepartmentName, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.DepartmentName, "", new { @class = "text-danger" })
+        </div>
+        <div class="mb-3">
+            @Html.LabelFor(m => m.Description, new { @class = "form-label" })
+            @Html.TextAreaFor(m => m.Description, new { @class = "form-control", rows = 3 })
+        </div>
+        <button type="submit" class="btn btn-success"><i class="bi bi-save"></i> Lưu</button>
+        <a href="@Url.Action("Index")" class="btn btn-secondary">Quay lại</a>
+    }
+</div>
