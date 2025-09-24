@@ -35,16 +35,20 @@ namespace QLTL.Services
         {
             using (var db = new QLTL_NEWEntities())
             {
-                var query = db.Users.Include("Department")
-                                    .Where(u => !u.IsSuperAdmin) // ✅ Ẩn luôn SuperAdmin
-                                    .AsQueryable();
+                var query = db.Users
+                              .Include("Department")
+                              .Include("UserRoles.Role")   // load role
+                              .Where(u => !u.IsSuperAdmin) // ẩn SuperAdmin
+                              .AsQueryable();
 
                 if (!string.IsNullOrEmpty(search))
+                {
                     query = query.Where(u =>
                         u.Username.Contains(search) ||
                         u.FullName.Contains(search) ||
                         u.Email.Contains(search) ||
                         u.Phone.Contains(search));
+                }
 
                 if (isDeleted.HasValue)
                     query = query.Where(u => u.IsDeleted == isDeleted.Value);
@@ -71,8 +75,15 @@ namespace QLTL.Services
                         IsActive = u.IsActive,
                         IsDeleted = u.IsDeleted,
                         CreatedAt = u.CreatedAt,
-                        UpdatedAt = u.UpdatedAt
+                        UpdatedAt = u.UpdatedAt,
+
+                        // 🔥 map roles cho từng user
+                        RoleNames = u.UserRoles
+                            .Where(ur => !ur.IsDeleted)
+                            .Select(ur => ur.Role.RoleName)
+                            .ToList()
                     }).ToList(),
+
                     PageIndex = pageIndex,
                     PageSize = pageSize,
                     TotalRecords = total,
@@ -81,6 +92,7 @@ namespace QLTL.Services
                 };
             }
         }
+
 
         // ================== LẤY DANH SÁCH ROLE ==================
         public async Task<IEnumerable<Role>> GetRolesAsync()
@@ -122,26 +134,39 @@ namespace QLTL.Services
             if ((await _userRepo.GetAllAsync(u => u.Username == model.Username)).Any())
                 throw new Exception("Tên đăng nhập đã tồn tại");
 
-            var user = new User
+            using (var db = new QLTL_NEWEntities())
             {
-                Username = model.Username,
-                PasswordHash = PasswordHelper.HashPassword(model.Password), // cần thêm Password trong VM khi tạo
-                FullName = model.FullName,
-                DepartmentId = model.DepartmentId,
-                DateJoined = DateTime.Now,
-                IsActive = true,
-                IsDeleted = false,
-                CreatedAt = DateTime.Now,
-                UpdatedAt = DateTime.Now
-            };
+                var user = new User
+                {
+                    Username = model.Username,
+                    PasswordHash = PasswordHelper.HashPassword(model.Password),
+                    FullName = model.FullName,
+                    DepartmentId = model.DepartmentId,
+                    DateJoined = DateTime.Now,
+                    IsActive = true,
+                    IsDeleted = false,
+                    CreatedAt = DateTime.Now,
+                    UpdatedAt = DateTime.Now,
 
-            await _userRepo.AddAsync(user);
-            await _userRepo.SaveChangesAsync();
+                    // 🔥 Gọi helper sinh mã nhân viên duy nhất
+                    EmployeeCode = CodeHelper.GenerateEmployeeCode(db),
 
-            // Gán role được chọn
-            if (model.SelectedRoleIds != null && model.SelectedRoleIds.Any())
-            {
-                foreach (var roleId in model.SelectedRoleIds)
+                    // Nếu muốn có thể lưu luôn email/phone (nếu có)
+                    Email = model.Email,
+                    Phone = model.Phone
+                };
+
+                await _userRepo.AddAsync(user);
+                await _userRepo.SaveChangesAsync();
+
+                // Nếu không chọn role -> gán role mặc định "User"
+                var roleIds = model.SelectedRoleIds != null && model.SelectedRoleIds.Any()
+                    ? model.SelectedRoleIds.Distinct().ToList()
+                    : (await _roleRepo.GetAllAsync(r => r.RoleName == "User" && !r.IsDeleted))
+                          .Select(r => r.RoleId)
+                          .ToList();
+
+                foreach (var roleId in roleIds)
                 {
                     var ur = new UserRole
                     {
@@ -155,6 +180,7 @@ namespace QLTL.Services
                 await _userRoleRepo.SaveChangesAsync();
             }
         }
+
 
         // ================== LẤY DANH SÁCH PHÒNG BAN ==================
         public async Task<IEnumerable<Department>> GetDepartmentsAsync()
@@ -196,40 +222,40 @@ namespace QLTL.Services
             await _userRepo.UpdateAsync(user);
             await _userRepo.SaveChangesAsync();
 
-            if (model.SelectedRoleIds != null && model.SelectedRoleIds.Any())
+            // Cập nhật role
+            var currentRoles = await _userRoleRepo.GetAllAsync(x => x.UserId == user.UserId && !x.IsDeleted);
+            var currentRoleIds = currentRoles.Select(x => x.RoleId).ToList();
+            var newRoleIds = model.SelectedRoleIds?.Distinct().ToList() ?? new List<int>();
+
+            // 1. Xóa role không còn
+            foreach (var ur in currentRoles)
             {
-                using (var db = new QLTL.Models.QLTL_NEWEntities())
+                if (!newRoleIds.Contains(ur.RoleId))
                 {
-                    foreach (var roleId in model.SelectedRoleIds)
-                    {
-                        // Kiểm tra trực tiếp trong database
-                        var exists = await db.UserRoles
-                            .Where(x => x.UserId == user.UserId && x.RoleId == roleId && !x.IsDeleted)
-                            .AnyAsync();
-
-                        if (!exists)
-                        {
-                            // Chỉ add nếu chưa có
-                            var newUserRole = new UserRole
-                            {
-                                UserId = user.UserId,
-                                RoleId = roleId,
-                                CreatedAt = DateTime.Now,
-                                IsDeleted = false
-                            };
-                            db.UserRoles.Add(newUserRole);
-                        }
-                        // Nếu exists == true => bỏ qua, không Add nữa
-                    }
-
-                    await db.SaveChangesAsync();
+                    ur.IsDeleted = true;
+                    ur.DeletedAt = DateTime.Now;
+                    await _userRoleRepo.UpdateAsync(ur);
                 }
             }
 
+            // 2. Thêm role mới
+            foreach (var roleId in newRoleIds)
+            {
+                if (!currentRoleIds.Contains(roleId))
+                {
+                    var ur = new UserRole
+                    {
+                        UserId = user.UserId,
+                        RoleId = roleId,
+                        CreatedAt = DateTime.Now,
+                        IsDeleted = false
+                    };
+                    await _userRoleRepo.AddAsync(ur);
+                }
+            }
+
+            await _userRoleRepo.SaveChangesAsync();
         }
-
-
-
 
         // ================== XÓA MỀM ==================
         public async Task SoftDeleteAsync(int id)

@@ -4,10 +4,15 @@
 }
 
 <div class="container mt-4">
-    <h2 class="mb-4">Danh sách người dùng</h2>
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2 class="mb-0">Danh sách người dùng</h2>
+        <a href="@Url.Action("Create")" class="btn btn-success">
+            <i class="bi bi-plus-circle"></i> Thêm mới
+        </a>
+    </div>
 
     <!-- Search + Filter -->
-    <form method="get" class="row mb-3">
+    <form method="get" class="row g-2 mb-4">
         <div class="col-md-4">
             <input type="text" name="search" value="@Model.SearchTerm"
                    class="form-control" placeholder="Tìm kiếm..." />
@@ -19,115 +24,151 @@
                 <option value="true" @(Model.IsDeleted == true ? "selected" : "")>Đã xóa</option>
             </select>
         </div>
-        <div class="col-md-3">
-            <button type="submit" class="btn btn-primary">
+        <div class="col-md-2">
+            <button type="submit" class="btn btn-primary w-100">
                 <i class="bi bi-search"></i> Tìm kiếm
             </button>
-            <a href="@Url.Action("Create")" class="btn btn-success">
-                <i class="bi bi-plus-circle"></i> Thêm mới
-            </a>
         </div>
     </form>
 
     <!-- Bảng dữ liệu -->
-    <table class="table table-striped table-hover">
-        <thead class="table-dark">
-            <tr>
-                <th>Tên đăng nhập</th>
-                <th>Họ tên</th>
-                <th>Email</th>
-                <th>Điện thoại</th>
-                <th>Phòng ban</th>
-                <th>Vai trò</th>
-                <th>Xóa mềm</th>
-                <th>Trạng thái</th>
-                <th>Ngày tạo</th>
-                <th class="text-center">Thao tác</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model.Items)
-            {
+    <div class="table-responsive">
+        <table class="table table-striped table-hover align-middle">
+            <thead class="table-dark">
                 <tr>
-                    <td>@item.Username</td>
-                    <td>@item.FullName</td>
-                    <td>@item.Email</td>
-                    <td>@item.Phone</td>
-                    <td>@item.DepartmentName</td>
-                    <td>
-                        @(Model.Items != null && item.RoleNames.Any()
-                            ? string.Join(", ", item.RoleNames)
-                            : "Chưa có vai trò")
-                    </td>
-                    <td>
-                        @if (item.IsDeleted)
-                        {
-                            <span class="badge bg-danger">Đã xóa</span>
-                        }
-                        else
-                        {
-                            <span class="badge bg-success">Hoạt động</span>
-                        }
-                    </td>
-                    <td>
-                        @if (item.IsActive)
-                        {
-                            <span class="badge bg-success">Hoạt động</span>
-                        }
-                        else
-                        {
-                            <span class="badge bg-secondary">Không hoạt động</span>
-                        }
-                    </td>
-                    <td>@item.CreatedAt.ToString("dd/MM/yyyy")</td>
-                    <td class="text-center">
-                        <a href="@Url.Action("Details", new { id = item.UserId })" class="btn btn-sm btn-info">
-                            <i class="bi bi-eye"></i>
-                        </a>
-                        <a href="@Url.Action("Edit", new { id = item.UserId })" class="btn btn-sm btn-warning">
-                            <i class="bi bi-pencil-square"></i>
-                        </a>
-                        @using (Html.BeginForm("ToggleActive", "User", new { id = item.UserId }, FormMethod.Post, new { @class = "d-inline" }))
-                        {
-                            @Html.AntiForgeryToken()
-                            if (item.IsActive)
-                            {
-                                <button type="submit" class="btn btn-sm btn-secondary" onclick="return confirm('Vô hiệu hóa tài khoản này?');">
-                                    <i class="bi bi-lock"></i>
-                                </button>
-                            }
-                            else
-                            {
-                                <button type="submit" class="btn btn-sm btn-success" onclick="return confirm('Kích hoạt lại tài khoản này?');">
-                                    <i class="bi bi-unlock"></i>
-                                </button>
-                            }
-                        }
-
-                        @using (Html.BeginForm("Delete", "User", new { id = item.UserId }, FormMethod.Post, new { @class = "d-inline" }))
-                        {
-                            <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Bạn có chắc muốn xóa?');">
-                                <i class="bi bi-trash"></i>
-                            </button>
-                        }
-                    </td>
+                    <th>Tên đăng nhập</th>
+                    <th>Họ tên</th>
+                    <th>Email</th>
+                    <th>Điện thoại</th>
+                    <th>Phòng ban</th>
+                    <th>Vai trò</th>
+                    <th>Xóa mềm</th>
+                    <th>Trạng thái</th>
+                    <th>Ngày tạo</th>
+                    <th class="text-center">Thao tác</th>
                 </tr>
-            }
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+                @if (Model.Items != null && Model.Items.Any())
+                {
+                    foreach (var item in Model.Items)
+                    {
+                        <tr>
+                            <td>@item.Username</td>
+                            <td>@item.FullName</td>
+                            <td>@item.Email</td>
+                            <td>@item.Phone</td>
+                            <td>@item.DepartmentName</td>
+                            <td>
+                                @if (item.RoleNames != null && item.RoleNames.Any())
+                                {
+                                    foreach (var role in item.RoleNames)
+                                    {
+                                        <span class="badge bg-primary me-1">@role</span>
+                                    }
+                                }
+                                else
+                                {
+                                    <span class="text-muted">Chưa có vai trò</span>
+                                }
+                            </td>
+
+                            <td>
+                                @if (item.IsDeleted)
+                                {
+                                    <span class="badge bg-danger">Đã xóa</span>
+                                }
+                                else
+                                {
+                                    <span class="badge bg-success">Hoạt động</span>
+                                }
+                            </td>
+                            <td>
+                                @if (item.IsActive)
+                                {
+                                    <span class="badge bg-success">Hoạt động</span>
+                                }
+                                else
+                                {
+                                    <span class="badge bg-secondary">Không hoạt động</span>
+                                }
+                            </td>
+                            <td>@item.CreatedAt.ToString("dd/MM/yyyy")</td>
+                            <td class="text-center">
+                                <a href="@Url.Action("Details", new { id = item.UserId })"
+                                   class="btn btn-sm btn-info" title="Xem chi tiết">
+                                    <i class="bi bi-eye"></i>
+                                </a>
+                                <a href="@Url.Action("Edit", new { id = item.UserId })"
+                                   class="btn btn-sm btn-warning" title="Chỉnh sửa">
+                                    <i class="bi bi-pencil-square"></i>
+                                </a>
+
+                                @using (Html.BeginForm("ToggleActive", "User", new { id = item.UserId },
+                                                       FormMethod.Post, new { @class = "d-inline" }))
+                                {
+                                    @Html.AntiForgeryToken()
+                                    if (item.IsActive)
+                                    {
+                                        <button type="submit" class="btn btn-sm btn-secondary"
+                                                onclick="return confirm('Vô hiệu hóa tài khoản này?');"
+                                                title="Vô hiệu hóa">
+                                            <i class="bi bi-lock"></i>
+                                        </button>
+                                    }
+                                    else
+                                    {
+                                        <button type="submit" class="btn btn-sm btn-success"
+                                                onclick="return confirm('Kích hoạt lại tài khoản này?');"
+                                                title="Kích hoạt">
+                                            <i class="bi bi-unlock"></i>
+                                        </button>
+                                    }
+                                }
+
+                                @using (Html.BeginForm("Delete", "User", new { id = item.UserId },
+                                                       FormMethod.Post, new { @class = "d-inline" }))
+                                {
+                                    <button type="submit" class="btn btn-sm btn-danger"
+                                            onclick="return confirm('Bạn có chắc muốn xóa?');"
+                                            title="Xóa">
+                                        <i class="bi bi-trash"></i>
+                                    </button>
+                                }
+                            </td>
+                        </tr>
+                    }
+                }
+                else
+                {
+                    <tr>
+                        <td colspan="10" class="text-center text-muted">
+                            Không có dữ liệu
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
 
     <!-- Phân trang -->
-    <nav>
-        <ul class="pagination">
-            @{
-                int totalPages = (int)Math.Ceiling((double)Model.TotalRecords / Model.PageSize);
-                for (int i = 1; i <= totalPages; i++)
-                {
-                    <li class="page-item @(i == Model.PageIndex ? "active" : "")">
-                        <a class="page-link" href="@Url.Action("Index", new { search = Model.SearchTerm, isDeleted = Model.IsDeleted, page = i })">@i</a>
-                    </li>
+    @if (Model.TotalRecords > Model.PageSize)
+    {
+        <nav>
+            <ul class="pagination justify-content-center">
+                @{
+                    int totalPages = (int)Math.Ceiling((double)Model.TotalRecords / Model.PageSize);
+                    for (int i = 1; i <= totalPages; i++)
+                    {
+                        <li class="page-item @(i == Model.PageIndex ? "active" : "")">
+                            <a class="page-link"
+                               href="@Url.Action("Index", new { search = Model.SearchTerm, isDeleted = Model.IsDeleted, page = i })">
+                                @i
+                            </a>
+                        </li>
+                    }
                 }
-            }
-        </ul>
-    </nav>
+            </ul>
+        </nav>
+    }
 </div>
