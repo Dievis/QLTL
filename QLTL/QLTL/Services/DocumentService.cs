@@ -89,6 +89,46 @@ namespace QLTL.Services
             };
         }
 
+        // ================== LẤY DANH SÁCH TÀI LIỆU ĐÃ DUYỆT CÓ PHÂN TRANG ==================
+        public async Task<DocumentIndexVM> GetApprovedDocumentsAsync(string search, int pageIndex, int pageSize)
+        {
+            // Tạo filter động
+            var filter = PredicateBuilder.New<Document>(true);
+
+            // Chỉ lấy tài liệu đã duyệt
+            filter = filter.And(d => d.ApprovalStatus == "Approved");
+
+            // Không lấy tài liệu đã xóa mềm
+            filter = filter.And(d => d.IsDeleted == false || d.IsDeleted == null);
+
+            if (!string.IsNullOrEmpty(search))
+                filter = filter.And(d => d.Title.Contains(search) || d.Content.Contains(search));
+
+            // Lấy dữ liệu phân trang từ repository
+            var (items, total) = await _repo.GetPagedAsync(
+                filter: filter,
+                orderBy: q => q.OrderByDescending(d => d.CreatedAt),
+                pageIndex: pageIndex,
+                pageSize: pageSize
+            );
+
+            // Map sang ViewModel (giống GetAllAsync)
+            var itemVMs = new List<DocumentDetailVM>();
+            foreach (var d in items)
+                itemVMs.Add(await MapToDetailVM(d));
+
+            return new DocumentIndexVM
+            {
+                Items = itemVMs,
+                PageIndex = pageIndex,
+                PageSize = pageSize,
+                TotalRecords = total,
+                SearchTerm = search,
+                IsDeleted = false
+            };
+        }
+
+
 
         // ================== GET BY ID ==================
         public async Task<DocumentDetailVM> GetByIdAsync(int id)
@@ -517,42 +557,40 @@ namespace QLTL.Services
             if (approval == null)
                 return "Yêu cầu phê duyệt không tồn tại.";
 
-            // Chỉ cho phép hủy khi đang Pending
-            if (approval.Status != "Pending")
-                return $"Không thể hủy, yêu cầu đã ở trạng thái {approval.Status}.";
-
-            // Chỉ người tạo yêu cầu mới được hủy
+            // Chỉ người tạo tài liệu mới được hủy duyệt
             if (approval.UploaderID != uploaderId)
-                return "Bạn không có quyền hủy yêu cầu này.";
+                return "Bạn không có quyền hủy phê duyệt này.";
 
-            // Đánh dấu là Cancelled
-            approval.Status = "Cancelled";
-            approval.DateReviewed = DateTime.Now; // coi như thời điểm hủy
-            approval.ApproverID = uploaderId;    // set người hủy là requester
+            // Reset trạng thái về Pending
+            approval.Status = "Pending";
+            approval.Reason = null;
+            approval.DateReviewed = null;
+            approval.ApproverID = null; // clear người duyệt
             await _approvalRepo.UpdateAsync(approval);
 
             // Cập nhật document liên quan
             var doc = await _repo.GetByIdAsync(approval.DocumentID);
             if (doc != null)
             {
-                doc.ApprovalStatus = "Cancelled";
-                doc.ApprovalDate = DateTime.Now;
+                doc.ApprovalStatus = "Pending";
+                doc.ApprovalDate = null;
                 await _repo.UpdateAsync(doc);
             }
 
             await _approvalRepo.SaveChangesAsync();
             await _repo.SaveChangesAsync();
 
-            // Ghi log hủy
+            // Ghi log hủy duyệt
             await LogChangeAsync(
                 approval.DocumentID,
                 uploaderId,
                 "Approval",
-                "Người yêu cầu đã hủy phê duyệt."
+                "Yêu cầu duyệt đã được hủy và quay lại trạng thái chờ duyệt."
             );
 
             return null;
         }
+
 
 
 

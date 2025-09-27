@@ -5,15 +5,18 @@
     var ext = System.IO.Path.GetExtension(Model.FileName).ToLower();
     var currentUserId = Session["UserId"] != null ? (int)Session["UserId"] : 0;
     var canApprove = false;
+    var canEdit = false;
 
     // SuperAdmin luôn có quyền
     if (Session["IsSuperAdmin"] is bool isSuperAdmin && isSuperAdmin)
     {
         canApprove = true;
+        canEdit = true;
     }
     else if (Session["Permissions"] is List<string> perms)
     {
         canApprove = perms.Contains("Document.Approve", StringComparer.OrdinalIgnoreCase);
+        canEdit = perms.Contains("Document.Edit", StringComparer.OrdinalIgnoreCase);
     }
 
 }
@@ -24,6 +27,7 @@
     <div class="card mb-4 shadow-sm">
         <div class="card-body">
             <h5 class="card-title">@Model.Title</h5>
+            <p class="card-text"><strong>Người tạo:</strong> @Model.UploaderName</p>
             <p class="card-text"><strong>Loại tài liệu:</strong> @Model.DocumentTypeName</p>
             <p class="card-text"><strong>Danh mục:</strong> @Model.CategoryName</p>
             <p class="card-text">
@@ -86,34 +90,56 @@
                 }
             }
 
-            <a href="@Url.Action("Edit", new { id = Model.DocumentId })" class="btn btn-warning me-2">
-                <i class="bi bi-pencil-square"></i> Sửa
-            </a>
-            <a href="@Url.Action("Index")" class="btn btn-secondary me-2">
+
+            @if (canEdit)
+            {
+                <a href="@Url.Action("Edit", new { id = Model.DocumentId })" class="btn btn-warning me-2">
+                    <i class="bi bi-pencil-square"></i> Sửa
+                </a>
+            }
+
+            <a href="@(Request.UrlReferrer != null ? Request.UrlReferrer.ToString() : Url.Action("Index"))"
+               class="btn btn-secondary me-2">
                 <i class="bi bi-arrow-left"></i> Quay lại
             </a>
 
-            @* Nút Approve/Reject chỉ hiện nếu user có quyền *@
+
+            @* Nút xử lý duyệt *@
             @if (canApprove && Model.ApprovalId.HasValue)
             {
-                <form method="post" action="@Url.Action("Approve", "Document")" class="d-inline">
-                    @Html.AntiForgeryToken()
-                    <input type="hidden" name="approvalId" value="@Model.ApprovalId" />
-                    <input type="hidden" name="approverId" value="@currentUserId" />
-                    <button type="submit" class="btn btn-success me-2">
-                        <i class="bi bi-check-circle"></i> Approve
-                    </button>
-                </form>
+                if (Model.ApprovalStatus == "Pending")
+                {
+                    <form method="post" action="@Url.Action("Approve", "Document")" class="d-inline">
+                        @Html.AntiForgeryToken()
+                        <input type="hidden" name="approvalId" value="@Model.ApprovalId" />
+                        <input type="hidden" name="approverId" value="@currentUserId" />
+                        <button type="submit" class="btn btn-success me-2">
+                            <i class="bi bi-check-circle"></i> Approve
+                        </button>
+                    </form>
 
-                <form method="post" action="@Url.Action("Reject", "Document")" class="d-inline">
-                    @Html.AntiForgeryToken()
-                    <input type="hidden" name="approvalId" value="@Model.ApprovalId" />
-                    <input type="hidden" name="approverId" value="@currentUserId" />
-                    <button type="submit" class="btn btn-danger">
-                        <i class="bi bi-x-circle"></i> Reject
-                    </button>
-                </form>
+                    <form method="post" action="@Url.Action("Reject", "Document")" class="d-inline">
+                        @Html.AntiForgeryToken()
+                        <input type="hidden" name="approvalId" value="@Model.ApprovalId" />
+                        <input type="hidden" name="approverId" value="@currentUserId" />
+                        <button type="submit" class="btn btn-danger">
+                            <i class="bi bi-x-circle"></i> Reject
+                        </button>
+                    </form>
+                }
+                else if (Model.ApprovalStatus == "Approved" || Model.ApprovalStatus == "Rejected")
+                {
+                    <form method="post" action="@Url.Action("CancelApproval", "Document")" class="d-inline">
+                        @Html.AntiForgeryToken()
+                        <input type="hidden" name="approvalId" value="@Model.ApprovalId" />
+                        <input type="hidden" name="uploaderId" value="@currentUserId" />
+                        <button type="submit" class="btn btn-warning">
+                            <i class="bi bi-arrow-counterclockwise"></i> Hủy duyệt
+                        </button>
+                    </form>
+                }
             }
+
 
         </div>
     </div>

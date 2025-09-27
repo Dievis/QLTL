@@ -1,12 +1,16 @@
 ﻿@using System.Web.Security
-@using QLTL.Models
 @{
-    var _db = new QLTL_NEWEntities();
-    var categoryTypes = _db.CategoryTypes.Include("Categories").ToList();
-
+    var role = Session["Role"] != null ? Session["Role"].ToString() : "";
     // Thêm biến kiểm tra SuperAdmin
     bool isSuperAdmin = Session["IsSuperAdmin"] != null && (bool)Session["IsSuperAdmin"];
 
+    var canView = false;
+
+
+    if (Session["Permissions"] is List<string> perms)
+    {
+        canView = perms.Contains("View", StringComparer.OrdinalIgnoreCase);
+    }
 
 }
 
@@ -51,14 +55,14 @@
                 var menuItems = new List<MenuItem>();
                 menuItems.Add(new MenuItem { Text = "🏠 Home", Action = "Index", Controller = "Home" });
 
-                if (User.IsInRole("Admin") || isSuperAdmin)
+                if (canView || isSuperAdmin)
                 {
                     menuItems.Add(new MenuItem { Text = "📑 Quản lý loại danh mục", Action = "Index", Controller = "CategoryType" });
                     menuItems.Add(new MenuItem { Text = "⚙️ Quản lý danh mục", Action = "Index", Controller = "Category" });
                     menuItems.Add(new MenuItem { Text = "🏢 Quản lý phòng ban", Action = "Index", Controller = "Department" });
                     menuItems.Add(new MenuItem { Text = "👤 Quản lý vai trò", Action = "Index", Controller = "Role" });
                     menuItems.Add(new MenuItem { Text = "🔑 Quản lý phân quyền", Action = "Index", Controller = "Permission" });
-                    menuItems.Add(new MenuItem { Text = "📚 Quản lý loại tài liệu", Action = "Index", Controller = "DocType" });
+                    menuItems.Add(new MenuItem { Text = "📚 Quản lý loại tài liệu", Action = "Index", Controller = "DocumentType" });
                     menuItems.Add(new MenuItem { Text = "📚 Quản lý tài liệu", Action = "Index", Controller = "Document" });
                     if (isSuperAdmin)
                     {
@@ -66,7 +70,7 @@
                     }
                 }
 
-                int itemsPerPage = 7;
+                int itemsPerPage = 10;
                 int totalPages = (int)Math.Ceiling(menuItems.Count / (double)itemsPerPage);
 
                 for (int p = 0; p < totalPages; p++)
@@ -84,37 +88,58 @@
         </div>
 
         <div class="sidebar-pagination">
-            <button class="prev-page" onclick="changePage(-1)">‹</button>
-            <span class="page-indicator">1 / @totalPages</span>
-            <button class="next-page" onclick="changePage(1)">›</button>
+            <ul class="pagination">
+                <li class="page-item">
+                    <button class="page-link" onclick="changePage(-1)">‹</button>
+                </li>
+
+                @for (int i = 0; i < totalPages; i++)
+                {
+                    <li class="page-item">
+                        <button class="page-link" onclick="goToPage(@i)">@(i + 1)</button>
+                    </li>
+                }
+
+                <li class="page-item">
+                    <button class="page-link" onclick="changePage(1)">›</button>
+                </li>
+            </ul>
         </div>
+
+
+
     </div>
 
-    <!-- Content -->
-    <div class="content">
-        <!-- Navbar Top -->
+        <!-- Content -->
+        <div class="content">
+            <!-- Navbar Top -->
             <div class="navbar-top">
                 <div class="navbar-title">HỆ THỐNG QUẢN LÝ TÀI LIỆU BỆNH VIỆN UNG BƯỚU</div>
 
                 <div class="navbar-actions">
                     <div class="user-info">
                         @{
-                            var isLoggedIn = Session["FullName"] != null;
+                            var isLoggedIn = Session["UserId"] != null;
                             var avatarUrl = Session["UserAvatar"] != null
                                             ? Session["UserAvatar"].ToString()
                                             : Url.Content("~/Content/images/DefaultAvatar.jpg");
-                            var fullName = Session["FullName"]?.ToString() ?? "";
+                            var fullName = Session["FullName"]?.ToString();
+                            var displayName = !string.IsNullOrEmpty(fullName) ? fullName : "Chưa có tên";
+
                         }
 
                         @if (isLoggedIn)
                         {
                             <div class="user-dropdown">
                                 <img src="@avatarUrl" alt="Avatar" class="avatar" />
-                                <span class="user-name">@fullName <i class="bi bi-caret-down-fill"></i></span>
+                                <span class="user-name">@displayName <i class="bi bi-caret-down-fill"></i></span>
 
                                 <div class="dropdown-menu">
-                                    <a href="@Url.Action("UserProfile", "Account")" class="dropdown-item">
+                                    <a href="@Url.Action("UserProfile", "User")" class="dropdown-item">
                                         <i class="bi bi-person-circle"></i> Hồ sơ
+                                    </a>
+                                    <a href="@Url.Action("MyFavorites", "Document")" class="dropdown-item">
+                                        <i class="bi bi-person-circle"></i> Tài liệu yêu thích
                                     </a>
                                     <div class="dropdown-divider"></div>
                                     <a href="@Url.Action("Logout", "Account")" class="dropdown-item text-danger">
@@ -135,7 +160,7 @@
                     <button class="toggle-btn" onclick="toggleSidebar()">
                         <i class="bi bi-chevron-double-right"></i>
                     </button>
-                </div>                
+                </div>
             </div>
 
             <div class="main-content">
@@ -148,77 +173,89 @@
             </footer>
         </div>
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")
 
-    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
-    @RenderSection("scripts", required: false)
+        <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+        @RenderSection("scripts", required: false)
 
-    <script>
-        function applySidebarState(state) {
-            const sidebar = document.querySelector(".sidebar");
+        <script>
+            function applySidebarState(state) {
+                const sidebar = document.querySelector(".sidebar");
 
-            if (state === "open") {
-                sidebar.classList.remove("closed");
-                sidebar.classList.add("open");
-                localStorage.setItem("sidebarState", "open");
-            } else {
-                sidebar.classList.add("closed");
-                sidebar.classList.remove("open");
-                localStorage.setItem("sidebarState", "closed");
+                if (state === "open") {
+                    sidebar.classList.remove("closed");
+                    sidebar.classList.add("open");
+                    localStorage.setItem("sidebarState", "open");
+                } else {
+                    sidebar.classList.add("closed");
+                    sidebar.classList.remove("open");
+                    localStorage.setItem("sidebarState", "closed");
+                }
             }
-        }
 
-        function toggleSidebar() {
-            const sidebar = document.querySelector(".sidebar");
-            const state = sidebar.classList.contains("closed") ? "open" : "closed";
-            applySidebarState(state);
-        }
-
-        document.addEventListener("DOMContentLoaded", function () {
-            const savedState = localStorage.getItem("sidebarState") || "closed";
-            applySidebarState(savedState);
-        });
-
-    </script>
-
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const userDropdown = document.querySelector(".user-dropdown");
-            if (userDropdown) {
-                userDropdown.addEventListener("click", function (e) {
-                    e.stopPropagation();
-                    this.classList.toggle("active");
-                });
-
-                document.addEventListener("click", function () {
-                    userDropdown.classList.remove("active");
-                });
+            function toggleSidebar() {
+                const sidebar = document.querySelector(".sidebar");
+                const state = sidebar.classList.contains("closed") ? "open" : "closed";
+                applySidebarState(state);
             }
-        });
-    </script>
 
-    <script>
-        let currentPage = 0;
-        const pages = document.querySelectorAll(".sidebar-page");
-        const indicator = document.querySelector(".page-indicator");
-
-        function showPage(index) {
-            pages.forEach((page, i) => {
-                page.classList.toggle("active", i === index);
+            document.addEventListener("DOMContentLoaded", function () {
+                const savedState = localStorage.getItem("sidebarState") || "closed";
+                applySidebarState(savedState);
             });
-            indicator.textContent = (index + 1) + " / " + pages.length;
-        }
 
-        function changePage(step) {
-            currentPage += step;
-            if (currentPage < 0) currentPage = 0;
-            if (currentPage >= pages.length) currentPage = pages.length - 1;
+        </script>
+
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                const userDropdown = document.querySelector(".user-dropdown");
+                if (userDropdown) {
+                    userDropdown.addEventListener("click", function (e) {
+                        e.stopPropagation();
+                        this.classList.toggle("active");
+                    });
+
+                    document.addEventListener("click", function () {
+                        userDropdown.classList.remove("active");
+                    });
+                }
+            });
+        </script>
+
+        <script>
+            let currentPage = 0;
+            const pages = document.querySelectorAll(".sidebar-page");
+
+            function showPage(index) {
+                pages.forEach((page, i) => {
+                    page.classList.toggle("active", i === index);
+                });
+
+                // cập nhật class active cho nút pagination
+                document.querySelectorAll(".sidebar-pagination .page-item").forEach((el, i) => {
+                    if (i === index + 1) {
+                        el.classList.add("active");
+                    } else {
+                        el.classList.remove("active");
+                    }
+                });
+            }
+
+            function changePage(step) {
+                currentPage += step;
+                if (currentPage < 0) currentPage = 0;
+                if (currentPage >= pages.length) currentPage = pages.length - 1;
+                showPage(currentPage);
+            }
+
+            function goToPage(index) {
+                currentPage = index;
+                showPage(currentPage);
+            }
+
             showPage(currentPage);
-        }
+        </script>
 
-        showPage(currentPage);
-    </script>
-
-</body>
+    </body>
 </html>

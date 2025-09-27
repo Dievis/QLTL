@@ -6,8 +6,10 @@ using QLTL.ViewModels.UserVM;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Web;
 
 namespace QLTL.Services
 {
@@ -93,7 +95,6 @@ namespace QLTL.Services
             }
         }
 
-
         // ================== LẤY DANH SÁCH ROLE ==================
         public async Task<IEnumerable<Role>> GetRolesAsync()
         {
@@ -101,6 +102,11 @@ namespace QLTL.Services
             // Nếu bạn muốn hiển thị cả role mặc định thì bỏ "!r.IsDefault"
         }
 
+        // ================== LẤY DANH SÁCH PHÒNG BAN ==================
+        public async Task<IEnumerable<Department>> GetDepartmentsAsync()
+        {
+            return await _departmentRepo.GetAllAsync();
+        }
 
 
         // ================== LẤY CHI TIẾT ==================
@@ -181,30 +187,6 @@ namespace QLTL.Services
             }
         }
 
-
-        // ================== LẤY DANH SÁCH PHÒNG BAN ==================
-        public async Task<IEnumerable<Department>> GetDepartmentsAsync()
-        {
-            return await _departmentRepo.GetAllAsync();
-        }
-
-        // ================== VÔ HIỆU HÓA / KÍCH HOẠT USER ==================
-        public async Task<bool> ToggleActiveAsync(int userId)
-        {
-            var user = await _userRepo.GetByIdAsync(userId);
-            if (user == null) throw new Exception("Người dùng không tồn tại");
-
-            if (user.IsSuperAdmin) throw new Exception("Không thể thay đổi trạng thái SuperAdmin");
-
-            user.IsActive = !user.IsActive;   // Đảo trạng thái
-            user.UpdatedAt = DateTime.Now;
-
-            await _userRepo.UpdateAsync(user);
-            await _userRepo.SaveChangesAsync();
-
-            return user.IsActive; // trả về trạng thái hiện tại sau khi đảo
-        }
-
         // ================== CẬP NHẬT ==================
         public async Task UpdateAsync(UserViewModel model)
         {
@@ -269,5 +251,86 @@ namespace QLTL.Services
             await _userRepo.UpdateAsync(entity);
             await _userRepo.SaveChangesAsync();
         }
+
+        // ================== VÔ HIỆU HÓA / KÍCH HOẠT USER ==================
+        public async Task<bool> ToggleActiveAsync(int userId)
+        {
+            var user = await _userRepo.GetByIdAsync(userId);
+            if (user == null) throw new Exception("Người dùng không tồn tại");
+
+            if (user.IsSuperAdmin) throw new Exception("Không thể thay đổi trạng thái SuperAdmin");
+
+            user.IsActive = !user.IsActive;   // Đảo trạng thái
+            user.UpdatedAt = DateTime.Now;
+
+            await _userRepo.UpdateAsync(user);
+            await _userRepo.SaveChangesAsync();
+
+            return user.IsActive; // trả về trạng thái hiện tại sau khi đảo
+        }
+
+        // ================== CẬP NHẬT THÔNG TIN CÁ NHÂN ==================
+
+        public async Task<UserProfileVM> GetProfileAsync(int userId)
+        {
+            var user = await _userRepo.GetByIdAsync(userId);
+            if (user == null) return null;
+
+            return new UserProfileVM
+            {
+                UserId = user.UserId,
+                Username = user.Username,
+                FullName = user.FullName,
+                Email = user.Email,
+                Phone = user.Phone,
+                AvatarUrl = user.Avatar,
+                DepartmentName = user.Department?.DepartmentName,
+                EmployeeCode = user.EmployeeCode,
+                RoleNames = user.UserRoles.Where(x => !x.IsDeleted).Select(x => x.Role.RoleName).ToList()
+            };
+        }
+
+        public async Task UpdateProfileAsync(UserProfileVM model, HttpPostedFileBase avatarFile, string serverPath)
+        {
+            var user = await _userRepo.GetByIdAsync(model.UserId);
+            if (user == null) throw new Exception("Người dùng không tồn tại");
+
+            user.FullName = model.FullName;
+            user.Email = model.Email;
+            user.Phone = model.Phone;
+
+            // Nếu nhập mật khẩu mới thì hash lại
+            if (!string.IsNullOrEmpty(model.Password))
+            {
+                if (model.Password != model.ConfirmPassword)
+                    throw new Exception("Mật khẩu xác nhận không khớp");
+
+                user.PasswordHash = PasswordHelper.HashPassword(model.Password);
+            }
+
+            // Upload ảnh đại diện
+            if (avatarFile != null && avatarFile.ContentLength > 0)
+            {
+                string fileName = Guid.NewGuid() + Path.GetExtension(avatarFile.FileName);
+                string relativePath = "/Content/uploads/avatars/" + fileName;
+                string absolutePath = Path.Combine(serverPath, "Content/uploads/avatars", fileName);
+
+                // Tạo thư mục nếu chưa có
+                var dir = Path.GetDirectoryName(absolutePath);
+                if (!Directory.Exists(dir))
+                    Directory.CreateDirectory(dir);
+
+                avatarFile.SaveAs(absolutePath);
+                user.Avatar = relativePath;
+                model.AvatarUrl = relativePath; // để cập nhật session sau này
+            }
+
+            user.UpdatedAt = DateTime.Now;
+
+            await _userRepo.UpdateAsync(user);
+            await _userRepo.SaveChangesAsync();
+        }
+
+
     }
 }

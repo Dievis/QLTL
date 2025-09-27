@@ -31,10 +31,9 @@ namespace QLTL.Controllers
         }
 
         // ========== LIST ==========
-        public async Task<ActionResult> Index(string search, bool? isDeleted, int page = 1)
+        public async Task<ActionResult> Index(string search, bool? isDeleted, int page = 1, int pageSize = 10)
         {
-            int pageSize = 10;
-            var model = await _service.GetAllAsync(search, isDeleted, page, pageSize);
+            var model = await _service.GetApprovedDocumentsAsync(search, page, pageSize);
             return View(model);
         }
 

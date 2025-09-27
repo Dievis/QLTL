@@ -4,6 +4,7 @@ using QLTL.Services;
 using QLTL.ViewModels.UserVM;
 using System;
 using System.Threading.Tasks;
+using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
 
@@ -128,6 +129,52 @@ namespace QLTL.Controllers
                 TempData["Error"] = ex.Message;
                 return RedirectToAction("Index");
             }
+        }
+
+        // ================== CẬP NHẬT THÔNG TIN CÁ NHÂN ==================
+
+        [HttpGet]
+        public async Task<ActionResult> UserProfile()
+        {
+            int userId = Session["UserId"] != null ? (int)Session["UserId"] : 0;
+            if (userId == 0) return RedirectToAction("Login", "Account");
+
+            var vm = await _service.GetProfileAsync(userId);
+            return View(vm);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> UserProfile(UserProfileVM model, HttpPostedFileBase avatarFile)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+
+            int userId = Session["UserId"] != null ? (int)Session["UserId"] : 0;
+            if (userId == 0) return RedirectToAction("Login", "Account");
+
+            model.UserId = userId;
+
+            try
+            {
+                await _service.UpdateProfileAsync(model, avatarFile, Server.MapPath("~"));
+
+                // Cập nhật session
+                Session["FullName"] = model.FullName;
+                if (!string.IsNullOrEmpty(model.AvatarUrl))
+                    Session["UserAvatar"] = model.AvatarUrl;
+
+                TempData["Success"] = "Cập nhật thông tin thành công!";
+            }
+            catch (Exception ex)
+            {
+                TempData["Error"] = ex.Message;
+                return View(model);
+            }
+
+            return RedirectToAction("UserProfile");
         }
 
 

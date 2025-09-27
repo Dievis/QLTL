@@ -2,94 +2,96 @@
 @{
     ViewBag.Title = "Home Page";
     var currentUserId = Session["UserId"] != null ? (int)Session["UserId"] : 0;
-
-
 }
 
 <div class="container mt-4">
     <h2 class="mb-4">Danh sách tài liệu</h2>
 
-    <table class="table table-striped table-hover">
-        <thead class="table-dark">
-            <tr>
-                <th>Tiêu đề</th>
-                <th>Ngày tạo</th>
-                <th>Trạng thái</th>
-                <th>Yêu thích</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model.Items)
-            {
-                <tr data-docid="@item.DocumentId">
-                    <td>@item.Title</td>
-                    <td>@item.CreatedAt.ToString("dd/MM/yyyy")</td>
-                    <td>
-                        @if (item.IsDeleted)
-                        {
-                            <span class="badge bg-danger">Đã xóa</span>
-                        }
-                        else
-                        {
-                            <span class="badge bg-success">Hoạt động</span>
-                        }
-                    </td>
-                    <td>
-                        <button class="btn btn-sm btn-outline-danger favorite-btn" data-userid="@currentUserId">
-                            <i class="bi bi-heart"></i> Yêu thích
-                        </button>
-                    </td>
-                </tr>
-            }
-        </tbody>
-    </table>
+    <div class="row">
+        @foreach (var item in Model.Items)
+        {
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 shadow-sm" data-docid="@item.DocumentId">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">@item.Title</h5>
+
+                        <p class="mb-1">
+                            <small class="text-muted">Người tạo: @item.UploaderName</small>
+                        </p>
+                        <p class="mb-1">
+                            <small class="text-muted">Ngày tạo: @item.CreatedAt.ToString("dd/MM/yyyy")</small>
+                        </p>
+
+                        <p>
+                            @if (item.IsDeleted)
+                            {
+                                <span class="badge bg-danger">Đã xóa</span>
+                            }
+                            else
+                            {
+                                <span class="badge bg-success">Hoạt động</span>
+                            }
+                        </p>
+
+                        <div class="mt-auto d-flex justify-content-between">
+                            <a href="@Url.Action("Details", "Document", new { id = item.DocumentId })"
+                               class="btn btn-sm btn-primary">
+                                <i class="bi bi-eye"></i> Xem chi tiết
+                            </a>
+                            <button class="btn btn-sm btn-outline-danger favorite-btn" data-userid="@currentUserId">
+                                <i class="bi bi-heart"></i> Yêu thích
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
 </div>
 
-@section Scripts{
+@section Scripts {
     <script>
-$(document).ready(function(){
+        $(document).ready(function () {
+            $('.favorite-btn').each(function () {
+                var btn = $(this);
+                var docId = btn.closest('.card').data('docid');
+                var userId = btn.data('userid');
 
-    $('.favorite-btn').each(function(){
-        var btn = $(this);
-        var docId = btn.closest('tr').data('docid');
-        var userId = btn.data('userid');
+                // kiểm tra trạng thái ban đầu
+                $.get('@Url.Action("IsFavorite", "Document")', { documentId: docId, userId: userId }, function (res) {
+                    if (res.isFavorite) {
+                        btn.addClass('btn-danger').removeClass('btn-outline-danger');
+                        btn.html('<i class="bi bi-heart-fill"></i> Đã yêu thích');
+                    }
+                });
+            });
 
-        // kiểm tra trạng thái ban đầu
-        $.get('@Url.Action("IsFavorite", "Document")', { documentId: docId, userId: userId }, function(res){
-            if(res.isFavorite){
-                btn.addClass('btn-danger').removeClass('btn-outline-danger');
-                btn.html('<i class="bi bi-heart-fill"></i> Đã yêu thích');
-            }
+            $('.favorite-btn').click(function () {
+                var btn = $(this);
+                var docId = btn.closest('.card').data('docid');
+                var userId = btn.data('userid');
+                var isFav = btn.hasClass('btn-danger');
+
+                if (isFav) {
+                    $.post('@Url.Action("RemoveFavorite", "Document")', { documentId: docId, userId: userId }, function (res) {
+                        if (res.success) {
+                            btn.removeClass('btn-danger').addClass('btn-outline-danger');
+                            btn.html('<i class="bi bi-heart"></i> Yêu thích');
+                        } else {
+                            alert(res.message);
+                        }
+                    });
+                } else {
+                    $.post('@Url.Action("AddFavorite", "Document")', { documentId: docId, userId: userId }, function (res) {
+                        if (res.success) {
+                            btn.addClass('btn-danger').removeClass('btn-outline-danger');
+                            btn.html('<i class="bi bi-heart-fill"></i> Đã yêu thích');
+                        } else {
+                            alert(res.message);
+                        }
+                    });
+                }
+            });
         });
-    });
-
-    $('.favorite-btn').click(function(){
-        var btn = $(this);
-        var docId = btn.closest('tr').data('docid');
-        var userId = btn.data('userid');
-        var isFav = btn.hasClass('btn-danger');
-
-        if(isFav){
-            $.post('@Url.Action("RemoveFavorite", "Document")', { documentId: docId, userId: userId }, function(res){
-                if(res.success){
-                    btn.removeClass('btn-danger').addClass('btn-outline-danger');
-                    btn.html('<i class="bi bi-heart"></i> Yêu thích');
-                } else {
-                    alert(res.message);
-                }
-            });
-        } else {
-            $.post('@Url.Action("AddFavorite", "Document")', { documentId: docId, userId: userId }, function(res){
-                if(res.success){
-                    btn.addClass('btn-danger').removeClass('btn-outline-danger');
-                    btn.html('<i class="bi bi-heart-fill"></i> Đã yêu thích');
-                } else {
-                    alert(res.message);
-                }
-            });
-        }
-    });
-
-});
     </script>
 }

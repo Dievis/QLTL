@@ -229,6 +229,17 @@ namespace QLTL.Controllers
             return RedirectToAction("Index");
         }
 
+        [HttpPost]
+        public async Task<ActionResult> CancelApproval(int approvalId, int uploaderId)
+        {
+            var error = await _service.CancelApprovalAsync(approvalId, uploaderId);
+            if (error != null) TempData["Error"] = error;
+
+            return RedirectToAction("Index");
+        }
+
+
+
         // ================== HÀM HỖ TRỢ ==================
         private async Task LoadDropdownsAsync()
         {

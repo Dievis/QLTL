@@ -268,6 +268,7 @@
     <Compile Include="ViewModels\RoleVM\RolePermissionViewModel.cs" />
     <Compile Include="ViewModels\RoleVM\RoleViewModel.cs" />
     <Compile Include="ViewModels\UserVM\UserIndexVM.cs" />
+    <Compile Include="ViewModels\UserVM\UserProfileVM.cs" />
     <Compile Include="ViewModels\UserVM\UserViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -380,10 +381,10 @@
     <Content Include="Views\User\Edit.cshtml" />
     <Content Include="Views\Account\AccessDenied.cshtml" />
     <Content Include="Views\Document\MyFavorites.cshtml" />
+    <Content Include="Views\User\UserProfile.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Uploads\Documents\" />
     <Folder Include="Uploads\Images\" />
   </ItemGroup>
   <ItemGroup>

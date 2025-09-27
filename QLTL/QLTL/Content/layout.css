@@ -46,6 +46,36 @@ body {
         z-index: 101;
     }
 
+.sidebar-pagination {
+    padding: 10px;
+    text-align: center;
+}
+
+    .sidebar-pagination .pagination {
+        display: flex;
+        justify-content: center; /* căn giữa */
+        gap: 8px; /* khoảng cách giữa các nút */
+        flex-wrap: wrap; /* nhiều trang thì tự xuống hàng */
+    }
+
+    .sidebar-pagination .page-item .page-link {
+        border-radius: 50% !important;
+        width: 36px;
+        height: 36px;
+        padding: 0;
+        text-align: center;
+        line-height: 34px;
+        color: #333;
+    }
+
+    .sidebar-pagination .page-item.active .page-link {
+        background-color: #007bff;
+        color: #fff;
+        border-color: #007bff;
+    }
+
+
+
 
 .sidebar-pages-container {
     flex: 1;

@@ -29,7 +29,10 @@
 
         <div class="mb-3">
             @Html.LabelFor(m => m.DocumentTypeId)
-            @Html.DropDownListFor(m => m.DocumentTypeId, new SelectList(ViewBag.DocumentTypes, "DocumentTypeId", "TypeName"), "-- Chọn loại tài liệu --", new { @class = "form-select" })
+            @Html.DropDownListFor(m => m.DocumentTypeId,
+                new SelectList(ViewBag.DocumentTypes, "DocumentTypeId", "DocumentTypeName"),
+                "-- Chọn loại tài liệu --",
+                new { @class = "form-select" })
             @Html.ValidationMessageFor(m => m.DocumentTypeId, "", new { @class = "text-danger" })
         </div>
 

@@ -57,10 +57,11 @@
         <thead class="table-dark">
             <tr>
                 <th>Tiêu đề</th>
+                <th>Người tạo</th> 
                 <th>Ngày tạo</th>
                 <th>Tình trạng duyệt</th>
                 <th>Trạng thái</th>
-                <th>File</th> 
+                <th>File</th>
                 <th class="text-center">Thao tác</th>
             </tr>
         </thead>
@@ -69,6 +70,7 @@
             {
                 <tr data-docid="@item.DocumentId">
                     <td>@item.Title</td>
+                    <td>@item.UploaderName</td>  
                     <td>@item.CreatedAt.ToString("dd/MM/yyyy")</td>
                     <td>
                         @if (item.IsDeleted)
