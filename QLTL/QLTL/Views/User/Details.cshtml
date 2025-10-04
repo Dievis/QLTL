@@ -1,35 +1,52 @@
 ﻿@model QLTL.ViewModels.UserVM.UserViewModel
 @{
     ViewBag.Title = "Chi tiết người dùng";
+
+    var canEdit = false;
+
+    if (Session["IsSuperAdmin"] is bool isSuperAdmin && isSuperAdmin)
+    {
+        canEdit = true;
+    }
+    else if (Session["Permissions"] is List<string> perms)
+    {
+        canEdit = perms.Contains("User.Edit", StringComparer.OrdinalIgnoreCase);
+    }
+}
+
+@section styles {
+    <link href="~/Content/detail.css" rel="stylesheet" />
 }
 
 <div class="container mt-4">
     <div class="row">
         <div class="col-md-8 offset-md-2">
 
-            <div class="card shadow-sm rounded-3">
-                <div class="card-header bg-primary text-white">
-                    <h4 class="mb-0">Chi tiết người dùng</h4>
+            <div class="card shadow-sm detail-card">
+                <div class="detail-header">
+                    <h4 class="mb-0">
+                        <i class="bi bi-person-badge-fill me-2"></i> Chi tiết người dùng
+                    </h4>
                 </div>
                 <div class="card-body">
 
-                    <dl class="row">
-                        <dt class="col-sm-3">Tên đăng nhập</dt>
+                    <dl class="row mb-0">
+                        <dt class="col-sm-3 fw-bold">Tên đăng nhập</dt>
                         <dd class="col-sm-9">@Model.Username</dd>
 
-                        <dt class="col-sm-3">Họ tên</dt>
+                        <dt class="col-sm-3 fw-bold">Họ tên</dt>
                         <dd class="col-sm-9">@Model.FullName</dd>
 
-                        <dt class="col-sm-3">Email</dt>
+                        <dt class="col-sm-3 fw-bold">Email</dt>
                         <dd class="col-sm-9">@Model.Email</dd>
 
-                        <dt class="col-sm-3">Điện thoại</dt>
+                        <dt class="col-sm-3 fw-bold">Điện thoại</dt>
                         <dd class="col-sm-9">@Model.Phone</dd>
 
-                        <dt class="col-sm-3">Phòng ban</dt>
+                        <dt class="col-sm-3 fw-bold">Phòng ban</dt>
                         <dd class="col-sm-9">@Model.DepartmentName</dd>
 
-                        <dt class="col-sm-3">Trạng thái</dt>
+                        <dt class="col-sm-3 fw-bold">Trạng thái</dt>
                         <dd class="col-sm-9">
                             @if (Model.IsDeleted)
                             {
@@ -41,23 +58,22 @@
                             }
                         </dd>
 
-                        <dt class="col-sm-3">Ngày tạo</dt>
+                        <dt class="col-sm-3 fw-bold">Ngày tạo</dt>
                         <dd class="col-sm-9">@Model.CreatedAt.ToString("dd/MM/yyyy")</dd>
 
                         @if (Model.UpdatedAt != null)
                         {
-                            <dt class="col-sm-3">Ngày cập nhật</dt>
+                            <dt class="col-sm-3 fw-bold">Ngày cập nhật</dt>
                             <dd class="col-sm-9">@Model.UpdatedAt.Value.ToString("dd/MM/yyyy")</dd>
                         }
 
-                        <dt class="col-sm-3">Vai trò</dt>
+                        <dt class="col-sm-3 fw-bold">Vai trò</dt>
                         <dd class="col-sm-9">
-                            @if (Model.SelectedRoleIds != null && Model.SelectedRoleIds.Any())
+                            @if (Model.RoleNames != null && Model.RoleNames.Any())
                             {
-                                var allRoles = ViewBag.Roles as IEnumerable<QLTL.Models.Role>;
-                                foreach (var role in allRoles.Where(r => Model.SelectedRoleIds.Contains(r.RoleId)))
+                                foreach (var roleName in Model.RoleNames)
                                 {
-                                    <span class="badge bg-info text-dark me-1">@role.RoleName</span>
+                                    <span class="badge role-badge me-1">@roleName</span>
                                 }
                             }
                             else
@@ -65,10 +81,11 @@
                                 <span class="text-muted">Chưa có vai trò</span>
                             }
                         </dd>
+
                     </dl>
 
-                    <div class="d-flex justify-content-between mt-3">
-                        <a href="@Url.Action("Edit", new { id = Model.UserId })" class="btn btn-warning">
+                    <div class="d-flex justify-content-end mt-3">
+                        <a href="@Url.Action("Edit", new { id = Model.UserId })" class="btn btn-warning me-2">
                             <i class="bi bi-pencil-square"></i> Sửa
                         </a>
                         <a href="@Url.Action("Index")" class="btn btn-secondary">

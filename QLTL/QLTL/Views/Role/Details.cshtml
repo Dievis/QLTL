@@ -16,44 +16,84 @@
 }
 
 @section styles {
-    <link href="~/Content/content.css" rel="stylesheet" />
+    <link href="~/Content/detail.css" rel="stylesheet" />
 }
 
-
 <div class="container mt-4">
-    <h2>Chi tiết vai trò</h2>
+    <div class="card shadow detail-card">
+        <div class="card-header detail-header d-flex align-items-center">
+            <i class="bi bi-person-badge-fill me-2"></i>
+            <h4 class="mb-0">Chi tiết vai trò</h4>
+        </div>
+        <div class="card-body">
+            <div class="row mb-3">
+                <div class="col-sm-4 fw-bold">Tên vai trò:</div>
+                <div class="col-sm-8">@Model.RoleName</div>
+            </div>
 
-    <div class="mb-3">
-        <strong>Tên vai trò:</strong> @Model.RoleName
+            @if (Model.Description != null)
+            {
+                <div class="row mb-3">
+                    <div class="col-sm-4 fw-bold">Mô tả:</div>
+                    <div class="col-sm-8">@Model.Description</div>
+                </div>
+            }
+
+            <div class="row mb-3">
+                <div class="col-sm-4 fw-bold">Vai trò mặc định:</div>
+                <div class="col-sm-8">
+                    @if (Model.IsDefault)
+                    {
+                        <span class="badge bg-primary">Có</span>
+                    }
+                    else
+                    {
+                        <span class="badge bg-secondary">Không</span>
+                    }
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-sm-4 fw-bold">Trạng thái:</div>
+                <div class="col-sm-8">
+                    @if (Model.IsDeleted)
+                    {
+                        <span class="badge bg-danger">Đã xóa</span>
+                    }
+                    else
+                    {
+                        <span class="badge bg-success">Hoạt động</span>
+                    }
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-sm-4 fw-bold">Ngày tạo:</div>
+                <div class="col-sm-8">@Model.CreatedAt.ToString("dd/MM/yyyy")</div>
+            </div>
+
+            @if (Model.UpdatedAt != null)
+            {
+                <div class="row mb-4">
+                    <div class="col-sm-4 fw-bold">Ngày cập nhật:</div>
+                    <div class="col-sm-8">
+                        @(Model.UpdatedAt.HasValue ? Model.UpdatedAt.Value.ToString("dd/MM/yyyy") : "-")
+                    </div>
+                </div>
+            }
+
+
+            <div class="d-flex justify-content-between">
+                <a href="@Url.Action("Index")" class="btn btn-secondary">
+                    <i class="bi bi-arrow-left"></i> Quay lại
+                </a>
+                @if (canEdit)
+                {
+                    <a href="@Url.Action("Edit", new { id = Model.RoleId })" class="btn btn-warning">
+                        <i class="bi bi-pencil-square"></i> Chỉnh sửa
+                    </a>
+                }
+            </div>
+        </div>
     </div>
-
-    <div class="mb-3">
-        <strong>Mô tả:</strong> @Model.Description
-    </div>
-
-    <div class="mb-3">
-        <strong>Vai trò mặc định:</strong> @(Model.IsDefault ? "Có" : "Không")
-    </div>
-
-    <div class="mb-3">
-        <strong>Trạng thái:</strong>
-        @(Model.IsDeleted ? "Đã xóa" : "Hoạt động")
-    </div>
-
-    <div class="mb-3">
-        <strong>Ngày tạo:</strong> @Model.CreatedAt.ToString("dd/MM/yyyy")
-    </div>
-
-    <div class="mb-3">
-        <strong>Ngày cập nhật:</strong> @(Model.UpdatedAt.HasValue ? Model.UpdatedAt.Value.ToString("dd/MM/yyyy") : "-")
-    </div>
-
-    @if (canEdit)
-    {
-        <a href="@Url.Action("Edit", new { id = Model.RoleId })" class="btn btn-warning">
-            <i class="bi bi-pencil-square"></i> Chỉnh sửa
-        </a>
-    }
-
-    <a href="@Url.Action("Index")" class="btn btn-secondary">Quay lại</a>
 </div>

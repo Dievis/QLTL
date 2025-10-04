@@ -30,7 +30,6 @@ namespace QLTL.ViewModels.UserVM
         [Required(ErrorMessage = "Vui lòng chọn phòng ban")]
         public int? DepartmentId { get; set; }
 
-        [Required(ErrorMessage = "Mật khẩu là bắt buộc")]
         public string Password { get; set; }
 
         // Flags

@@ -3,6 +3,7 @@ using QLTL.Repositories;
 using QLTL.Services;
 using QLTL.ViewModels.UserVM;
 using System;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
@@ -40,8 +41,12 @@ namespace QLTL.Controllers
         {
             var vm = await _service.GetByIdAsync(id);
             if (vm == null) return HttpNotFound();
+
+            // Không cần ViewBag nữa
             return View(vm);
         }
+
+
 
         // ================== TẠO MỚI ==================
         [HttpGet]
@@ -76,34 +81,49 @@ namespace QLTL.Controllers
             if (vm == null) return HttpNotFound();
 
             ViewBag.Departments = await _service.GetDepartmentsAsync();
-            ViewBag.Roles = await _service.GetRolesAsync(); // cần thêm hàm GetRolesAsync
+            ViewBag.Roles = await _service.GetRolesAsync();
 
             return View(vm);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit(UserViewModel vm)
+        public async Task<ActionResult> Edit(UserViewModel vm, int[] SelectedRoleIds)
         {
-            if (ModelState.IsValid)
+            // Gắn SelectedRoleIds vào vm để service xử lý
+            vm.SelectedRoleIds = SelectedRoleIds?.ToList();
+
+            if (!ModelState.IsValid)
             {
-                try
-                {
-                    await _service.UpdateAsync(vm);
-                    TempData["Success"] = "Cập nhật thành công";
-                    return RedirectToAction("Index");
-                }
-                catch (Exception ex)
-                {
-                    // log ex nếu có logger
-                    TempData["Error"] = ex.Message;
-                }
+                // Gom lỗi để debug
+                var errors = ModelState.Values.SelectMany(v => v.Errors)
+                                              .Select(e => string.IsNullOrEmpty(e.ErrorMessage) ? e.Exception?.Message : e.ErrorMessage)
+                                              .Where(s => !string.IsNullOrEmpty(s));
+                TempData["Error"] = "Form không hợp lệ: " + string.Join(" | ", errors);
+
+                ViewBag.Departments = await _service.GetDepartmentsAsync();
+                ViewBag.Roles = await _service.GetRolesAsync();
+                return View(vm);
+            }
+
+            try
+            {
+                await _service.UpdateAsync(vm);
+                TempData["Success"] = "Cập nhật thành công";
+                return RedirectToAction("Index");
+            }
+            catch (Exception ex)
+            {
+                // log lỗi nếu cần
+                TempData["Error"] = "Lỗi khi cập nhật: " + ex.Message;
             }
 
             ViewBag.Departments = await _service.GetDepartmentsAsync();
             ViewBag.Roles = await _service.GetRolesAsync();
             return View(vm);
         }
+
+
 
 
         // ================== XÓA ==================

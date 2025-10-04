@@ -117,6 +117,12 @@ namespace QLTL.Services
 
             var dept = u.DepartmentId.HasValue ? await _departmentRepo.GetByIdAsync(u.DepartmentId.Value) : null;
 
+            // Lấy RoleNames luôn, tránh phải dùng ViewBag trong View
+            var roleNames = u.UserRoles
+                             .Where(ur => !ur.IsDeleted)
+                             .Select(ur => ur.Role.RoleName)
+                             .ToList();
+
             return new UserViewModel
             {
                 UserId = u.UserId,
@@ -135,6 +141,12 @@ namespace QLTL.Services
                 SelectedRoleIds = u.UserRoles
                     .Where(ur => !ur.IsDeleted)
                     .Select(ur => ur.RoleId)
+                    .ToList(),
+
+                // 🔥 Thêm RoleNames trực tiếp
+                RoleNames = u.UserRoles
+                    .Where(ur => !ur.IsDeleted)
+                    .Select(ur => ur.Role.RoleName)
                     .ToList()
             };
         }
@@ -196,8 +208,13 @@ namespace QLTL.Services
         public async Task UpdateAsync(UserViewModel model)
         {
             var user = await _userRepo.GetByIdAsync(model.UserId);
-            if (user == null) return;
+            if (user == null) throw new Exception("Người dùng không tồn tại");
 
+            // 🔥 Check trùng Username (ngoại trừ chính user đang edit)
+            if ((await _userRepo.GetAllAsync(u => u.Username == model.Username && u.UserId != model.UserId)).Any())
+                throw new Exception("Tên đăng nhập đã tồn tại");
+
+            // Cập nhật thông tin cơ bản
             user.Username = model.Username;
             user.FullName = model.FullName;
             user.DepartmentId = model.DepartmentId;
@@ -206,15 +223,27 @@ namespace QLTL.Services
             user.IsDeleted = model.IsDeleted;
             user.UpdatedAt = DateTime.Now;
 
+            // Nếu có đổi mật khẩu (optional: khi model.Password != null)
+            if (!string.IsNullOrEmpty(model.Password))
+            {
+                user.PasswordHash = PasswordHelper.HashPassword(model.Password);
+            }
+
             await _userRepo.UpdateAsync(user);
-            await _userRepo.SaveChangesAsync();
+
+            // ================= Role Handling =================
+            // Nếu không chọn role -> gán role mặc định "User"
+            var newRoleIds = model.SelectedRoleIds != null && model.SelectedRoleIds.Any()
+                ? model.SelectedRoleIds.Distinct().ToList()
+                : (await _roleRepo.GetAllAsync(r => r.RoleName == "User" && !r.IsDeleted))
+                      .Select(r => r.RoleId)
+                      .ToList();
 
             // Lấy tất cả UserRole của user (bao gồm cả IsDeleted = true)
             var allRoles = (await _userRoleRepo.GetAllAsync(x => x.UserId == user.UserId)).ToList();
             var existingRoleIds = allRoles.Select(x => x.RoleId).ToList();
-            var newRoleIds = model.SelectedRoleIds?.Distinct().ToList() ?? new List<int>();
 
-            // 1) Đánh dấu soft-delete cho những role hiện có mà không có trong newRoleIds
+            // 1) Soft-delete những role hiện có nhưng không có trong newRoleIds
             foreach (var ur in allRoles.Where(x => !x.IsDeleted && !newRoleIds.Contains(x.RoleId)))
             {
                 ur.IsDeleted = true;
@@ -222,12 +251,11 @@ namespace QLTL.Services
                 await _userRoleRepo.UpdateAsync(ur);
             }
 
-            // 2) Nếu có bản ghi đã từng tồn tại nhưng đang IsDeleted = true và bây giờ được chọn lại -> restore nó
+            // 2) Restore role nếu đã từng tồn tại nhưng đang IsDeleted = true và bây giờ được chọn lại
             foreach (var ur in allRoles.Where(x => x.IsDeleted && newRoleIds.Contains(x.RoleId)))
             {
                 ur.IsDeleted = false;
                 ur.DeletedAt = null;
-                ur.DeletedAt = DateTime.Now;
                 await _userRoleRepo.UpdateAsync(ur);
             }
 
@@ -245,8 +273,13 @@ namespace QLTL.Services
                 await _userRoleRepo.AddAsync(ur);
             }
 
+            // Lưu tất cả thay đổi một lần
             await _userRoleRepo.SaveChangesAsync();
+            await _userRepo.SaveChangesAsync();
         }
+
+
+
 
 
         // ================== XÓA MỀM ==================

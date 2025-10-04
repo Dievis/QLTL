@@ -46,8 +46,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Content Include="Content\content.css" />
+    <Content Include="Content\detail.css" />
     <Content Include="Content\images\DefaultAvatar.jpg" />
+    <Content Include="Content\index.css" />
     <Content Include="Content\layout.css" />
     <Content Include="Content\images\Logo.png" />
     <Content Include="Uploads\Avatars\**\*.*" />
@@ -268,6 +269,7 @@
     <Compile Include="ViewModels\RoleVM\RolePermissionManageVM.cs" />
     <Compile Include="ViewModels\RoleVM\RolePermissionViewModel.cs" />
     <Compile Include="ViewModels\RoleVM\RoleViewModel.cs" />
+    <Compile Include="ViewModels\UserVM\UserEditVM.cs" />
     <Compile Include="ViewModels\UserVM\UserIndexVM.cs" />
     <Compile Include="ViewModels\UserVM\UserProfileVM.cs" />
     <Compile Include="ViewModels\UserVM\UserViewModel.cs" />

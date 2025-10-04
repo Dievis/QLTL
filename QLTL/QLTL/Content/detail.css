@@ -1,0 +1,61 @@
+﻿.detail-card {
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+/* Header dùng màu chủ đạo */
+.detail-header {
+    background: linear-gradient(45deg, #0099CC, #0077A7);
+    /* hoặc nếu bạn chỉ muốn 1 màu thuần: background-color: #0077A7; */
+    color: #fff;
+    font-weight: 600;
+    padding: 12px 20px;
+}
+
+.detail-card .row {
+    padding: 8px 0;
+    border-bottom: 1px dashed #ddd;
+}
+
+    .detail-card .row:last-child {
+        border-bottom: none;
+    }
+
+.detail-card .fw-bold {
+    color: #495057;
+}
+
+/* Badge dùng cùng màu chủ đạo */
+.detail-card .badge {
+    font-size: 0.9rem;
+    padding: 6px 12px;
+    border-radius: 8px;
+    background: linear-gradient(45deg, #0099CC, #0077A7);
+    color: #fff;
+}
+
+/* Button chung */
+.btn {
+    border-radius: 8px;
+    font-weight: 500;
+    padding: 6px 14px;
+    border: none;
+    color: #fff;
+    background: linear-gradient(45deg, #0099CC, #0077A7);
+    transition: all 0.3s ease;
+}
+
+    .btn:hover {
+        opacity: 0.9;
+        transform: translateY(-1px);
+    }
+
+/* Nút phụ xám */
+.btn-secondary {
+    background: linear-gradient(45deg, #6c757d, #495057);
+}
+
+/* Nút vàng cảnh báo */
+.btn-warning {
+    background: linear-gradient(45deg, #f6c23e, #d39e00);
+}

@@ -1,0 +1,52 @@
+﻿/* Gradient cho header card */
+.card-header-gradient {
+    background: linear-gradient(90deg, #0096C7 0%, #0077A7 100%);
+    color: #fff;
+}
+
+/* Gradient cho header bảng */
+.table-header-gradient th {
+    background-color: #0077A7; /* hoặc #0096C7 tùy bạn thấy đẹp hơn */
+    color: #fff;
+    text-align: center;
+    vertical-align: middle;
+}
+
+/* Bảng */
+table th {
+    vertical-align: middle;
+    text-align: center;
+}
+
+table td {
+    vertical-align: middle;
+}
+
+/* Badge roles */
+.badge-role {
+    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    color: #fff;
+}
+
+/* Button action hover */
+.table .btn:hover {
+    transform: scale(1.1);
+    transition: 0.2s;
+}
+
+/* Pagination highlight */
+.pagination .page-item.active .page-link {
+    background: linear-gradient(90deg, #0096C7 0%, #0077A7 100%);
+    border: none;
+}
+
+/* Nút tìm kiếm gradient */
+.btn-search-gradient {
+    background: linear-gradient(90deg, #0096C7 0%, #0077A7 100%);
+    color: #fff;
+    border: none;
+}
+
+    .btn-search-gradient:hover {
+        opacity: 0.9;
+    }
