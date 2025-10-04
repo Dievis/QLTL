@@ -46,6 +46,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Content Include="Content\content.css" />
     <Content Include="Content\images\DefaultAvatar.jpg" />
     <Content Include="Content\layout.css" />
     <Content Include="Content\images\Logo.png" />

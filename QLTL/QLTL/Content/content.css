@@ -1,0 +1,207 @@
+﻿/* ===== Reset chung ===== */
+body {
+    background: linear-gradient(180deg, #0096C7 0%, #0077A7 100%);
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    color: #000; /* Đổi chữ mặc định sang đen */
+    min-height: 100vh;
+}
+
+/* ===== Container chính ===== */
+.container {
+    background: rgba(255, 255, 255, 0.9); /* tăng độ sáng nền để chữ đen nổi bật */
+    border-radius: 16px;
+    padding: 20px 30px;
+    text-shadow: none; /* bỏ shadow tối */
+}
+
+/* ===== Tiêu đề ===== */
+h2 {
+    font-weight: 600;
+    color: #000; /* Đổi chữ mặc định sang đen */
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+}
+
+/* ===== Form tìm kiếm và filter ===== */
+form .form-control,
+form .form-select {
+    border-radius: 12px;
+    border: none;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.15);
+}
+
+form .btn {
+    border-radius: 12px;
+    padding: 6px 14px;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+form .btn-primary {
+    background: #0077A7;
+    border: none;
+}
+
+    form .btn-primary:hover {
+        background: #005f84;
+    }
+
+form .btn-success {
+    background: #00b4d8;
+    border: none;
+}
+
+    form .btn-success:hover {
+        background: #0096c7;
+    }
+
+/* ===== Bảng ===== */
+.table {
+    margin-top: 15px;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+    .table thead {
+        background: #023E8A;
+        color: #fff; /* giữ trắng cho tiêu đề bảng */
+    }
+
+    .table tbody tr {
+        background: rgba(255, 255, 255, 0.9);
+        color: #000; /* chữ trong bảng màu đen */
+    }
+
+        .table tbody tr:hover {
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+/* Badge trạng thái */
+.badge {
+    font-size: 0.85rem;
+    padding: 6px 10px;
+    border-radius: 10px;
+}
+
+.bg-success {
+    background: #00b894 !important;
+}
+
+.bg-danger {
+    background: #d63031 !important;
+}
+
+/* ===== FORM (Create + Edit) ===== */
+form .form-control,
+form .form-select,
+form textarea {
+    border-radius: 12px;
+    border: none;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.15);
+}
+
+form label {
+    font-weight: 600;
+    color: #000; /* Chữ đen */
+    margin-bottom: 6px;
+}
+
+form .text-danger {
+    font-size: 0.9rem;
+    color: #d63031 !important;
+}
+
+/* Buttons trong form */
+form .btn {
+    border-radius: 12px;
+    padding: 8px 16px;
+    margin-right: 5px;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+form .btn-success {
+    background: #00b894;
+    border: none;
+}
+
+    form .btn-success:hover {
+        background: #009874;
+    }
+
+form .btn-secondary {
+    background: #adb5bd;
+    border: none;
+}
+
+    form .btn-secondary:hover {
+        background: #868e96;
+    }
+
+/* ===== DETAIL VIEW ===== */
+dl {
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    padding: 20px;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+}
+
+dt {
+    font-weight: 600;
+    color: #000; /* Chữ đen */
+    margin-bottom: 5px;
+}
+
+dd {
+    margin-bottom: 15px;
+    color: #333; /* xám đậm cho dễ nhìn */
+}
+
+/* Buttons trong detail */
+.container .btn {
+    border-radius: 12px;
+    padding: 8px 16px;
+    margin-top: 10px;
+    margin-right: 5px;
+    font-weight: 500;
+}
+
+.container .btn-warning {
+    background: #fca311;
+    border: none;
+}
+
+    .container .btn-warning:hover {
+        background: #e68600;
+    }
+
+.container .btn-secondary {
+    background: #adb5bd;
+    border: none;
+}
+
+    .container .btn-secondary:hover {
+        background: #868e96;
+    }
+
+
+
+/* ===== Nút thao tác trong bảng ===== */
+.table .btn {
+    margin: 0 2px;
+    border-radius: 8px;
+}
+
+/* ===== Phân trang ===== */
+.pagination .page-link {
+    border-radius: 8px;
+    margin: 0 3px;
+    color: #023E8A;
+    font-weight: 500;
+}
+
+.pagination .active .page-link {
+    background-color: #0096C7;
+    border-color: #0096C7;
+    color: #fff;
+    font-weight: 600;
+}

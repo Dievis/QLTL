@@ -1,6 +1,30 @@
 ﻿@model QLTL.ViewModels.PermissionVM.PermissionIndexVM
 @{
     ViewBag.Title = "Danh sách quyền";
+
+    var canView = false;
+    var canDelete = false;
+    var canEdit = false;
+    var canCreate = false;
+
+    if (Session["IsSuperAdmin"] is bool isSuperAdmin && isSuperAdmin)
+    {
+        canView = true;
+        canDelete = true;
+        canEdit = true;
+        canCreate = true;
+    }
+    else if (Session["Permissions"] is List<string> perms)
+    {
+        canView = perms.Contains("Permission.View", StringComparer.OrdinalIgnoreCase);
+        canDelete = perms.Contains("Permission.Delete", StringComparer.OrdinalIgnoreCase);
+        canEdit = perms.Contains("Permission.Edit", StringComparer.OrdinalIgnoreCase);
+        canCreate = perms.Contains("Permission.Create", StringComparer.OrdinalIgnoreCase);
+    }
+}
+
+@section styles {
+    <link href="~/Content/content.css" rel="stylesheet" />
 }
 
 <div class="container mt-4">
@@ -51,14 +75,24 @@
                     </td>
                     <td>@item.CreatedAt.ToString("dd/MM/yyyy")</td>
                     <td class="text-center">
-                        <a href="@Url.Action("Details", new { id = item.PermissionId })" class="btn btn-sm btn-info"><i class="bi bi-eye"></i></a>
-                        <a href="@Url.Action("Edit", new { id = item.PermissionId })" class="btn btn-sm btn-warning"><i class="bi bi-pencil-square"></i></a>
-                        @using (Html.BeginForm("Delete", "Permission", new { id = item.PermissionId }, FormMethod.Post, new { @class = "d-inline" }))
+                        @if (canView)
                         {
-                            <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Bạn có chắc muốn xóa?');">
-                                <i class="bi bi-trash"></i>
-                            </button>
+                            <a href="@Url.Action("Details", new { id = item.PermissionId })" class="btn btn-sm btn-info"><i class="bi bi-eye"></i></a>
                         }
+                        @if (canEdit)
+                        {
+                            <a href="@Url.Action("Edit", new { id = item.PermissionId })" class="btn btn-sm btn-warning"><i class="bi bi-pencil-square"></i></a>
+                        }
+                        @if (canDelete)
+                        {
+                            using (Html.BeginForm("Delete", "Permission", new { id = item.PermissionId }, FormMethod.Post, new { @class = "d-inline" }))
+                            {
+                                <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Bạn có chắc muốn xóa?');">
+                                    <i class="bi bi-trash"></i>
+                                </button>
+                            }
+                        }
+
                     </td>
                 </tr>
             }

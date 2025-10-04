@@ -130,7 +130,12 @@ namespace QLTL.Services
                 IsActive = u.IsActive,
                 IsDeleted = u.IsDeleted,
                 CreatedAt = u.CreatedAt,
-                UpdatedAt = u.UpdatedAt
+                UpdatedAt = u.UpdatedAt,
+
+                SelectedRoleIds = u.UserRoles
+                    .Where(ur => !ur.IsDeleted)
+                    .Select(ur => ur.RoleId)
+                    .ToList()
             };
         }
 
@@ -204,40 +209,45 @@ namespace QLTL.Services
             await _userRepo.UpdateAsync(user);
             await _userRepo.SaveChangesAsync();
 
-            // Cập nhật role
-            var currentRoles = await _userRoleRepo.GetAllAsync(x => x.UserId == user.UserId && !x.IsDeleted);
-            var currentRoleIds = currentRoles.Select(x => x.RoleId).ToList();
+            // Lấy tất cả UserRole của user (bao gồm cả IsDeleted = true)
+            var allRoles = (await _userRoleRepo.GetAllAsync(x => x.UserId == user.UserId)).ToList();
+            var existingRoleIds = allRoles.Select(x => x.RoleId).ToList();
             var newRoleIds = model.SelectedRoleIds?.Distinct().ToList() ?? new List<int>();
 
-            // 1. Xóa role không còn
-            foreach (var ur in currentRoles)
+            // 1) Đánh dấu soft-delete cho những role hiện có mà không có trong newRoleIds
+            foreach (var ur in allRoles.Where(x => !x.IsDeleted && !newRoleIds.Contains(x.RoleId)))
             {
-                if (!newRoleIds.Contains(ur.RoleId))
-                {
-                    ur.IsDeleted = true;
-                    ur.DeletedAt = DateTime.Now;
-                    await _userRoleRepo.UpdateAsync(ur);
-                }
+                ur.IsDeleted = true;
+                ur.DeletedAt = DateTime.Now;
+                await _userRoleRepo.UpdateAsync(ur);
             }
 
-            // 2. Thêm role mới
-            foreach (var roleId in newRoleIds)
+            // 2) Nếu có bản ghi đã từng tồn tại nhưng đang IsDeleted = true và bây giờ được chọn lại -> restore nó
+            foreach (var ur in allRoles.Where(x => x.IsDeleted && newRoleIds.Contains(x.RoleId)))
             {
-                if (!currentRoleIds.Contains(roleId))
+                ur.IsDeleted = false;
+                ur.DeletedAt = null;
+                ur.DeletedAt = DateTime.Now;
+                await _userRoleRepo.UpdateAsync(ur);
+            }
+
+            // 3) Thêm những role hoàn toàn mới (không có bản ghi nào trước đó)
+            var toAdd = newRoleIds.Except(existingRoleIds).ToList();
+            foreach (var roleId in toAdd)
+            {
+                var ur = new UserRole
                 {
-                    var ur = new UserRole
-                    {
-                        UserId = user.UserId,
-                        RoleId = roleId,
-                        CreatedAt = DateTime.Now,
-                        IsDeleted = false
-                    };
-                    await _userRoleRepo.AddAsync(ur);
-                }
+                    UserId = user.UserId,
+                    RoleId = roleId,
+                    CreatedAt = DateTime.Now,
+                    IsDeleted = false
+                };
+                await _userRoleRepo.AddAsync(ur);
             }
 
             await _userRoleRepo.SaveChangesAsync();
         }
+
 
         // ================== XÓA MỀM ==================
         public async Task SoftDeleteAsync(int id)

@@ -26,6 +26,7 @@ namespace QLTL.Controllers
             return View(vm);
         }
 
+        [AuthorizeCustom(Permissions = "CategoryType.View, View", RequireAll = false)]
         public async Task<ActionResult> Details(int id)
         {
             var vm = await _service.GetByIdAsync(id);

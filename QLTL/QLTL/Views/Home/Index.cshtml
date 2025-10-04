@@ -1,45 +1,81 @@
 ﻿@model QLTL.ViewModels.DocumentVM.DocumentIndexVM
 @{
-    ViewBag.Title = "Home Page";
+    ViewBag.Title = "Danh sách tài liệu";
     var currentUserId = Session["UserId"] != null ? (int)Session["UserId"] : 0;
+
+    var canView = false;
+    var canDelete = false;
+    var canEdit = false;
+    var canCreate = false;
+
+    if (Session["IsSuperAdmin"] is bool isSuperAdmin && isSuperAdmin)
+    {
+        canView = canDelete = canEdit = canCreate = true;
+    }
+    else if (Session["Permissions"] is List<string> perms)
+    {
+        canView = perms.Contains("Document.View", StringComparer.OrdinalIgnoreCase)
+                  || perms.Contains("View", StringComparer.OrdinalIgnoreCase);
+        canDelete = perms.Contains("Document.Delete", StringComparer.OrdinalIgnoreCase);
+        canEdit = perms.Contains("Document.Edit", StringComparer.OrdinalIgnoreCase);
+        canCreate = perms.Contains("Document.Create", StringComparer.OrdinalIgnoreCase);
+    }
 }
 
 <div class="container mt-4">
-    <h2 class="mb-4">Danh sách tài liệu</h2>
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="mb-0">
+            <i class="bi bi-journals"></i> Danh sách tài liệu
+        </h2>
 
-    <div class="row">
+        @if (canCreate)
+        {
+            <a href="@Url.Action("Create", "Document")" class="btn btn-success shadow-sm">
+                <i class="bi bi-upload"></i> Upload tài liệu
+            </a>
+        }
+    </div>
+
+    <div class="row g-4">
         @foreach (var item in Model.Items)
         {
-            <div class="col-md-4 mb-4">
-                <div class="card h-100 shadow-sm" data-docid="@item.DocumentId">
+            <div class="col-md-4">
+                <div class="card h-100 shadow-sm border-0" data-docid="@item.DocumentId">
                     <div class="card-body d-flex flex-column">
-                        <h5 class="card-title">@item.Title</h5>
+                        <h5 class="card-title fw-bold text-truncate" title="@item.Title">
+                            <i class="bi bi-file-earmark-text"></i> @item.Title
+                        </h5>
 
-                        <p class="mb-1">
-                            <small class="text-muted">Người tạo: @item.UploaderName</small>
+                        <p class="mb-1 text-muted">
+                            <i class="bi bi-person"></i> Người tạo: <span class="fw-semibold">@item.UploaderName</span>
                         </p>
-                        <p class="mb-1">
-                            <small class="text-muted">Ngày tạo: @item.CreatedAt.ToString("dd/MM/yyyy")</small>
+                        <p class="mb-1 text-muted">
+                            <i class="bi bi-calendar3"></i> Ngày tạo: @item.CreatedAt.ToString("dd/MM/yyyy")
                         </p>
 
-                        <p>
+                        <div class="mb-3">
                             @if (item.IsDeleted)
                             {
-                                <span class="badge bg-danger">Đã xóa</span>
+                                <span class="badge bg-danger"><i class="bi bi-x-circle"></i> Đã xóa</span>
                             }
                             else
                             {
-                                <span class="badge bg-success">Hoạt động</span>
+                                <span class="badge bg-success"><i class="bi bi-check-circle"></i> Hoạt động</span>
                             }
-                        </p>
+                        </div>
 
-                        <div class="mt-auto d-flex justify-content-between">
-                            <a href="@Url.Action("Details", "Document", new { id = item.DocumentId })"
-                               class="btn btn-sm btn-primary">
-                                <i class="bi bi-eye"></i> Xem chi tiết
-                            </a>
-                            <button class="btn btn-sm btn-outline-danger favorite-btn" data-userid="@currentUserId">
-                                <i class="bi bi-heart"></i> Yêu thích
+                        <div class="mt-auto d-flex justify-content-between align-items-center">
+                            @if (canView)
+                            {
+                                <a href="@Url.Action("Details", "Document", new { id = item.DocumentId })"
+                                   class="btn btn-sm btn-primary shadow-sm">
+                                    <i class="bi bi-eye"></i> Xem
+                                </a>
+                            }
+
+                            <button class="btn btn-sm btn-outline-danger favorite-btn shadow-sm"
+                                    data-userid="@currentUserId">
+                                <i class="bi bi-heart"></i>
                             </button>
                         </div>
                     </div>
@@ -57,13 +93,15 @@
                 var docId = btn.closest('.card').data('docid');
                 var userId = btn.data('userid');
 
-                // kiểm tra trạng thái ban đầu
-                $.get('@Url.Action("IsFavorite", "Document")', { documentId: docId, userId: userId }, function (res) {
-                    if (res.isFavorite) {
-                        btn.addClass('btn-danger').removeClass('btn-outline-danger');
-                        btn.html('<i class="bi bi-heart-fill"></i> Đã yêu thích');
-                    }
-                });
+                // Kiểm tra trạng thái ban đầu
+                $.get('@Url.Action("IsFavorite", "Document")',
+                    { documentId: docId, userId: userId },
+                    function (res) {
+                        if (res.isFavorite) {
+                            btn.addClass('btn-danger').removeClass('btn-outline-danger');
+                            btn.html('<i class="bi bi-heart-fill"></i>');
+                        }
+                    });
             });
 
             $('.favorite-btn').click(function () {
@@ -73,23 +111,27 @@
                 var isFav = btn.hasClass('btn-danger');
 
                 if (isFav) {
-                    $.post('@Url.Action("RemoveFavorite", "Document")', { documentId: docId, userId: userId }, function (res) {
-                        if (res.success) {
-                            btn.removeClass('btn-danger').addClass('btn-outline-danger');
-                            btn.html('<i class="bi bi-heart"></i> Yêu thích');
-                        } else {
-                            alert(res.message);
-                        }
-                    });
+                    $.post('@Url.Action("RemoveFavorite", "Document")',
+                        { documentId: docId, userId: userId },
+                        function (res) {
+                            if (res.success) {
+                                btn.removeClass('btn-danger').addClass('btn-outline-danger');
+                                btn.html('<i class="bi bi-heart"></i>');
+                            } else {
+                                alert(res.message);
+                            }
+                        });
                 } else {
-                    $.post('@Url.Action("AddFavorite", "Document")', { documentId: docId, userId: userId }, function (res) {
-                        if (res.success) {
-                            btn.addClass('btn-danger').removeClass('btn-outline-danger');
-                            btn.html('<i class="bi bi-heart-fill"></i> Đã yêu thích');
-                        } else {
-                            alert(res.message);
-                        }
-                    });
+                    $.post('@Url.Action("AddFavorite", "Document")',
+                        { documentId: docId, userId: userId },
+                        function (res) {
+                            if (res.success) {
+                                btn.addClass('btn-danger').removeClass('btn-outline-danger');
+                                btn.html('<i class="bi bi-heart-fill"></i>');
+                            } else {
+                                alert(res.message);
+                            }
+                        });
                 }
             });
         });

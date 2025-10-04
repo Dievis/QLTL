@@ -2,6 +2,21 @@
 
 @{
     ViewBag.Title = "Chi tiết loại tài liệu";
+
+    var canEdit = false;
+
+    if (Session["IsSuperAdmin"] is bool isSuperAdmin && isSuperAdmin)
+    {
+        canEdit = true;
+    }
+    else if (Session["Permissions"] is List<string> perms)
+    {
+        canEdit = perms.Contains("DocumentType.Edit", StringComparer.OrdinalIgnoreCase);
+    }
+}
+
+@section styles {
+    <link href="~/Content/content.css" rel="stylesheet" />
 }
 
 <div class="container mt-4">
@@ -29,8 +44,15 @@
         <dd class="col-sm-9">@Model.CreatedAt.ToString("dd/MM/yyyy")</dd>
 
         <dt class="col-sm-3">Ngày cập nhật</dt>
-        <dd class="col-sm-9">@Model.UpdatedAt?.ToString("dd/MM/yyyy")</dd>
+        <dd class="col-sm-9"> @(Model.UpdatedAt.HasValue ? Model.UpdatedAt.Value.ToString("dd/MM/yyyy") : "-")</dd>
     </dl>
+
+    @if (canEdit)
+    {
+        <a href="@Url.Action("Edit", new { id = Model.DocumentTypeId })" class="btn btn-warning">
+            <i class="bi bi-pencil-square"></i> Chỉnh sửa
+        </a>
+    }
 
     <a href="@Url.Action("Index")" class="btn btn-secondary">Quay lại</a>
 </div>

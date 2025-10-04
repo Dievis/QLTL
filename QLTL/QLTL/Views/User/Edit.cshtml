@@ -71,11 +71,12 @@
                                                id="role_@role.RoleId"
                                                @(Model.SelectedRoleIds != null && Model.SelectedRoleIds.Contains(role.RoleId) ? "checked" : "") />
                                         <label class="form-check-label" for="role_@role.RoleId">
-                                            @role.RoleName
+                                            <label class="form-check-label fw-bold">@role.RoleName</label>
                                             @if (!string.IsNullOrEmpty(role.Description))
                                             {
-                                                <span class="text-muted"> - @role.Description</span>
+                                                <span class="badge bg-light text-dark">@role.Description</span>
                                             }
+
                                         </label>
                                     </div>
                                 }

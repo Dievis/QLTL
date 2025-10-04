@@ -87,14 +87,24 @@ namespace QLTL.Controllers
         {
             if (ModelState.IsValid)
             {
-                await _service.UpdateAsync(vm);
-                return RedirectToAction("Index");
+                try
+                {
+                    await _service.UpdateAsync(vm);
+                    TempData["Success"] = "Cập nhật thành công";
+                    return RedirectToAction("Index");
+                }
+                catch (Exception ex)
+                {
+                    // log ex nếu có logger
+                    TempData["Error"] = ex.Message;
+                }
             }
 
-            ViewBag.Departments = await _service.GetDepartmentsAsync(); // load lại khi lỗi
+            ViewBag.Departments = await _service.GetDepartmentsAsync();
             ViewBag.Roles = await _service.GetRolesAsync();
             return View(vm);
         }
+
 
         // ================== XÓA ==================
         [HttpPost]

@@ -90,12 +90,9 @@ namespace QLTL.Attributes
         {
             var httpContext = filterContext.HttpContext;
 
-            // đảm bảo session đã clear nếu cần
-            httpContext.Session.Clear();
-
             if (httpContext.Session["UserId"] == null)
             {
-                // chưa đăng nhập
+                // chưa đăng nhập -> chuyển về trang Login
                 filterContext.Result = new RedirectResult("~/Account/Login");
             }
             else
@@ -103,7 +100,11 @@ namespace QLTL.Attributes
                 // đã đăng nhập nhưng thiếu quyền
                 if (!string.IsNullOrEmpty(AccessDeniedUrl))
                 {
-                    filterContext.Result = new RedirectResult(AccessDeniedUrl);
+                    // Chuyển đến view AccessDenied
+                    filterContext.Result = new ViewResult
+                    {
+                        ViewName = "~/Views/Account/AccessDenied.cshtml"
+                    };
                 }
                 else
                 {
@@ -111,5 +112,6 @@ namespace QLTL.Attributes
                 }
             }
         }
+
     }
 }

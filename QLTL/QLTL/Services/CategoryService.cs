@@ -73,11 +73,14 @@ namespace QLTL.Services
             var c = await _repo.GetByIdAsync(id);
             if (c == null) return null;
 
+            var type = await _typeService.GetByIdAsync(c.CategoryTypeId);
+
             return new CategoryViewModel
             {
                 CategoryId = c.CategoryId,
                 CategoryName = c.CategoryName,
                 CategoryTypeId = c.CategoryTypeId,
+                CategoryTypeName = type?.CategoryTypeName ?? "", // 👈 gán tên loại
                 Description = c.Description,
                 IsDeleted = c.IsDeleted ?? false,
                 CreatedAt = c.CreatedAt ?? DateTime.Now,

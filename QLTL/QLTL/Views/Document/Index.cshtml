@@ -22,7 +22,7 @@
 }
 
 <div class="container mt-4">
-    <h2 class="mb-4">Danh sách tài liệu</h2>
+    <h2 class="bi bi-journals mb-4"> Danh sách tài liệu</h2>
 
     <!-- Search + Filter -->
     <form method="get" class="row mb-3">
@@ -48,7 +48,7 @@
                     <i class="bi bi-plus-circle"></i> Thêm mới
                 </a>
             }
-            
+
         </div>
     </form>
 
@@ -57,7 +57,7 @@
         <thead class="table-dark">
             <tr>
                 <th>Tiêu đề</th>
-                <th>Người tạo</th> 
+                <th>Người tạo</th>
                 <th>Ngày tạo</th>
                 <th>Tình trạng duyệt</th>
                 <th>Trạng thái</th>
@@ -70,7 +70,7 @@
             {
                 <tr data-docid="@item.DocumentId">
                     <td>@item.Title</td>
-                    <td>@item.UploaderName</td>  
+                    <td>@item.UploaderName</td>
                     <td>@item.CreatedAt.ToString("dd/MM/yyyy")</td>
                     <td>
                         @if (item.IsDeleted)

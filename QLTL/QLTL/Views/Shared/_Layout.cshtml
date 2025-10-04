@@ -1,15 +1,26 @@
 ﻿@using System.Web.Security
 @{
-    var role = Session["Role"] != null ? Session["Role"].ToString() : "";
     // Thêm biến kiểm tra SuperAdmin
     bool isSuperAdmin = Session["IsSuperAdmin"] != null && (bool)Session["IsSuperAdmin"];
-
-    var canView = false;
-
+    bool canViewDocument = false;
+    bool canViewDepartment = false;
+    bool canViewPermission = false;
+    bool canViewRole = false;
+    bool canViewUser = false;
+    bool canViewCategory = false;
+    bool canViewCategoryType = false;
+    bool canViewDocumentType = false;
 
     if (Session["Permissions"] is List<string> perms)
     {
-        canView = perms.Contains("View", StringComparer.OrdinalIgnoreCase);
+        canViewDocument = perms.Contains("Document.View", StringComparer.OrdinalIgnoreCase);
+        canViewDepartment = perms.Contains("Department.View", StringComparer.OrdinalIgnoreCase);
+        canViewPermission = perms.Contains("Permission.View", StringComparer.OrdinalIgnoreCase);
+        canViewRole = perms.Contains("Role.View", StringComparer.OrdinalIgnoreCase);
+        canViewUser = perms.Contains("User.View", StringComparer.OrdinalIgnoreCase);
+        canViewCategory = perms.Contains("Category.View", StringComparer.OrdinalIgnoreCase);
+        canViewCategoryType = perms.Contains("CategoryType.View", StringComparer.OrdinalIgnoreCase);
+        canViewDocumentType = perms.Contains("DocumentType.View", StringComparer.OrdinalIgnoreCase);
     }
 
 }
@@ -55,19 +66,44 @@
                 var menuItems = new List<MenuItem>();
                 menuItems.Add(new MenuItem { Text = "🏠 Home", Action = "Index", Controller = "Home" });
 
-                if (canView || isSuperAdmin)
+                if (canViewCategoryType || isSuperAdmin)
                 {
                     menuItems.Add(new MenuItem { Text = "📑 Quản lý loại danh mục", Action = "Index", Controller = "CategoryType" });
+                }
+
+                if (canViewCategory || isSuperAdmin)
+                {
                     menuItems.Add(new MenuItem { Text = "⚙️ Quản lý danh mục", Action = "Index", Controller = "Category" });
+                }
+
+                if (canViewDepartment || isSuperAdmin)
+                {
                     menuItems.Add(new MenuItem { Text = "🏢 Quản lý phòng ban", Action = "Index", Controller = "Department" });
+                }
+
+                if (canViewRole || isSuperAdmin)
+                {
                     menuItems.Add(new MenuItem { Text = "👤 Quản lý vai trò", Action = "Index", Controller = "Role" });
+                }
+
+                if (canViewPermission || isSuperAdmin)
+                {
                     menuItems.Add(new MenuItem { Text = "🔑 Quản lý phân quyền", Action = "Index", Controller = "Permission" });
+                }
+
+                if (canViewDocumentType || isSuperAdmin)
+                {
                     menuItems.Add(new MenuItem { Text = "📚 Quản lý loại tài liệu", Action = "Index", Controller = "DocumentType" });
+                }
+
+                if (canViewDocument || isSuperAdmin)
+                {
                     menuItems.Add(new MenuItem { Text = "📚 Quản lý tài liệu", Action = "Index", Controller = "Document" });
-                    if (isSuperAdmin)
-                    {
-                        menuItems.Add(new MenuItem { Text = "👥 Quản lý người dùng", Action = "Index", Controller = "User" });
-                    }
+                }
+
+                if (canViewUser || isSuperAdmin)
+                {
+                    menuItems.Add(new MenuItem { Text = "👥 Quản lý người dùng", Action = "Index", Controller = "User" });
                 }
 
                 int itemsPerPage = 10;
