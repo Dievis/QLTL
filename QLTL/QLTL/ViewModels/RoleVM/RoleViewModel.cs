@@ -16,6 +16,8 @@ namespace QLTL.ViewModels.RoleVM
 
         [Display(Name = "Mô tả")]
         public string Description { get; set; }
+
+        [Display(Name = "Vai trò mặc định")]
         public bool IsDefault { get; set; }
         public bool IsDeleted { get; set; }
         public DateTime CreatedAt { get; set; }

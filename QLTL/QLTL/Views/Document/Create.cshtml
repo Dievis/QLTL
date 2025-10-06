@@ -3,56 +3,90 @@
     ViewBag.Title = "Thêm tài liệu mới";
 }
 
+@section styles {
+    <link href="~/Content/createEdit.css" rel="stylesheet" />
+}
+
 <div class="container mt-4">
-    <h2>Thêm tài liệu mới</h2>
-
-    @using (Html.BeginForm("Create", "Document", FormMethod.Post, new { enctype = "multipart/form-data" }))
-    {
-        @Html.AntiForgeryToken()
-        <div class="mb-3">
-            @Html.LabelFor(m => m.Title)
-            @Html.TextBoxFor(m => m.Title, new { @class = "form-control" })
-            @Html.ValidationMessageFor(m => m.Title, "", new { @class = "text-danger" })
+    <div class="card shadow">
+        <!-- Header -->
+        <div class="card-header card-header-gradient d-flex justify-content-between align-items-center">
+            <h2 class="mb-0 text-white">
+                <i class="bi bi-plus-circle me-2"></i> Thêm tài liệu mới
+            </h2>
+            <a href="@Url.Action("Index", "Document")" class="btn btn-light">
+                <i class="bi bi-arrow-left"></i> Quay lại
+            </a>
         </div>
 
-        <div class="mb-3">
-            @Html.LabelFor(m => m.Content)
-            @Html.TextAreaFor(m => m.Content, new { @class = "form-control", rows = 5 })
-            @Html.ValidationMessageFor(m => m.Content, "", new { @class = "text-danger" })
-        </div>
-
-        <div class="mb-3">
-            @Html.LabelFor(m => m.CategoryId)
-            @Html.DropDownListFor(m => m.CategoryId, new SelectList(ViewBag.Categories, "CategoryId", "CategoryName"), "-- Chọn danh mục --", new { @class = "form-select" })
-            @Html.ValidationMessageFor(m => m.CategoryId, "", new { @class = "text-danger" })
-        </div>
-
-        <div class="mb-3">
-            @Html.LabelFor(m => m.DocumentTypeId)
-            @Html.DropDownListFor(m => m.DocumentTypeId,
-                new SelectList(ViewBag.DocumentTypes, "DocumentTypeId", "DocumentTypeName"),
-                "-- Chọn loại tài liệu --",
-                new { @class = "form-select" })
-            @Html.ValidationMessageFor(m => m.DocumentTypeId, "", new { @class = "text-danger" })
-        </div>
-
-        <div class="mb-3">
-            <label>Phòng ban</label>
-            @foreach (var dept in ViewBag.Departments as List<QLTL.Models.Department>)
+        <!-- Body -->
+        <div class="card-body">
+            @using (Html.BeginForm("Create", "Document", FormMethod.Post, new { enctype = "multipart/form-data", @class = "needs-validation", novalidate = "novalidate" }))
             {
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="departmentIds" value="@dept.DepartmentId" id="dept_@dept.DepartmentId">
-                    <label class="form-check-label" for="dept_@dept.DepartmentId">@dept.DepartmentName</label>
+                @Html.AntiForgeryToken()
+
+                <!-- Tiêu đề -->
+                <div class="mb-3">
+                    @Html.LabelFor(m => m.Title, new { @class = "form-label" })
+                    @Html.TextBoxFor(m => m.Title, new { @class = "form-control", placeholder = "Nhập tiêu đề tài liệu" })
+                    @Html.ValidationMessageFor(m => m.Title, "", new { @class = "text-danger" })
+                </div>
+
+                <!-- Nội dung -->
+                <div class="mb-3">
+                    @Html.LabelFor(m => m.Content, new { @class = "form-label" })
+                    @Html.TextAreaFor(m => m.Content, new { @class = "form-control", rows = 5, placeholder = "Nhập nội dung tài liệu" })
+                    @Html.ValidationMessageFor(m => m.Content, "", new { @class = "text-danger" })
+                </div>
+
+                <!-- Danh mục -->
+                <div class="mb-3">
+                    @Html.LabelFor(m => m.CategoryId, new { @class = "form-label" })
+                    @Html.DropDownListFor(m => m.CategoryId,
+                        new SelectList(ViewBag.Categories, "CategoryId", "CategoryName"),
+                        "-- Chọn danh mục --",
+                        new { @class = "form-select" })
+                    @Html.ValidationMessageFor(m => m.CategoryId, "", new { @class = "text-danger" })
+                </div>
+
+                <!-- Loại tài liệu -->
+                <div class="mb-3">
+                    @Html.LabelFor(m => m.DocumentTypeId, new { @class = "form-label" })
+                    @Html.DropDownListFor(m => m.DocumentTypeId,
+                        new SelectList(ViewBag.DocumentTypes, "DocumentTypeId", "DocumentTypeName"),
+                        "-- Chọn loại tài liệu --",
+                        new { @class = "form-select" })
+                    @Html.ValidationMessageFor(m => m.DocumentTypeId, "", new { @class = "text-danger" })
+                </div>
+
+                <!-- Phòng ban -->
+                <div class="mb-3">
+                    <label class="form-label">Phòng ban</label>
+                    @foreach (var dept in ViewBag.Departments as List<QLTL.Models.Department>)
+                    {
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" name="departmentIds" value="@dept.DepartmentId" id="dept_@dept.DepartmentId">
+                            <label class="form-check-label" for="dept_@dept.DepartmentId">@dept.DepartmentName</label>
+                        </div>
+                    }
+                </div>
+
+                <!-- Tệp đính kèm -->
+                <div class="mb-3">
+                    <label class="form-label">Tệp đính kèm</label>
+                    <input type="file" name="file" class="form-control" />
+                </div>
+
+                <!-- Nút hành động -->
+                <div class="d-flex justify-content-start mt-4">
+                    <button type="submit" class="btn btn-success">
+                        <i class="bi bi-check-circle"></i> Lưu
+                    </button>
+                    <a href="@Url.Action("Index", "Document")" class="btn btn-secondary">
+                        <i class="bi bi-arrow-left"></i> Hủy
+                    </a>
                 </div>
             }
         </div>
-
-        <div class="mb-3">
-            <label>Tệp đính kèm</label>
-            <input type="file" name="file" class="form-control" />
-        </div>
-
-        <button type="submit" class="btn btn-success">Lưu</button>
-        <a href="@Url.Action("Index")" class="btn btn-secondary">Hủy</a>
-    }
+    </div>
 </div>

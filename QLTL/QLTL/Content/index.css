@@ -4,6 +4,15 @@
     color: #fff;
 }
 
+    /* Đảm bảo chữ trong header luôn trắng rõ ràng */
+    .card-header-gradient h2,
+    .card-header-gradient .text-white {
+        color: #fff !important;
+        background: none !important;
+        -webkit-background-clip: initial !important;
+        -webkit-text-fill-color: initial !important;
+    }
+
 /* Gradient cho header bảng */
 .table-header-gradient th {
     background-color: #0077A7; /* hoặc #0096C7 tùy bạn thấy đẹp hơn */
@@ -49,4 +58,49 @@ table td {
 
     .btn-search-gradient:hover {
         opacity: 0.9;
+    }
+
+/* Button chính (Lưu, Thêm mới) */
+.btn-success {
+    background: linear-gradient(90deg, #0096C7 0%, #0077A7 100%);
+    border: none;
+    color: #fff;
+    font-weight: 500;
+    border-radius: 8px;
+    padding: 8px 20px;
+    transition: all 0.2s;
+}
+
+    .btn-success:hover {
+        opacity: 0.9;
+        transform: translateY(-2px);
+    }
+
+/* Button phụ (Hủy, Quay lại) */
+.btn-secondary {
+    background-color: #e0e0e0;
+    color: #333;
+    font-weight: 500;
+    border-radius: 8px;
+    padding: 8px 20px;
+    margin-left: 10px;
+    transition: all 0.2s;
+}
+
+    .btn-secondary:hover {
+        background-color: #d5d5d5;
+        transform: translateY(-2px);
+    }
+
+/* Nút trong header dạng light (Quay lại, Thêm mới) */
+.card-header-gradient .btn-light {
+    background-color: #fff !important;
+    color: #0077A7 !important;
+    border: none;
+    font-weight: 500;
+}
+
+    .card-header-gradient .btn-light:hover {
+        background-color: #f1f1f1 !important;
+        color: #005f87 !important;
     }

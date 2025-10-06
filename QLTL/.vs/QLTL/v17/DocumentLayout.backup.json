@@ -3,7 +3,67 @@
   "WorkspaceRootPath": "D:\\Sources\\Github\\QLTL\\QLTL\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{2C084ECD-8FF7-4181-9861-FD9E7E08759D}|QLTL\\QLTL.csproj|d:\\sources\\github\\qltl\\qltl\\qltl\\services\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{2C084ECD-8FF7-4181-9861-FD9E7E08759D}|QLTL\\QLTL.csproj|D:\\Sources\\Github\\QLTL\\QLTL\\qltl\\views\\category\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{2C084ECD-8FF7-4181-9861-FD9E7E08759D}|QLTL\\QLTL.csproj|solutionrelative:qltl\\views\\category\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2C084ECD-8FF7-4181-9861-FD9E7E08759D}|QLTL\\QLTL.csproj|D:\\Sources\\Github\\QLTL\\QLTL\\qltl\\views\\category\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{2C084ECD-8FF7-4181-9861-FD9E7E08759D}|QLTL\\QLTL.csproj|solutionrelative:qltl\\views\\category\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2C084ECD-8FF7-4181-9861-FD9E7E08759D}|QLTL\\QLTL.csproj|d:\\sources\\github\\qltl\\qltl\\qltl\\content\\createedit.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{2C084ECD-8FF7-4181-9861-FD9E7E08759D}|QLTL\\QLTL.csproj|solutionrelative:qltl\\content\\createedit.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2C084ECD-8FF7-4181-9861-FD9E7E08759D}|QLTL\\QLTL.csproj|D:\\Sources\\Github\\QLTL\\QLTL\\qltl\\content\\index.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{2C084ECD-8FF7-4181-9861-FD9E7E08759D}|QLTL\\QLTL.csproj|solutionrelative:qltl\\content\\index.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2C084ECD-8FF7-4181-9861-FD9E7E08759D}|QLTL\\QLTL.csproj|D:\\Sources\\Github\\QLTL\\QLTL\\qltl\\content\\detail.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{2C084ECD-8FF7-4181-9861-FD9E7E08759D}|QLTL\\QLTL.csproj|solutionrelative:qltl\\content\\detail.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2C084ECD-8FF7-4181-9861-FD9E7E08759D}|QLTL\\QLTL.csproj|d:\\sources\\github\\qltl\\qltl\\qltl\\views\\category\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{2C084ECD-8FF7-4181-9861-FD9E7E08759D}|QLTL\\QLTL.csproj|solutionrelative:qltl\\views\\category\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2C084ECD-8FF7-4181-9861-FD9E7E08759D}|QLTL\\QLTL.csproj|D:\\Sources\\Github\\QLTL\\QLTL\\qltl\\views\\categorytype\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{2C084ECD-8FF7-4181-9861-FD9E7E08759D}|QLTL\\QLTL.csproj|solutionrelative:qltl\\views\\categorytype\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2C084ECD-8FF7-4181-9861-FD9E7E08759D}|QLTL\\QLTL.csproj|D:\\Sources\\Github\\QLTL\\QLTL\\qltl\\views\\user\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{2C084ECD-8FF7-4181-9861-FD9E7E08759D}|QLTL\\QLTL.csproj|solutionrelative:qltl\\views\\user\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2C084ECD-8FF7-4181-9861-FD9E7E08759D}|QLTL\\QLTL.csproj|D:\\Sources\\Github\\QLTL\\QLTL\\qltl\\views\\role\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{2C084ECD-8FF7-4181-9861-FD9E7E08759D}|QLTL\\QLTL.csproj|solutionrelative:qltl\\views\\role\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2C084ECD-8FF7-4181-9861-FD9E7E08759D}|QLTL\\QLTL.csproj|D:\\Sources\\Github\\QLTL\\QLTL\\qltl\\views\\documenttype\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{2C084ECD-8FF7-4181-9861-FD9E7E08759D}|QLTL\\QLTL.csproj|solutionrelative:qltl\\views\\documenttype\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2C084ECD-8FF7-4181-9861-FD9E7E08759D}|QLTL\\QLTL.csproj|D:\\Sources\\Github\\QLTL\\QLTL\\qltl\\views\\document\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{2C084ECD-8FF7-4181-9861-FD9E7E08759D}|QLTL\\QLTL.csproj|solutionrelative:qltl\\views\\document\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2C084ECD-8FF7-4181-9861-FD9E7E08759D}|QLTL\\QLTL.csproj|D:\\Sources\\Github\\QLTL\\QLTL\\qltl\\views\\department\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{2C084ECD-8FF7-4181-9861-FD9E7E08759D}|QLTL\\QLTL.csproj|solutionrelative:qltl\\views\\department\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2C084ECD-8FF7-4181-9861-FD9E7E08759D}|QLTL\\QLTL.csproj|D:\\Sources\\Github\\QLTL\\QLTL\\qltl\\views\\categorytype\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{2C084ECD-8FF7-4181-9861-FD9E7E08759D}|QLTL\\QLTL.csproj|solutionrelative:qltl\\views\\categorytype\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2C084ECD-8FF7-4181-9861-FD9E7E08759D}|QLTL\\QLTL.csproj|D:\\Sources\\Github\\QLTL\\QLTL\\qltl\\views\\category\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{2C084ECD-8FF7-4181-9861-FD9E7E08759D}|QLTL\\QLTL.csproj|solutionrelative:qltl\\views\\category\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2C084ECD-8FF7-4181-9861-FD9E7E08759D}|QLTL\\QLTL.csproj|D:\\Sources\\Github\\QLTL\\QLTL\\qltl\\views\\permission\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{2C084ECD-8FF7-4181-9861-FD9E7E08759D}|QLTL\\QLTL.csproj|solutionrelative:qltl\\views\\permission\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2C084ECD-8FF7-4181-9861-FD9E7E08759D}|QLTL\\QLTL.csproj|D:\\Sources\\Github\\QLTL\\QLTL\\qltl\\services\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{2C084ECD-8FF7-4181-9861-FD9E7E08759D}|QLTL\\QLTL.csproj|solutionrelative:qltl\\services\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -11,11 +71,7 @@
       "RelativeMoniker": "D:0:0:{2C084ECD-8FF7-4181-9861-FD9E7E08759D}|QLTL\\QLTL.csproj|solutionrelative:qltl\\views\\user\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2C084ECD-8FF7-4181-9861-FD9E7E08759D}|QLTL\\QLTL.csproj|D:\\Sources\\Github\\QLTL\\QLTL\\qltl\\views\\user\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{2C084ECD-8FF7-4181-9861-FD9E7E08759D}|QLTL\\QLTL.csproj|solutionrelative:qltl\\views\\user\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2C084ECD-8FF7-4181-9861-FD9E7E08759D}|QLTL\\QLTL.csproj|d:\\sources\\github\\qltl\\qltl\\qltl\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{2C084ECD-8FF7-4181-9861-FD9E7E08759D}|QLTL\\QLTL.csproj|D:\\Sources\\Github\\QLTL\\QLTL\\qltl\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{2C084ECD-8FF7-4181-9861-FD9E7E08759D}|QLTL\\QLTL.csproj|solutionrelative:qltl\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -27,11 +83,7 @@
       "RelativeMoniker": "D:0:0:{2C084ECD-8FF7-4181-9861-FD9E7E08759D}|QLTL\\QLTL.csproj|solutionrelative:qltl\\viewmodels\\uservm\\userviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2C084ECD-8FF7-4181-9861-FD9E7E08759D}|QLTL\\QLTL.csproj|d:\\sources\\github\\qltl\\qltl\\qltl\\views\\role\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{2C084ECD-8FF7-4181-9861-FD9E7E08759D}|QLTL\\QLTL.csproj|solutionrelative:qltl\\views\\role\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2C084ECD-8FF7-4181-9861-FD9E7E08759D}|QLTL\\QLTL.csproj|d:\\sources\\github\\qltl\\qltl\\qltl\\views\\role\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{2C084ECD-8FF7-4181-9861-FD9E7E08759D}|QLTL\\QLTL.csproj|D:\\Sources\\Github\\QLTL\\QLTL\\qltl\\views\\role\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{2C084ECD-8FF7-4181-9861-FD9E7E08759D}|QLTL\\QLTL.csproj|solutionrelative:qltl\\views\\role\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
@@ -39,23 +91,11 @@
       "RelativeMoniker": "D:0:0:{2C084ECD-8FF7-4181-9861-FD9E7E08759D}|QLTL\\QLTL.csproj|solutionrelative:qltl\\controllers\\rolecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2C084ECD-8FF7-4181-9861-FD9E7E08759D}|QLTL\\QLTL.csproj|d:\\sources\\github\\qltl\\qltl\\qltl\\content\\detail.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
-      "RelativeMoniker": "D:0:0:{2C084ECD-8FF7-4181-9861-FD9E7E08759D}|QLTL\\QLTL.csproj|solutionrelative:qltl\\content\\detail.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2C084ECD-8FF7-4181-9861-FD9E7E08759D}|QLTL\\QLTL.csproj|d:\\sources\\github\\qltl\\qltl\\qltl\\content\\index.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
-      "RelativeMoniker": "D:0:0:{2C084ECD-8FF7-4181-9861-FD9E7E08759D}|QLTL\\QLTL.csproj|solutionrelative:qltl\\content\\index.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2C084ECD-8FF7-4181-9861-FD9E7E08759D}|QLTL\\QLTL.csproj|D:\\Sources\\Github\\QLTL\\QLTL\\qltl\\views\\category\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{2C084ECD-8FF7-4181-9861-FD9E7E08759D}|QLTL\\QLTL.csproj|solutionrelative:qltl\\views\\category\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{2C084ECD-8FF7-4181-9861-FD9E7E08759D}|QLTL\\QLTL.csproj|D:\\Sources\\Github\\QLTL\\QLTL\\qltl\\views\\permission\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{2C084ECD-8FF7-4181-9861-FD9E7E08759D}|QLTL\\QLTL.csproj|solutionrelative:qltl\\views\\permission\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2C084ECD-8FF7-4181-9861-FD9E7E08759D}|QLTL\\QLTL.csproj|d:\\sources\\github\\qltl\\qltl\\qltl\\views\\permission\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{2C084ECD-8FF7-4181-9861-FD9E7E08759D}|QLTL\\QLTL.csproj|D:\\Sources\\Github\\QLTL\\QLTL\\qltl\\views\\permission\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{2C084ECD-8FF7-4181-9861-FD9E7E08759D}|QLTL\\QLTL.csproj|solutionrelative:qltl\\views\\permission\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
@@ -87,22 +127,6 @@
       "RelativeMoniker": "D:0:0:{2C084ECD-8FF7-4181-9861-FD9E7E08759D}|QLTL\\QLTL.csproj|solutionrelative:qltl\\controllers\\documentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2C084ECD-8FF7-4181-9861-FD9E7E08759D}|QLTL\\QLTL.csproj|D:\\Sources\\Github\\QLTL\\QLTL\\qltl\\views\\permission\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{2C084ECD-8FF7-4181-9861-FD9E7E08759D}|QLTL\\QLTL.csproj|solutionrelative:qltl\\views\\permission\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2C084ECD-8FF7-4181-9861-FD9E7E08759D}|QLTL\\QLTL.csproj|D:\\Sources\\Github\\QLTL\\QLTL\\qltl\\views\\documenttype\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{2C084ECD-8FF7-4181-9861-FD9E7E08759D}|QLTL\\QLTL.csproj|solutionrelative:qltl\\views\\documenttype\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2C084ECD-8FF7-4181-9861-FD9E7E08759D}|QLTL\\QLTL.csproj|D:\\Sources\\Github\\QLTL\\QLTL\\qltl\\views\\categorytype\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{2C084ECD-8FF7-4181-9861-FD9E7E08759D}|QLTL\\QLTL.csproj|solutionrelative:qltl\\views\\categorytype\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2C084ECD-8FF7-4181-9861-FD9E7E08759D}|QLTL\\QLTL.csproj|D:\\Sources\\Github\\QLTL\\QLTL\\qltl\\views\\department\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{2C084ECD-8FF7-4181-9861-FD9E7E08759D}|QLTL\\QLTL.csproj|solutionrelative:qltl\\views\\department\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{2C084ECD-8FF7-4181-9861-FD9E7E08759D}|QLTL\\QLTL.csproj|D:\\Sources\\Github\\QLTL\\QLTL\\qltl\\views\\department\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{2C084ECD-8FF7-4181-9861-FD9E7E08759D}|QLTL\\QLTL.csproj|solutionrelative:qltl\\views\\department\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
@@ -119,20 +143,12 @@
       "RelativeMoniker": "D:0:0:{2C084ECD-8FF7-4181-9861-FD9E7E08759D}|QLTL\\QLTL.csproj|solutionrelative:qltl\\views\\home\\about.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2C084ECD-8FF7-4181-9861-FD9E7E08759D}|QLTL\\QLTL.csproj|D:\\Sources\\Github\\QLTL\\QLTL\\qltl\\views\\document\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{2C084ECD-8FF7-4181-9861-FD9E7E08759D}|QLTL\\QLTL.csproj|solutionrelative:qltl\\views\\document\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{2C084ECD-8FF7-4181-9861-FD9E7E08759D}|QLTL\\QLTL.csproj|D:\\Sources\\Github\\QLTL\\QLTL\\qltl\\views\\documenttype\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{2C084ECD-8FF7-4181-9861-FD9E7E08759D}|QLTL\\QLTL.csproj|solutionrelative:qltl\\views\\documenttype\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{2C084ECD-8FF7-4181-9861-FD9E7E08759D}|QLTL\\QLTL.csproj|D:\\Sources\\Github\\QLTL\\QLTL\\qltl\\views\\department\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{2C084ECD-8FF7-4181-9861-FD9E7E08759D}|QLTL\\QLTL.csproj|solutionrelative:qltl\\views\\department\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2C084ECD-8FF7-4181-9861-FD9E7E08759D}|QLTL\\QLTL.csproj|D:\\Sources\\Github\\QLTL\\QLTL\\qltl\\views\\category\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{2C084ECD-8FF7-4181-9861-FD9E7E08759D}|QLTL\\QLTL.csproj|solutionrelative:qltl\\views\\category\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{2C084ECD-8FF7-4181-9861-FD9E7E08759D}|QLTL\\QLTL.csproj|D:\\Sources\\Github\\QLTL\\QLTL\\qltl\\views\\categorytype\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
@@ -165,14 +181,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{2C084ECD-8FF7-4181-9861-FD9E7E08759D}|QLTL\\QLTL.csproj|D:\\Sources\\Github\\QLTL\\QLTL\\qltl\\views\\categorytype\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{2C084ECD-8FF7-4181-9861-FD9E7E08759D}|QLTL\\QLTL.csproj|solutionrelative:qltl\\views\\categorytype\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2C084ECD-8FF7-4181-9861-FD9E7E08759D}|QLTL\\QLTL.csproj|D:\\Sources\\Github\\QLTL\\QLTL\\qltl\\views\\category\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{2C084ECD-8FF7-4181-9861-FD9E7E08759D}|QLTL\\QLTL.csproj|solutionrelative:qltl\\views\\category\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2C084ECD-8FF7-4181-9861-FD9E7E08759D}|QLTL\\QLTL.csproj|D:\\Sources\\Github\\QLTL\\QLTL\\qltl\\views\\category\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{2C084ECD-8FF7-4181-9861-FD9E7E08759D}|QLTL\\QLTL.csproj|solutionrelative:qltl\\views\\category\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{2C084ECD-8FF7-4181-9861-FD9E7E08759D}|QLTL\\QLTL.csproj|D:\\Sources\\Github\\QLTL\\QLTL\\qltl\\views\\shared\\error.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
@@ -279,11 +287,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 7,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 25,
               "Title": "_Layout.cshtml",
               "DocumentMoniker": "D:\\Sources\\Github\\QLTL\\QLTL\\QLTL\\Views\\Shared\\_Layout.cshtml",
               "RelativeDocumentMoniker": "QLTL\\Views\\Shared\\_Layout.cshtml",
@@ -292,187 +300,30 @@
               "ViewState": "AgIAACQAAAAAAAAAAAAmwC8AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2025-09-23T03:59:32.891Z",
-              "IsPinned": true,
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "Details.cshtml",
-              "DocumentMoniker": "D:\\Sources\\Github\\QLTL\\QLTL\\QLTL\\Views\\Role\\Details.cshtml",
-              "RelativeDocumentMoniker": "QLTL\\Views\\Role\\Details.cshtml",
-              "ToolTip": "D:\\Sources\\Github\\QLTL\\QLTL\\QLTL\\Views\\Role\\Details.cshtml",
-              "RelativeToolTip": "QLTL\\Views\\Role\\Details.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAFwAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-10-04T12:34:56.813Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "D:\\Sources\\Github\\QLTL\\QLTL\\QLTL\\Views\\Role\\Index.cshtml",
-              "RelativeDocumentMoniker": "QLTL\\Views\\Role\\Index.cshtml",
-              "ToolTip": "D:\\Sources\\Github\\QLTL\\QLTL\\QLTL\\Views\\Role\\Index.cshtml",
-              "RelativeToolTip": "QLTL\\Views\\Role\\Index.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAABUAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-10-04T12:34:50.78Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "UserService.cs",
-              "DocumentMoniker": "D:\\Sources\\Github\\QLTL\\QLTL\\QLTL\\Services\\UserService.cs",
-              "RelativeDocumentMoniker": "QLTL\\Services\\UserService.cs",
-              "ToolTip": "D:\\Sources\\Github\\QLTL\\QLTL\\QLTL\\Services\\UserService.cs",
-              "RelativeToolTip": "QLTL\\Services\\UserService.cs",
-              "ViewState": "AgIAAH4AAAAAAAAAAAAYwIsAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-04T12:32:49.977Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "UserController.cs",
-              "DocumentMoniker": "D:\\Sources\\Github\\QLTL\\QLTL\\QLTL\\Controllers\\UserController.cs",
-              "RelativeDocumentMoniker": "QLTL\\Controllers\\UserController.cs",
-              "ToolTip": "D:\\Sources\\Github\\QLTL\\QLTL\\QLTL\\Controllers\\UserController.cs",
-              "RelativeToolTip": "QLTL\\Controllers\\UserController.cs",
-              "ViewState": "AgIAAB8AAAAAAAAAAAAQwCoAAAAyAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-04T12:31:58.823Z",
-              "EditorCaption": ""
+              "IsPinned": true
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "Details.cshtml",
-              "DocumentMoniker": "D:\\Sources\\Github\\QLTL\\QLTL\\QLTL\\Views\\User\\Details.cshtml",
-              "RelativeDocumentMoniker": "QLTL\\Views\\User\\Details.cshtml",
-              "ToolTip": "D:\\Sources\\Github\\QLTL\\QLTL\\QLTL\\Views\\User\\Details.cshtml",
-              "RelativeToolTip": "QLTL\\Views\\User\\Details.cshtml",
-              "ViewState": "AgIAAEsAAAAAAAAAAAAgwGUAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-09-24T10:23:46.143Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "D:\\Sources\\Github\\QLTL\\QLTL\\QLTL\\Views\\User\\Index.cshtml",
-              "RelativeDocumentMoniker": "QLTL\\Views\\User\\Index.cshtml",
-              "ToolTip": "D:\\Sources\\Github\\QLTL\\QLTL\\QLTL\\Views\\User\\Index.cshtml",
-              "RelativeToolTip": "QLTL\\Views\\User\\Index.cshtml",
-              "ViewState": "AgIAAJ0AAAAAAAAAAAAgwLcAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-09-23T03:49:21.925Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "detail.css",
-              "DocumentMoniker": "D:\\Sources\\Github\\QLTL\\QLTL\\QLTL\\Content\\detail.css",
-              "RelativeDocumentMoniker": "QLTL\\Content\\detail.css",
-              "ToolTip": "D:\\Sources\\Github\\QLTL\\QLTL\\QLTL\\Content\\detail.css",
-              "RelativeToolTip": "QLTL\\Content\\detail.css",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAABAAAAAAAAAA==",
+              "Title": "createEdit.css",
+              "DocumentMoniker": "D:\\Sources\\Github\\QLTL\\QLTL\\QLTL\\Content\\createEdit.css",
+              "RelativeDocumentMoniker": "QLTL\\Content\\createEdit.css",
+              "ToolTip": "D:\\Sources\\Github\\QLTL\\QLTL\\QLTL\\Content\\createEdit.css",
+              "RelativeToolTip": "QLTL\\Content\\createEdit.css",
+              "ViewState": "AgIAACwAAAAAAAAAAAAmwEoAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2025-10-04T12:23:47.394Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "index.css",
-              "DocumentMoniker": "D:\\Sources\\Github\\QLTL\\QLTL\\QLTL\\Content\\index.css",
-              "RelativeDocumentMoniker": "QLTL\\Content\\index.css",
-              "ToolTip": "D:\\Sources\\Github\\QLTL\\QLTL\\QLTL\\Content\\index.css",
-              "RelativeToolTip": "QLTL\\Content\\index.css",
-              "ViewState": "AgIAAAwAAAAAAAAAAAAAABUAAAAbAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2025-10-04T12:00:35.292Z",
+              "WhenOpened": "2025-10-06T09:59:42.644Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 5,
-              "Title": "UserViewModel.cs",
-              "DocumentMoniker": "D:\\Sources\\Github\\QLTL\\QLTL\\QLTL\\ViewModels\\UserVM\\UserViewModel.cs",
-              "RelativeDocumentMoniker": "QLTL\\ViewModels\\UserVM\\UserViewModel.cs",
-              "ToolTip": "D:\\Sources\\Github\\QLTL\\QLTL\\QLTL\\ViewModels\\UserVM\\UserViewModel.cs",
-              "RelativeToolTip": "QLTL\\ViewModels\\UserVM\\UserViewModel.cs",
-              "ViewState": "AgIAABwAAAAAAAAAAAAzwC4AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-23T12:06:38.837Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "AccountController.cs",
-              "DocumentMoniker": "D:\\Sources\\Github\\QLTL\\QLTL\\QLTL\\Controllers\\AccountController.cs",
-              "RelativeDocumentMoniker": "QLTL\\Controllers\\AccountController.cs",
-              "ToolTip": "D:\\Sources\\Github\\QLTL\\QLTL\\QLTL\\Controllers\\AccountController.cs",
-              "RelativeToolTip": "QLTL\\Controllers\\AccountController.cs",
-              "ViewState": "AgIAANEAAAAAAAAAAAAswNsAAAA+AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-27T01:47:42.154Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "Edit.cshtml",
-              "DocumentMoniker": "D:\\Sources\\Github\\QLTL\\QLTL\\QLTL\\Views\\Permission\\Edit.cshtml",
-              "RelativeDocumentMoniker": "QLTL\\Views\\Permission\\Edit.cshtml",
-              "ToolTip": "D:\\Sources\\Github\\QLTL\\QLTL\\QLTL\\Views\\Permission\\Edit.cshtml",
-              "RelativeToolTip": "QLTL\\Views\\Permission\\Edit.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-10-04T12:05:12.004Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "D:\\Sources\\Github\\QLTL\\QLTL\\QLTL\\Views\\Permission\\Index.cshtml",
-              "RelativeDocumentMoniker": "QLTL\\Views\\Permission\\Index.cshtml",
-              "ToolTip": "D:\\Sources\\Github\\QLTL\\QLTL\\QLTL\\Views\\Permission\\Index.cshtml",
-              "RelativeToolTip": "QLTL\\Views\\Permission\\Index.cshtml",
-              "ViewState": "AgIAABgAAAAAAAAAAAAgwCEAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-09-23T03:49:13.522Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "RoleController.cs",
-              "DocumentMoniker": "D:\\Sources\\Github\\QLTL\\QLTL\\QLTL\\Controllers\\RoleController.cs",
-              "RelativeDocumentMoniker": "QLTL\\Controllers\\RoleController.cs",
-              "ToolTip": "D:\\Sources\\Github\\QLTL\\QLTL\\QLTL\\Controllers\\RoleController.cs",
-              "RelativeToolTip": "QLTL\\Controllers\\RoleController.cs",
-              "ViewState": "AgIAAB4AAAAAAAAAAAAYwH8AAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-23T03:52:50.837Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
               "Title": "Index.cshtml",
               "DocumentMoniker": "D:\\Sources\\Github\\QLTL\\QLTL\\QLTL\\Views\\Category\\Index.cshtml",
               "RelativeDocumentMoniker": "QLTL\\Views\\Category\\Index.cshtml",
               "ToolTip": "D:\\Sources\\Github\\QLTL\\QLTL\\QLTL\\Views\\Category\\Index.cshtml",
               "RelativeToolTip": "QLTL\\Views\\Category\\Index.cshtml",
-              "ViewState": "AgIAAA4AAAAAAAAAAAAAABkAAAARAAAAAAAAAA==",
+              "ViewState": "AgIAAGUAAAAAAAAAAAAAAFQAAABPAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2025-09-30T03:39:21.201Z",
               "EditorCaption": ""
@@ -480,6 +331,274 @@
             {
               "$type": "Document",
               "DocumentIndex": 14,
+              "Title": "Details.cshtml",
+              "DocumentMoniker": "D:\\Sources\\Github\\QLTL\\QLTL\\QLTL\\Views\\Permission\\Details.cshtml",
+              "RelativeDocumentMoniker": "QLTL\\Views\\Permission\\Details.cshtml",
+              "ToolTip": "D:\\Sources\\Github\\QLTL\\QLTL\\QLTL\\Views\\Permission\\Details.cshtml",
+              "RelativeToolTip": "QLTL\\Views\\Permission\\Details.cshtml",
+              "ViewState": "AgIAADwAAAAAAAAAAAAAAEcAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-09-30T03:46:35.014Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "UserService.cs",
+              "DocumentMoniker": "D:\\Sources\\Github\\QLTL\\QLTL\\QLTL\\Services\\UserService.cs",
+              "RelativeDocumentMoniker": "QLTL\\Services\\UserService.cs",
+              "ToolTip": "D:\\Sources\\Github\\QLTL\\QLTL\\QLTL\\Services\\UserService.cs",
+              "RelativeToolTip": "QLTL\\Services\\UserService.cs",
+              "ViewState": "AgIAAH4AAAAAAAAAAAAYwIsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-04T12:32:49.977Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\Sources\\Github\\QLTL\\QLTL\\QLTL\\Views\\CategoryType\\Index.cshtml",
+              "RelativeDocumentMoniker": "QLTL\\Views\\CategoryType\\Index.cshtml",
+              "ToolTip": "D:\\Sources\\Github\\QLTL\\QLTL\\QLTL\\Views\\CategoryType\\Index.cshtml",
+              "RelativeToolTip": "QLTL\\Views\\CategoryType\\Index.cshtml",
+              "ViewState": "AgIAAEUAAAAAAAAAAAAAAE8AAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-04T12:54:42.647Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Edit.cshtml",
+              "DocumentMoniker": "D:\\Sources\\Github\\QLTL\\QLTL\\QLTL\\Views\\Category\\Edit.cshtml",
+              "RelativeDocumentMoniker": "QLTL\\Views\\Category\\Edit.cshtml",
+              "ToolTip": "D:\\Sources\\Github\\QLTL\\QLTL\\QLTL\\Views\\Category\\Edit.cshtml*",
+              "RelativeToolTip": "QLTL\\Views\\Category\\Edit.cshtml*",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAmwCoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-09-30T03:42:47.991Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Create.cshtml",
+              "DocumentMoniker": "D:\\Sources\\Github\\QLTL\\QLTL\\QLTL\\Views\\Category\\Create.cshtml",
+              "RelativeDocumentMoniker": "QLTL\\Views\\Category\\Create.cshtml",
+              "ToolTip": "D:\\Sources\\Github\\QLTL\\QLTL\\QLTL\\Views\\Category\\Create.cshtml",
+              "RelativeToolTip": "QLTL\\Views\\Category\\Create.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-09-30T03:43:02.959Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "Details.cshtml",
+              "DocumentMoniker": "D:\\Sources\\Github\\QLTL\\QLTL\\QLTL\\Views\\Category\\Details.cshtml",
+              "RelativeDocumentMoniker": "QLTL\\Views\\Category\\Details.cshtml",
+              "ToolTip": "D:\\Sources\\Github\\QLTL\\QLTL\\QLTL\\Views\\Category\\Details.cshtml",
+              "RelativeToolTip": "QLTL\\Views\\Category\\Details.cshtml",
+              "ViewState": "AgIAABwAAAAAAAAAAAAgwCcAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-09-30T03:42:54.058Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "detail.css",
+              "DocumentMoniker": "D:\\Sources\\Github\\QLTL\\QLTL\\QLTL\\Content\\detail.css",
+              "RelativeDocumentMoniker": "QLTL\\Content\\detail.css",
+              "ToolTip": "D:\\Sources\\Github\\QLTL\\QLTL\\QLTL\\Content\\detail.css",
+              "RelativeToolTip": "QLTL\\Content\\detail.css",
+              "ViewState": "AgIAACEAAAAAAAAAAAAgwD0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2025-10-04T12:23:47.394Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "index.css",
+              "DocumentMoniker": "D:\\Sources\\Github\\QLTL\\QLTL\\QLTL\\Content\\index.css",
+              "RelativeDocumentMoniker": "QLTL\\Content\\index.css",
+              "ToolTip": "D:\\Sources\\Github\\QLTL\\QLTL\\QLTL\\Content\\index.css",
+              "RelativeToolTip": "QLTL\\Content\\index.css",
+              "ViewState": "AgIAABgAAAAAAAAAAAAgwDQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2025-10-04T12:00:35.292Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "Details.cshtml",
+              "DocumentMoniker": "D:\\Sources\\Github\\QLTL\\QLTL\\QLTL\\Views\\CategoryType\\Details.cshtml",
+              "RelativeDocumentMoniker": "QLTL\\Views\\CategoryType\\Details.cshtml",
+              "ToolTip": "D:\\Sources\\Github\\QLTL\\QLTL\\QLTL\\Views\\CategoryType\\Details.cshtml",
+              "RelativeToolTip": "QLTL\\Views\\CategoryType\\Details.cshtml",
+              "ViewState": "AgIAABIAAAAAAAAAAAAAACIAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-09-30T03:55:23.375Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "Details.cshtml",
+              "DocumentMoniker": "D:\\Sources\\Github\\QLTL\\QLTL\\QLTL\\Views\\Department\\Details.cshtml",
+              "RelativeDocumentMoniker": "QLTL\\Views\\Department\\Details.cshtml",
+              "ToolTip": "D:\\Sources\\Github\\QLTL\\QLTL\\QLTL\\Views\\Department\\Details.cshtml",
+              "RelativeToolTip": "QLTL\\Views\\Department\\Details.cshtml",
+              "ViewState": "AgIAABcAAAAAAAAAAAAgwCIAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-09-30T03:46:06.204Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Details.cshtml",
+              "DocumentMoniker": "D:\\Sources\\Github\\QLTL\\QLTL\\QLTL\\Views\\Document\\Details.cshtml",
+              "RelativeDocumentMoniker": "QLTL\\Views\\Document\\Details.cshtml",
+              "ToolTip": "D:\\Sources\\Github\\QLTL\\QLTL\\QLTL\\Views\\Document\\Details.cshtml",
+              "RelativeToolTip": "QLTL\\Views\\Document\\Details.cshtml",
+              "ViewState": "AgIAAD8AAAAAAAAAAAAAALYAAAAOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-09-23T03:22:15.932Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Details.cshtml",
+              "DocumentMoniker": "D:\\Sources\\Github\\QLTL\\QLTL\\QLTL\\Views\\DocumentType\\Details.cshtml",
+              "RelativeDocumentMoniker": "QLTL\\Views\\DocumentType\\Details.cshtml",
+              "ToolTip": "D:\\Sources\\Github\\QLTL\\QLTL\\QLTL\\Views\\DocumentType\\Details.cshtml",
+              "RelativeToolTip": "QLTL\\Views\\DocumentType\\Details.cshtml",
+              "ViewState": "AgIAABUAAAAAAAAAAAAAACIAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-09-30T03:46:30.105Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Details.cshtml",
+              "DocumentMoniker": "D:\\Sources\\Github\\QLTL\\QLTL\\QLTL\\Views\\Role\\Details.cshtml",
+              "RelativeDocumentMoniker": "QLTL\\Views\\Role\\Details.cshtml",
+              "ToolTip": "D:\\Sources\\Github\\QLTL\\QLTL\\QLTL\\Views\\Role\\Details.cshtml",
+              "RelativeToolTip": "QLTL\\Views\\Role\\Details.cshtml",
+              "ViewState": "AgIAABUAAAAAAAAAAAAAACEAAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-04T12:34:56.813Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\Sources\\Github\\QLTL\\QLTL\\QLTL\\Views\\User\\Index.cshtml",
+              "RelativeDocumentMoniker": "QLTL\\Views\\User\\Index.cshtml",
+              "ToolTip": "D:\\Sources\\Github\\QLTL\\QLTL\\QLTL\\Views\\User\\Index.cshtml",
+              "RelativeToolTip": "QLTL\\Views\\User\\Index.cshtml",
+              "ViewState": "AgIAAJ0AAAAAAAAAAAAgwLcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-09-23T03:49:21.925Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Details.cshtml",
+              "DocumentMoniker": "D:\\Sources\\Github\\QLTL\\QLTL\\QLTL\\Views\\User\\Details.cshtml",
+              "RelativeDocumentMoniker": "QLTL\\Views\\User\\Details.cshtml",
+              "ToolTip": "D:\\Sources\\Github\\QLTL\\QLTL\\QLTL\\Views\\User\\Details.cshtml",
+              "RelativeToolTip": "QLTL\\Views\\User\\Details.cshtml",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAgwBUAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-09-24T10:23:46.143Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "UserController.cs",
+              "DocumentMoniker": "D:\\Sources\\Github\\QLTL\\QLTL\\QLTL\\Controllers\\UserController.cs",
+              "RelativeDocumentMoniker": "QLTL\\Controllers\\UserController.cs",
+              "ToolTip": "D:\\Sources\\Github\\QLTL\\QLTL\\QLTL\\Controllers\\UserController.cs",
+              "RelativeToolTip": "QLTL\\Controllers\\UserController.cs",
+              "ViewState": "AgIAAB8AAAAAAAAAAAAQwCoAAAAyAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-04T12:31:58.823Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "AccountController.cs",
+              "DocumentMoniker": "D:\\Sources\\Github\\QLTL\\QLTL\\QLTL\\Controllers\\AccountController.cs",
+              "RelativeDocumentMoniker": "QLTL\\Controllers\\AccountController.cs",
+              "ToolTip": "D:\\Sources\\Github\\QLTL\\QLTL\\QLTL\\Controllers\\AccountController.cs",
+              "RelativeToolTip": "QLTL\\Controllers\\AccountController.cs",
+              "ViewState": "AgIAANEAAAAAAAAAAAAswNsAAAA+AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-27T01:47:42.154Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "UserViewModel.cs",
+              "DocumentMoniker": "D:\\Sources\\Github\\QLTL\\QLTL\\QLTL\\ViewModels\\UserVM\\UserViewModel.cs",
+              "RelativeDocumentMoniker": "QLTL\\ViewModels\\UserVM\\UserViewModel.cs",
+              "ToolTip": "D:\\Sources\\Github\\QLTL\\QLTL\\QLTL\\ViewModels\\UserVM\\UserViewModel.cs",
+              "RelativeToolTip": "QLTL\\ViewModels\\UserVM\\UserViewModel.cs",
+              "ViewState": "AgIAABwAAAAAAAAAAAAzwC4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-23T12:06:38.837Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\Sources\\Github\\QLTL\\QLTL\\QLTL\\Views\\Role\\Index.cshtml",
+              "RelativeDocumentMoniker": "QLTL\\Views\\Role\\Index.cshtml",
+              "ToolTip": "D:\\Sources\\Github\\QLTL\\QLTL\\QLTL\\Views\\Role\\Index.cshtml",
+              "RelativeToolTip": "QLTL\\Views\\Role\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAABUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-04T12:34:50.78Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "Edit.cshtml",
+              "DocumentMoniker": "D:\\Sources\\Github\\QLTL\\QLTL\\QLTL\\Views\\Permission\\Edit.cshtml",
+              "RelativeDocumentMoniker": "QLTL\\Views\\Permission\\Edit.cshtml",
+              "ToolTip": "D:\\Sources\\Github\\QLTL\\QLTL\\QLTL\\Views\\Permission\\Edit.cshtml",
+              "RelativeToolTip": "QLTL\\Views\\Permission\\Edit.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-04T12:05:12.004Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\Sources\\Github\\QLTL\\QLTL\\QLTL\\Views\\Permission\\Index.cshtml",
+              "RelativeDocumentMoniker": "QLTL\\Views\\Permission\\Index.cshtml",
+              "ToolTip": "D:\\Sources\\Github\\QLTL\\QLTL\\QLTL\\Views\\Permission\\Index.cshtml",
+              "RelativeToolTip": "QLTL\\Views\\Permission\\Index.cshtml",
+              "ViewState": "AgIAABgAAAAAAAAAAAAgwCEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-09-23T03:49:13.522Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "RoleController.cs",
+              "DocumentMoniker": "D:\\Sources\\Github\\QLTL\\QLTL\\QLTL\\Controllers\\RoleController.cs",
+              "RelativeDocumentMoniker": "QLTL\\Controllers\\RoleController.cs",
+              "ToolTip": "D:\\Sources\\Github\\QLTL\\QLTL\\QLTL\\Controllers\\RoleController.cs",
+              "RelativeToolTip": "QLTL\\Controllers\\RoleController.cs",
+              "ViewState": "AgIAAB4AAAAAAAAAAAAYwH8AAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-23T03:52:50.837Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
               "Title": "Edit.cshtml",
               "DocumentMoniker": "D:\\Sources\\Github\\QLTL\\QLTL\\QLTL\\Views\\User\\Edit.cshtml",
               "RelativeDocumentMoniker": "QLTL\\Views\\User\\Edit.cshtml",
@@ -487,12 +606,11 @@
               "RelativeToolTip": "QLTL\\Views\\User\\Edit.cshtml",
               "ViewState": "AgIAABsAAAAAAAAAAAAAAF0AAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-09-23T12:11:02.644Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-09-23T12:11:02.644Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 26,
               "Title": "UserRole.cs",
               "DocumentMoniker": "D:\\Sources\\Github\\QLTL\\QLTL\\QLTL\\Models\\UserRole.cs",
               "RelativeDocumentMoniker": "QLTL\\Models\\UserRole.cs",
@@ -500,12 +618,11 @@
               "RelativeToolTip": "QLTL\\Models\\UserRole.cs",
               "ViewState": "AgIAAAcAAAAAAAAAAAAUwBoAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-23T12:06:15.772Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-09-23T12:06:15.772Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 27,
               "Title": "Model1.Context.cs",
               "DocumentMoniker": "D:\\Sources\\Github\\QLTL\\QLTL\\QLTL\\Models\\Model1.Context.cs",
               "RelativeDocumentMoniker": "QLTL\\Models\\Model1.Context.cs",
@@ -513,12 +630,11 @@
               "RelativeToolTip": "QLTL\\Models\\Model1.Context.cs",
               "ViewState": "AgIAACEAAAAAAAAAAAAUwCMAAABOAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-23T12:06:08.275Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-09-23T12:06:08.275Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 28,
               "Title": "Index.cshtml",
               "DocumentMoniker": "D:\\Sources\\Github\\QLTL\\QLTL\\QLTL\\Views\\Home\\Index.cshtml",
               "RelativeDocumentMoniker": "QLTL\\Views\\Home\\Index.cshtml",
@@ -530,7 +646,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 29,
               "Title": "AuthorizeCustomAttribute.cs",
               "DocumentMoniker": "D:\\Sources\\Github\\QLTL\\QLTL\\QLTL\\Attributes\\AuthorizeCustomAttribute.cs",
               "RelativeDocumentMoniker": "QLTL\\Attributes\\AuthorizeCustomAttribute.cs",
@@ -542,7 +658,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 30,
               "Title": "DocumentController.cs",
               "DocumentMoniker": "D:\\Sources\\Github\\QLTL\\QLTL\\QLTL\\Controllers\\DocumentController.cs",
               "RelativeDocumentMoniker": "QLTL\\Controllers\\DocumentController.cs",
@@ -554,55 +670,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
-              "Title": "Details.cshtml",
-              "DocumentMoniker": "D:\\Sources\\Github\\QLTL\\QLTL\\QLTL\\Views\\Permission\\Details.cshtml",
-              "RelativeDocumentMoniker": "QLTL\\Views\\Permission\\Details.cshtml",
-              "ToolTip": "D:\\Sources\\Github\\QLTL\\QLTL\\QLTL\\Views\\Permission\\Details.cshtml",
-              "RelativeToolTip": "QLTL\\Views\\Permission\\Details.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-09-30T03:46:35.014Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 22,
-              "Title": "Details.cshtml",
-              "DocumentMoniker": "D:\\Sources\\Github\\QLTL\\QLTL\\QLTL\\Views\\DocumentType\\Details.cshtml",
-              "RelativeDocumentMoniker": "QLTL\\Views\\DocumentType\\Details.cshtml",
-              "ToolTip": "D:\\Sources\\Github\\QLTL\\QLTL\\QLTL\\Views\\DocumentType\\Details.cshtml",
-              "RelativeToolTip": "QLTL\\Views\\DocumentType\\Details.cshtml",
-              "ViewState": "AgIAACQAAAAAAAAAAAAAADEAAAAEAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-09-30T03:46:30.105Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 23,
-              "Title": "Details.cshtml",
-              "DocumentMoniker": "D:\\Sources\\Github\\QLTL\\QLTL\\QLTL\\Views\\CategoryType\\Details.cshtml",
-              "RelativeDocumentMoniker": "QLTL\\Views\\CategoryType\\Details.cshtml",
-              "ToolTip": "D:\\Sources\\Github\\QLTL\\QLTL\\QLTL\\Views\\CategoryType\\Details.cshtml",
-              "RelativeToolTip": "QLTL\\Views\\CategoryType\\Details.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAA6AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-09-30T03:55:23.375Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 24,
-              "Title": "Details.cshtml",
-              "DocumentMoniker": "D:\\Sources\\Github\\QLTL\\QLTL\\QLTL\\Views\\Department\\Details.cshtml",
-              "RelativeDocumentMoniker": "QLTL\\Views\\Department\\Details.cshtml",
-              "ToolTip": "D:\\Sources\\Github\\QLTL\\QLTL\\QLTL\\Views\\Department\\Details.cshtml",
-              "RelativeToolTip": "QLTL\\Views\\Department\\Details.cshtml",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-09-30T03:46:06.204Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 25,
+              "DocumentIndex": 31,
               "Title": "Edit.cshtml",
               "DocumentMoniker": "D:\\Sources\\Github\\QLTL\\QLTL\\QLTL\\Views\\Department\\Edit.cshtml",
               "RelativeDocumentMoniker": "QLTL\\Views\\Department\\Edit.cshtml",
@@ -614,7 +682,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 26,
+              "DocumentIndex": 32,
               "Title": "ManagePermissions.cshtml",
               "DocumentMoniker": "D:\\Sources\\Github\\QLTL\\QLTL\\QLTL\\Views\\Role\\ManagePermissions.cshtml",
               "RelativeDocumentMoniker": "QLTL\\Views\\Role\\ManagePermissions.cshtml",
@@ -626,7 +694,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 27,
+              "DocumentIndex": 33,
               "Title": "Edit.cshtml",
               "DocumentMoniker": "D:\\Sources\\Github\\QLTL\\QLTL\\QLTL\\Views\\DocumentType\\Edit.cshtml",
               "RelativeDocumentMoniker": "QLTL\\Views\\DocumentType\\Edit.cshtml",
@@ -638,7 +706,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 28,
+              "DocumentIndex": 34,
               "Title": "About.cshtml",
               "DocumentMoniker": "D:\\Sources\\Github\\QLTL\\QLTL\\QLTL\\Views\\Home\\About.cshtml",
               "RelativeDocumentMoniker": "QLTL\\Views\\Home\\About.cshtml",
@@ -650,19 +718,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 29,
-              "Title": "Details.cshtml",
-              "DocumentMoniker": "D:\\Sources\\Github\\QLTL\\QLTL\\QLTL\\Views\\Document\\Details.cshtml",
-              "RelativeDocumentMoniker": "QLTL\\Views\\Document\\Details.cshtml",
-              "ToolTip": "D:\\Sources\\Github\\QLTL\\QLTL\\QLTL\\Views\\Document\\Details.cshtml",
-              "RelativeToolTip": "QLTL\\Views\\Document\\Details.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAGYAAAA5AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-09-23T03:22:15.932Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 30,
+              "DocumentIndex": 35,
               "Title": "Create.cshtml",
               "DocumentMoniker": "D:\\Sources\\Github\\QLTL\\QLTL\\QLTL\\Views\\DocumentType\\Create.cshtml",
               "RelativeDocumentMoniker": "QLTL\\Views\\DocumentType\\Create.cshtml",
@@ -674,7 +730,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 31,
+              "DocumentIndex": 36,
               "Title": "Create.cshtml",
               "DocumentMoniker": "D:\\Sources\\Github\\QLTL\\QLTL\\QLTL\\Views\\Department\\Create.cshtml",
               "RelativeDocumentMoniker": "QLTL\\Views\\Department\\Create.cshtml",
@@ -686,19 +742,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 32,
-              "Title": "Details.cshtml",
-              "DocumentMoniker": "D:\\Sources\\Github\\QLTL\\QLTL\\QLTL\\Views\\Category\\Details.cshtml",
-              "RelativeDocumentMoniker": "QLTL\\Views\\Category\\Details.cshtml",
-              "ToolTip": "D:\\Sources\\Github\\QLTL\\QLTL\\QLTL\\Views\\Category\\Details.cshtml",
-              "RelativeToolTip": "QLTL\\Views\\Category\\Details.cshtml",
-              "ViewState": "AgIAACcAAAAAAAAAAAAAADgAAAAMAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-09-30T03:42:54.058Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 33,
+              "DocumentIndex": 37,
               "Title": "Edit.cshtml",
               "DocumentMoniker": "D:\\Sources\\Github\\QLTL\\QLTL\\QLTL\\Views\\CategoryType\\Edit.cshtml",
               "RelativeDocumentMoniker": "QLTL\\Views\\CategoryType\\Edit.cshtml",
@@ -710,7 +754,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 34,
+              "DocumentIndex": 38,
               "Title": "AccessDenied.cshtml",
               "DocumentMoniker": "D:\\Sources\\Github\\QLTL\\QLTL\\QLTL\\Views\\Account\\AccessDenied.cshtml",
               "RelativeDocumentMoniker": "QLTL\\Views\\Account\\AccessDenied.cshtml",
@@ -722,7 +766,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 35,
+              "DocumentIndex": 39,
               "Title": "CategoryTypeController.cs",
               "DocumentMoniker": "D:\\Sources\\Github\\QLTL\\QLTL\\QLTL\\Controllers\\CategoryTypeController.cs",
               "RelativeDocumentMoniker": "QLTL\\Controllers\\CategoryTypeController.cs",
@@ -734,7 +778,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 36,
+              "DocumentIndex": 40,
               "Title": "CategoryController.cs",
               "DocumentMoniker": "D:\\Sources\\Github\\QLTL\\QLTL\\QLTL\\Controllers\\CategoryController.cs",
               "RelativeDocumentMoniker": "QLTL\\Controllers\\CategoryController.cs",
@@ -746,7 +790,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 37,
+              "DocumentIndex": 41,
               "Title": "CategoryTypeService.cs",
               "DocumentMoniker": "D:\\Sources\\Github\\QLTL\\QLTL\\QLTL\\Services\\CategoryTypeService.cs",
               "RelativeDocumentMoniker": "QLTL\\Services\\CategoryTypeService.cs",
@@ -758,7 +802,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 38,
+              "DocumentIndex": 42,
               "Title": "CategoryService.cs",
               "DocumentMoniker": "D:\\Sources\\Github\\QLTL\\QLTL\\QLTL\\Services\\CategoryService.cs",
               "RelativeDocumentMoniker": "QLTL\\Services\\CategoryService.cs",
@@ -770,7 +814,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 39,
+              "DocumentIndex": 43,
               "Title": "CategoryViewModel.cs",
               "DocumentMoniker": "D:\\Sources\\Github\\QLTL\\QLTL\\QLTL\\ViewModels\\CategoryVM\\CategoryViewModel.cs",
               "RelativeDocumentMoniker": "QLTL\\ViewModels\\CategoryVM\\CategoryViewModel.cs",
@@ -782,7 +826,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 40,
+              "DocumentIndex": 44,
               "Title": "Create.cshtml",
               "DocumentMoniker": "D:\\Sources\\Github\\QLTL\\QLTL\\QLTL\\Views\\CategoryType\\Create.cshtml",
               "RelativeDocumentMoniker": "QLTL\\Views\\CategoryType\\Create.cshtml",
@@ -794,31 +838,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 42,
-              "Title": "Edit.cshtml",
-              "DocumentMoniker": "D:\\Sources\\Github\\QLTL\\QLTL\\QLTL\\Views\\Category\\Edit.cshtml",
-              "RelativeDocumentMoniker": "QLTL\\Views\\Category\\Edit.cshtml",
-              "ToolTip": "D:\\Sources\\Github\\QLTL\\QLTL\\QLTL\\Views\\Category\\Edit.cshtml",
-              "RelativeToolTip": "QLTL\\Views\\Category\\Edit.cshtml",
-              "ViewState": "AgIAAAwAAAAAAAAAAAAmwBgAAABCAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-09-30T03:42:47.991Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 41,
-              "Title": "Create.cshtml",
-              "DocumentMoniker": "D:\\Sources\\Github\\QLTL\\QLTL\\QLTL\\Views\\Category\\Create.cshtml",
-              "RelativeDocumentMoniker": "QLTL\\Views\\Category\\Create.cshtml",
-              "ToolTip": "D:\\Sources\\Github\\QLTL\\QLTL\\QLTL\\Views\\Category\\Create.cshtml",
-              "RelativeToolTip": "QLTL\\Views\\Category\\Create.cshtml",
-              "ViewState": "AgIAAAsAAAAAAAAAAAAmwBkAAABhAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-09-30T03:43:02.959Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 43,
+              "DocumentIndex": 45,
               "Title": "Error.cshtml",
               "DocumentMoniker": "D:\\Sources\\Github\\QLTL\\QLTL\\QLTL\\Views\\Shared\\Error.cshtml",
               "RelativeDocumentMoniker": "QLTL\\Views\\Shared\\Error.cshtml",
@@ -830,7 +850,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 46,
+              "DocumentIndex": 48,
               "Title": "DocumentIndexVM.cs",
               "DocumentMoniker": "D:\\Sources\\Github\\QLTL\\QLTL\\QLTL\\ViewModels\\DocumentVM\\DocumentIndexVM.cs",
               "RelativeDocumentMoniker": "QLTL\\ViewModels\\DocumentVM\\DocumentIndexVM.cs",
@@ -842,7 +862,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 45,
+              "DocumentIndex": 47,
               "Title": "DocumentService.cs",
               "DocumentMoniker": "D:\\Sources\\Github\\QLTL\\QLTL\\QLTL\\Services\\DocumentService.cs",
               "RelativeDocumentMoniker": "QLTL\\Services\\DocumentService.cs",
@@ -854,7 +874,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 44,
+              "DocumentIndex": 46,
               "Title": "MyFavorites.cshtml",
               "DocumentMoniker": "D:\\Sources\\Github\\QLTL\\QLTL\\QLTL\\Views\\Document\\MyFavorites.cshtml",
               "RelativeDocumentMoniker": "QLTL\\Views\\Document\\MyFavorites.cshtml",
@@ -866,7 +886,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 48,
+              "DocumentIndex": 50,
               "Title": "Edit.cshtml",
               "DocumentMoniker": "D:\\Sources\\Github\\QLTL\\QLTL\\QLTL\\Views\\Document\\Edit.cshtml",
               "RelativeDocumentMoniker": "QLTL\\Views\\Document\\Edit.cshtml",
@@ -878,7 +898,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 47,
+              "DocumentIndex": 49,
               "Title": "HomeController.cs",
               "DocumentMoniker": "D:\\Sources\\Github\\QLTL\\QLTL\\QLTL\\Controllers\\HomeController.cs",
               "RelativeDocumentMoniker": "QLTL\\Controllers\\HomeController.cs",
@@ -890,7 +910,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 49,
+              "DocumentIndex": 51,
               "Title": "UserIndexVM.cs",
               "DocumentMoniker": "D:\\Sources\\Github\\QLTL\\QLTL\\QLTL\\ViewModels\\UserVM\\UserIndexVM.cs",
               "RelativeDocumentMoniker": "QLTL\\ViewModels\\UserVM\\UserIndexVM.cs",
@@ -902,7 +922,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 54,
+              "DocumentIndex": 56,
               "Title": "PasswordHelper.cs",
               "DocumentMoniker": "D:\\Sources\\Github\\QLTL\\QLTL\\QLTL\\Helpers\\PasswordHelper.cs",
               "RelativeDocumentMoniker": "QLTL\\Helpers\\PasswordHelper.cs",
@@ -914,7 +934,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 50,
+              "DocumentIndex": 52,
               "Title": "Create.cshtml",
               "DocumentMoniker": "D:\\Sources\\Github\\QLTL\\QLTL\\QLTL\\Views\\Document\\Create.cshtml",
               "RelativeDocumentMoniker": "QLTL\\Views\\Document\\Create.cshtml",
@@ -926,7 +946,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 51,
+              "DocumentIndex": 53,
               "Title": "DocumentType.cs",
               "DocumentMoniker": "D:\\Sources\\Github\\QLTL\\QLTL\\QLTL\\Models\\DocumentType.cs",
               "RelativeDocumentMoniker": "QLTL\\Models\\DocumentType.cs",
@@ -938,7 +958,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 52,
+              "DocumentIndex": 54,
               "Title": "FavoriteDocument.cs",
               "DocumentMoniker": "D:\\Sources\\Github\\QLTL\\QLTL\\QLTL\\Models\\FavoriteDocument.cs",
               "RelativeDocumentMoniker": "QLTL\\Models\\FavoriteDocument.cs",
@@ -950,7 +970,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 53,
+              "DocumentIndex": 55,
               "Title": "UserProfile.cshtml",
               "DocumentMoniker": "D:\\Sources\\Github\\QLTL\\QLTL\\QLTL\\Views\\User\\UserProfile.cshtml",
               "RelativeDocumentMoniker": "QLTL\\Views\\User\\UserProfile.cshtml",
@@ -962,7 +982,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 55,
+              "DocumentIndex": 57,
               "Title": "UserProfileVM.cs",
               "DocumentMoniker": "D:\\Sources\\Github\\QLTL\\QLTL\\QLTL\\ViewModels\\UserVM\\UserProfileVM.cs",
               "RelativeDocumentMoniker": "QLTL\\ViewModels\\UserVM\\UserProfileVM.cs",
@@ -974,7 +994,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 58,
+              "DocumentIndex": 60,
               "Title": "CodeHelper.cs",
               "DocumentMoniker": "D:\\Sources\\Github\\QLTL\\QLTL\\QLTL\\Helpers\\CodeHelper.cs",
               "RelativeDocumentMoniker": "QLTL\\Helpers\\CodeHelper.cs",
@@ -986,7 +1006,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 59,
+              "DocumentIndex": 61,
               "Title": "Create.cshtml",
               "DocumentMoniker": "D:\\Sources\\Github\\QLTL\\QLTL\\QLTL\\Views\\User\\Create.cshtml",
               "RelativeDocumentMoniker": "QLTL\\Views\\User\\Create.cshtml",
@@ -998,7 +1018,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 56,
+              "DocumentIndex": 58,
               "Title": "Model1.edmx [Diagram1]",
               "DocumentMoniker": "D:\\Sources\\Github\\QLTL\\QLTL\\QLTL\\Models\\Model1.edmx",
               "RelativeDocumentMoniker": "QLTL\\Models\\Model1.edmx",
@@ -1009,7 +1029,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 57,
+              "DocumentIndex": 59,
               "Title": "UserService.cs",
               "DocumentMoniker": "D:\\Sources\\C#\\Qu\u1EA3n l\u00FD t\u00E0i li\u1EC7u BVUB\\Qu\u1EA3n l\u00FD t\u00E0i li\u1EC7u BVUB\\Services\\UserService.cs",
               "RelativeDocumentMoniker": "..\\..\\..\\C#\\Qu\u1EA3n l\u00FD t\u00E0i li\u1EC7u BVUB\\Qu\u1EA3n l\u00FD t\u00E0i li\u1EC7u BVUB\\Services\\UserService.cs",
@@ -1021,7 +1041,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 60,
+              "DocumentIndex": 62,
               "Title": "PermissionService.cs",
               "DocumentMoniker": "D:\\Sources\\Github\\QLTL\\QLTL\\QLTL\\Services\\PermissionService.cs",
               "RelativeDocumentMoniker": "QLTL\\Services\\PermissionService.cs",
@@ -1033,7 +1053,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 61,
+              "DocumentIndex": 63,
               "Title": "RoleService.cs",
               "DocumentMoniker": "D:\\Sources\\Github\\QLTL\\QLTL\\QLTL\\Services\\RoleService.cs",
               "RelativeDocumentMoniker": "QLTL\\Services\\RoleService.cs",
@@ -1045,7 +1065,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 62,
+              "DocumentIndex": 64,
               "Title": "DocumentDetailVM.cs",
               "DocumentMoniker": "D:\\Sources\\Github\\QLTL\\QLTL\\QLTL\\ViewModels\\DocumentVM\\DocumentDetailVM.cs",
               "RelativeDocumentMoniker": "QLTL\\ViewModels\\DocumentVM\\DocumentDetailVM.cs",
@@ -1057,7 +1077,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 63,
+              "DocumentIndex": 65,
               "Title": "DepartmentController.cs",
               "DocumentMoniker": "D:\\Sources\\Github\\QLTL\\QLTL\\QLTL\\Controllers\\DepartmentController.cs",
               "RelativeDocumentMoniker": "QLTL\\Controllers\\DepartmentController.cs",
@@ -1069,7 +1089,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 64,
+              "DocumentIndex": 66,
               "Title": "DepartmentService.cs",
               "DocumentMoniker": "D:\\Sources\\Github\\QLTL\\QLTL\\QLTL\\Services\\DepartmentService.cs",
               "RelativeDocumentMoniker": "QLTL\\Services\\DepartmentService.cs",
@@ -1081,7 +1101,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 65,
+              "DocumentIndex": 67,
               "Title": "DocumentCreateVM.cs",
               "DocumentMoniker": "D:\\Sources\\Github\\QLTL\\QLTL\\QLTL\\ViewModels\\DocumentVM\\DocumentCreateVM.cs",
               "RelativeDocumentMoniker": "QLTL\\ViewModels\\DocumentVM\\DocumentCreateVM.cs",
@@ -1093,7 +1113,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 66,
+              "DocumentIndex": 68,
               "Title": "AccountController.cs",
               "DocumentMoniker": "D:\\Sources\\C#\\Qu\u1EA3n l\u00FD t\u00E0i li\u1EC7u BVUB\\Qu\u1EA3n l\u00FD t\u00E0i li\u1EC7u BVUB\\Controllers\\AccountController.cs",
               "RelativeDocumentMoniker": "..\\..\\..\\C#\\Qu\u1EA3n l\u00FD t\u00E0i li\u1EC7u BVUB\\Qu\u1EA3n l\u00FD t\u00E0i li\u1EC7u BVUB\\Controllers\\AccountController.cs",
@@ -1105,7 +1125,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 67,
+              "DocumentIndex": 69,
               "Title": "CodeHelper.cs",
               "DocumentMoniker": "D:\\Sources\\C#\\Qu\u1EA3n l\u00FD t\u00E0i li\u1EC7u BVUB\\Qu\u1EA3n l\u00FD t\u00E0i li\u1EC7u BVUB\\Helpers\\CodeHelper.cs",
               "RelativeDocumentMoniker": "..\\..\\..\\C#\\Qu\u1EA3n l\u00FD t\u00E0i li\u1EC7u BVUB\\Qu\u1EA3n l\u00FD t\u00E0i li\u1EC7u BVUB\\Helpers\\CodeHelper.cs",

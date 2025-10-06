@@ -16,6 +16,8 @@ namespace QLTL.ViewModels.PermissionVM
 
         [Display(Name = "Mô tả")]
         public string Description { get; set; }
+
+        [Display(Name = "Quyền mặc định")]
         public bool IsDefault { get; set; }
         public bool IsDeleted { get; set; }
         public DateTime CreatedAt { get; set; }

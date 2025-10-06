@@ -5,24 +5,50 @@
 }
 
 @section styles {
-    <link href="~/Content/content.css" rel="stylesheet" />
+    <link href="~/Content/createEdit.css" rel="stylesheet" />
 }
 
 <div class="container mt-4">
-    <h2>Thêm loại tài liệu</h2>
-    @using (Html.BeginForm())
-    {
-        @Html.AntiForgeryToken()
-        <div class="mb-3">
-            @Html.LabelFor(m => m.DocumentTypeName)
-            @Html.TextBoxFor(m => m.DocumentTypeName, new { @class = "form-control" })
-            @Html.ValidationMessageFor(m => m.DocumentTypeName)
+    <div class="card shadow">
+        <!-- Header -->
+        <div class="card-header card-header-gradient d-flex justify-content-between align-items-center">
+            <h2 class="mb-0 text-white">
+                <i class="bi bi-plus-circle me-2"></i> Thêm loại tài liệu
+            </h2>
+            <a href="@Url.Action("Index", "DocumentType")" class="btn btn-light">
+                <i class="bi bi-arrow-left"></i> Quay lại
+            </a>
         </div>
-        <div class="mb-3">
-            @Html.LabelFor(m => m.Description)
-            @Html.TextBoxFor(m => m.Description, new { @class = "form-control" })
+
+        <!-- Body -->
+        <div class="card-body">
+            @using (Html.BeginForm("Create", "DocumentType", FormMethod.Post, new { @class = "needs-validation", novalidate = "novalidate" }))
+            {
+                @Html.AntiForgeryToken()
+
+                <!-- Tên loại tài liệu -->
+                <div class="mb-3">
+                    @Html.LabelFor(m => m.DocumentTypeName, new { @class = "form-label" })
+                    @Html.TextBoxFor(m => m.DocumentTypeName, new { @class = "form-control", placeholder = "Nhập tên loại tài liệu" })
+                    @Html.ValidationMessageFor(m => m.DocumentTypeName, "", new { @class = "text-danger" })
+                </div>
+
+                <!-- Mô tả -->
+                <div class="mb-3">
+                    @Html.LabelFor(m => m.Description, new { @class = "form-label" })
+                    @Html.TextAreaFor(m => m.Description, new { @class = "form-control", rows = 3, placeholder = "Nhập mô tả (không bắt buộc)" })
+                </div>
+
+                <!-- Nút hành động -->
+                <div class="d-flex justify-content-start mt-4">
+                    <button type="submit" class="btn btn-success">
+                        <i class="bi bi-check-circle"></i> Lưu
+                    </button>
+                    <a href="@Url.Action("Index", "DocumentType")" class="btn btn-secondary">
+                        <i class="bi bi-arrow-left"></i> Hủy
+                    </a>
+                </div>
+            }
         </div>
-        <button type="submit" class="btn btn-success">Lưu</button>
-        <a href="@Url.Action("Index")" class="btn btn-secondary">Hủy</a>
-    }
+    </div>
 </div>

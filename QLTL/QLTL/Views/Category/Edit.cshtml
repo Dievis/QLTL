@@ -4,39 +4,58 @@
 }
 
 @section styles {
-    <link href="~/Content/content.css" rel="stylesheet" />
+    <link href="~/Content/createEdit.css" rel="stylesheet" />
 }
 
 <div class="container mt-4">
-    <h2>Chỉnh sửa danh mục</h2>
-
-    @using (Html.BeginForm())
-    {
-        @Html.AntiForgeryToken()
-        @Html.HiddenFor(m => m.CategoryId)
-
-        <div class="mb-3">
-            @Html.LabelFor(m => m.CategoryName)
-            @Html.TextBoxFor(m => m.CategoryName, new { @class = "form-control" })
-            @Html.ValidationMessageFor(m => m.CategoryName, "", new { @class = "text-danger" })
+    <div class="card shadow">
+        <!-- Header -->
+        <div class="card-header card-header-gradient d-flex justify-content-between align-items-center">
+            <h2 class="mb-0 text-white">
+                <i class="bi bi-pencil-square me-2"></i>Chỉnh sửa danh mục
+            </h2>
+            <a href="@Url.Action("Index", "Category")" class="btn btn-light">
+                <i class="bi bi-arrow-left"></i> Quay lại
+            </a>
         </div>
 
-        <div class="mb-3">
-            @Html.LabelFor(m => m.CategoryTypeId, "Loại danh mục")
-            @Html.DropDownListFor(m => m.CategoryTypeId, Model.CategoryTypeList, "-- Chọn loại --", new { @class = "form-select" })
-            @Html.ValidationMessageFor(m => m.CategoryTypeId, "", new { @class = "text-danger" })
-        </div>
+        <!-- Body -->
+        <div class="card-body">
+            @using (Html.BeginForm("Edit", "Category", FormMethod.Post, new { @class = "needs-validation", novalidate = "novalidate" }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.HiddenFor(m => m.CategoryId)
 
-        <div class="mb-3">
-            @Html.LabelFor(m => m.Description)
-            @Html.TextAreaFor(m => m.Description, new { @class = "form-control", rows = 3 })
-        </div>
+                <!-- Tên danh mục -->
+                <div class="mb-3">
+                    @Html.LabelFor(m => m.CategoryName, new { @class = "form-label" })
+                    @Html.TextBoxFor(m => m.CategoryName, new { @class = "form-control", placeholder = "Nhập tên danh mục" })
+                    @Html.ValidationMessageFor(m => m.CategoryName, "", new { @class = "text-danger" })
+                </div>
 
-        <button type="submit" class="btn btn-success">
-            <i class="bi bi-check-circle"></i> Lưu
-        </button>
-        <a href="@Url.Action("Index")" class="btn btn-secondary">
-            <i class="bi bi-arrow-left"></i> Hủy
-        </a>
-    }
+                <!-- Loại danh mục -->
+                <div class="mb-3">
+                    @Html.LabelFor(m => m.CategoryTypeId, "Loại danh mục", new { @class = "form-label" })
+                    @Html.DropDownListFor(m => m.CategoryTypeId, Model.CategoryTypeList, "-- Chọn loại --", new { @class = "form-select" })
+                    @Html.ValidationMessageFor(m => m.CategoryTypeId, "", new { @class = "text-danger" })
+                </div>
+
+                <!-- Mô tả -->
+                <div class="mb-3">
+                    @Html.LabelFor(m => m.Description, new { @class = "form-label" })
+                    @Html.TextAreaFor(m => m.Description, new { @class = "form-control", rows = 3, placeholder = "Nhập mô tả (không bắt buộc)" })
+                </div>
+
+                <!-- Nút hành động -->
+                <div class="d-flex justify-content-start mt-4">
+                    <button type="submit" class="btn btn-success">
+                        <i class="bi bi-check-circle"></i> Lưu
+                    </button>
+                    <a href="@Url.Action("Index", "Category")" class="btn btn-secondary">
+                        <i class="bi bi-arrow-left"></i> Hủy
+                    </a>
+                </div>
+            }
+        </div>
+    </div>
 </div>

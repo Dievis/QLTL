@@ -46,6 +46,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Content Include="Content\createEdit.css" />
     <Content Include="Content\detail.css" />
     <Content Include="Content\images\DefaultAvatar.jpg" />
     <Content Include="Content\index.css" />

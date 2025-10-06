@@ -4,32 +4,57 @@
     ViewBag.Title = "Tạo vai trò";
 }
 
+@section styles {
+    <link href="~/Content/createEdit.css" rel="stylesheet" />
+}
+
 <div class="container mt-4">
-    <h2>Tạo vai trò</h2>
-
-    @using (Html.BeginForm(null, null, FormMethod.Post, new { @class = "mt-3" }))
-    {
-        @Html.AntiForgeryToken()
-
-        <div class="mb-3">
-            @Html.LabelFor(m => m.RoleName, "Tên vai trò", new { @class = "form-label" })
-            @Html.TextBoxFor(m => m.RoleName, new { @class = "form-control" })
-            @Html.ValidationMessageFor(m => m.RoleName, "", new { @class = "text-danger" })
+    <div class="card shadow">
+        <!-- Header -->
+        <div class="card-header card-header-gradient d-flex justify-content-between align-items-center">
+            <h2 class="mb-0 text-white">
+                <i class="bi bi-plus-circle me-2"></i> Tạo vai trò
+            </h2>
+            <a href="@Url.Action("Index", "Role")" class="btn btn-light">
+                <i class="bi bi-arrow-left"></i> Quay lại
+            </a>
         </div>
 
-        <div class="mb-3">
-            @Html.LabelFor(m => m.Description, "Mô tả", new { @class = "form-label" })
-            @Html.TextAreaFor(m => m.Description, new { @class = "form-control", rows = 3 })
-        </div>
+        <!-- Body -->
+        <div class="card-body">
+            @using (Html.BeginForm("Create", "Role", FormMethod.Post, new { @class = "needs-validation", novalidate = "novalidate" }))
+            {
+                @Html.AntiForgeryToken()
 
-        <div class="mb-3 form-check">
-            @Html.CheckBoxFor(m => m.IsDefault, new { @class = "form-check-input" })
-            @Html.LabelFor(m => m.IsDefault, "Vai trò mặc định", new { @class = "form-check-label" })
-        </div>
+                <!-- Tên vai trò -->
+                <div class="mb-3">
+                    @Html.LabelFor(m => m.RoleName, new { @class = "form-label" })
+                    @Html.TextBoxFor(m => m.RoleName, new { @class = "form-control", placeholder = "Nhập tên vai trò" })
+                    @Html.ValidationMessageFor(m => m.RoleName, "", new { @class = "text-danger" })
+                </div>
 
-        <button type="submit" class="btn btn-success">
-            <i class="bi bi-plus-circle"></i> Tạo mới
-        </button>
-        <a href="@Url.Action("Index")" class="btn btn-secondary">Hủy</a>
-    }
+                <!-- Mô tả -->
+                <div class="mb-3">
+                    @Html.LabelFor(m => m.Description, new { @class = "form-label" })
+                    @Html.TextAreaFor(m => m.Description, new { @class = "form-control", rows = 3, placeholder = "Nhập mô tả (không bắt buộc)" })
+                </div>
+
+                <!-- Vai trò mặc định -->
+                <div class="mb-3 form-check">                    
+                    @Html.LabelFor(m => m.IsDefault, new { @class = "form-check-label" })
+                    @Html.CheckBoxFor(m => m.IsDefault, new { @class = "form-check-input" })
+                </div>
+
+                <!-- Nút hành động -->
+                <div class="d-flex justify-content-start mt-4">
+                    <button type="submit" class="btn btn-success">
+                        <i class="bi bi-check-circle"></i> Lưu
+                    </button>
+                    <a href="@Url.Action("Index", "Role")" class="btn btn-secondary">
+                        <i class="bi bi-arrow-left"></i> Hủy
+                    </a>
+                </div>
+            }
+        </div>
+    </div>
 </div>
