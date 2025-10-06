@@ -1,0 +1,75 @@
+﻿.login-card {
+    border: none;
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+
+.login-left {
+    background: linear-gradient(180deg, #0096C7 0%, #0077A7 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    flex-direction: column;
+    padding: 2rem;
+}
+
+    .login-left img {
+        max-width: 200px;
+        margin-bottom: 1rem;
+        border-radius: 33px; /* bo góc 5px */
+    }
+
+
+.login-right {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+}
+
+    .login-right .form-wrapper {
+        max-width: 320px; /* giới hạn chiều ngang */
+        margin: 0 auto; /* căn giữa ngang */
+        width: 100%;
+    }
+
+
+/* Nút chính (Đăng nhập) */
+.btn-primary {
+    background: linear-gradient(90deg, #0096C7 0%, #0077A7 100%);
+    border: none;
+    transition: 0.3s;
+}
+
+    .btn-primary:hover {
+        background: linear-gradient(90deg, #0077A7 0%, #005f80 100%);
+    }
+
+/* Link Quên mật khẩu */
+.btn-link {
+    color: #0096C7;
+    text-decoration: none;
+}
+
+    .btn-link:hover {
+        color: #0077A7;
+        text-decoration: underline;
+    }
+
+/* Nút outline (Kiểm tra tài khoản) */
+.btn-outline-secondary {
+    border: 2px solid #0096C7;
+    color: #0096C7;
+    transition: 0.3s;
+}
+
+    .btn-outline-secondary:hover {
+        background: linear-gradient(90deg, #0096C7 0%, #0077A7 100%);
+        color: #fff;
+        border-color: #0077A7;
+    }
+
+

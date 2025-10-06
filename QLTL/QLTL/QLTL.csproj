@@ -52,6 +52,7 @@
     <Content Include="Content\index.css" />
     <Content Include="Content\layout.css" />
     <Content Include="Content\images\Logo.png" />
+    <Content Include="Content\login.css" />
     <Content Include="Uploads\Avatars\**\*.*" />
     <Content Include="Uploads\Documents\**\*.*" />
   </ItemGroup>
